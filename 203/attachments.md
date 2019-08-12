@@ -12,7 +12,7 @@ Relations:
 
 Properties:
 * `file`: File; May NOT be NULL.
-* `name`: String; May NOT be empty.
+* `name`: String; May NOT be empty.\
   Automatically sanitized when creating a new object.
 * `content_type`: String; May NOT be empty.\
   Automatically computed when creating a new object.
