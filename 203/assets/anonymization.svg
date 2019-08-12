@@ -16,9 +16,6 @@
       .relation.from-many {
         marker-start: url(#relation-many)
       }
-    .wide{
-        stroke: red;
-    }
   </style>
 
   <g transform="translate(300 100)">
