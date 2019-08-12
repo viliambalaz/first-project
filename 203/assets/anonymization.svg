@@ -14,7 +14,7 @@
         stroke-width: 1pt;
       }
       .relation.from-many {
-        marker-start: url(#relation-many)
+        marker-start: url(icons.svg#relation-many)
       }
   </style>
 
