@@ -3,7 +3,7 @@
       text {
         font-family: sans-serif;
       }
-      .model .caption {
+      .caption {
         font-size: 12pt;
         text-anchor: middle;
         dominant-baseline: central;
