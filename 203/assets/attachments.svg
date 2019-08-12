@@ -39,13 +39,13 @@
   </defs>
 
   <g transform="translate(300 100)">
-    <use href="icons.svg#model" />
+    <use href="#model" />
     <text class="caption">Attachment</text>
     <path class="relation from-many to-one" d="M 100,0 300,0" />
     <text class="note" x="200" y="0">Polymorphic relation</text>
   </g>
   <g transform="translate(700 100)">
-    <use href="icons.svg#external" />
+    <use href="#external" />
     <text class="caption">Object</text>
   </g>
 </svg>
