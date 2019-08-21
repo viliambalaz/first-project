@@ -16,7 +16,7 @@ Properties:
 * `emails`: String; May NOT be empty.\
   Comma separated list of formatted e-mail addresses.
 * `slug`: String; May NOT be empty.\
-  Slug for full-text search. Consists of name.
+  Slug for full-text search. Consists of `name`.
 * `status`: Choice; May NOT be NULL.
   - pending: Obligee exists and accepts inforequests.
   - dissolved: Obligee does not exist any more, no further inforequests may be submitted to it.
@@ -33,7 +33,7 @@ Computed Properties:
   Visibility: Public\
   Paginated list of all obligees.
 
-**Obligee autocomplete**
+**Obligee autocomplete**\
   URL: /en/autocomplete/\
   Visibility: Public
 
