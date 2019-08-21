@@ -57,7 +57,7 @@ Properties:
     - sent: The message was successfully sent for this recipient.
     - delivered: There is an evidence the message was delivered to the recipient.
     - opened: There is an evidence the message was opened by the recipient.
-* status_details: String; May be empty.\
+* `status_details`: String; May be empty.\
   Various details about `status` set by the e-mail transport. E.g. rejection reason.
 * `remote_id`: String; May be empty.\
   Message id used by the e-mail transport.
@@ -84,7 +84,7 @@ Computed Properties:
 **Message status webhook event**\
   Trigger: request to Mandrill webhook\
   Updates message recipient status according to the Mandrill event received. The message and its
-  recipients are identified by remote_id.
+  recipients are identified by `remote_id`.
 
 **Inbound e-mail webhook event**\
   Trigger: request to Mandrill webhook
