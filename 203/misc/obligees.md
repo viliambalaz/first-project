@@ -15,9 +15,9 @@ Properties:
 * `street`, `city` and `zip`: String; May NOT be empty.
 * `emails`: String; May NOT be empty.\
   Comma separated list of formatted e-mail addresses.
-* slug: String; May NOT be empty.\
+* `slug`: String; May NOT be empty.\
   Slug for full-text search. Consists of name.
-* status: Choice; May NOT be NULL.
+* `status`: Choice; May NOT be NULL.
   - pending: Obligee exists and accepts inforequests.
   - dissolved: Obligee does not exist any more, no further inforequests may be submitted to it.
 
@@ -39,7 +39,7 @@ Computed Properties:
 
 ## Administration
 
-**List of obligees**\
+**List of obligees**
 * Edit an individual obligee tracking its historical versions.
 * Create a new individual obligee.
 * Disable an individual obligee that does not exist any more.
