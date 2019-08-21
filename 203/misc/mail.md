@@ -12,7 +12,7 @@ Relations:
 
 Properties:
 * `type`: Choice; May NOT be NULL.\
-  inbound, outbound
+  - inbound, outbound
 * `processed`: Datetime ; May be NULL.\
   Time the message was sent/received. NULL for queued outbound messages.
 * `from_name`: String; May be empty.
@@ -32,7 +32,7 @@ Properties:
 
 Computed Properties:
 * `from_formatted`: String; May be empty; Read-write.\
-  Formatted from address, combination of from_name and from_mail.
+  Formatted from address, combination of `from_name` and `from_mail`.
 * `to_formatted`, `cc_formatted` and `bcc_formatted`: String; May be empty; Read‑only.\
   Comma separated lists of formatted addresses of message recipients of the respective type.
 
@@ -45,11 +45,11 @@ Properties:
 * `name`: String; May be empty.
 * `mail`: E-mail; May NOT be empty.
 * `type`: Choice; May NOT be NULL.\
-  to, cc, bcc
+  - to, cc, bcc
 * `status`: Choice; May NOT be NULL.\
-  For inbound messages:
+  - For inbound messages:
     - inbound
-  For outbound messages:
+  - For outbound messages:
     - undefined
     - queued: The message is waiting to be sent.
     - rejected: The message was rejected by the recipient.
