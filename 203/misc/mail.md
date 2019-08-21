@@ -3,6 +3,7 @@
 ![](assets/mail.svg) 
 
 ## `Message`
+
 Represents a single inbound or outbound e‑mail message.
 
 Relations:
@@ -19,8 +20,8 @@ Properties:
 * `received_for`: E-mail; May be empty.\
   The address we received the message for. It may, but does not have to be among the message 
   recipients, as the address may have been bcc-ed to. The address is empty for all outbound messages
-  and may be empty for some inbound messages if we don't know it, or the used e-mail transport doesn't
-  support it.
+  and may be empty for some inbound messages if we don't know it, or the used e-mail transport 
+  doesn't support it.
 * `subject`: String; May be empty.
 * `text` and `html`: String; May be empty.\
   Text/plain and text/html body alternatives of the message. At least one should be defined.
@@ -66,14 +67,17 @@ Computed Properties:
   Formatted address, combination of `name` and `mail`.
 
 ## SMTP transport events
+
 **Send outbound e-mails**\
   Trigger: every few minutes if there are any queued outbound messages waiting.
 
 ## IMAP transport events
+
 **Poll for inbound e-mails**\
   Trigger: every few minutes.
 
 ## Mandrill transport events
+
 **Send outbound e-mails**\
   Trigger: every few minutes if there are any queued outbound messages waiting.
 
@@ -91,6 +95,7 @@ Computed Properties:
 
 
 ## Administration
+
 **List of All E-mails** 
 
 <sub>*\* Features that are marked ~~strikethrough~~ are not implemented yet.*</sub>
