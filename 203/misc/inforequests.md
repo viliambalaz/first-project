@@ -437,6 +437,7 @@ _Properties that apply_:
 * `disclosure_level`: (Mandatory choice)
 
 ## Implicit Actions
+
 **Advanced Request**: represents an implicit action of requesting the new obligee for information
 after the original request was advanced to the new obligee. It is just an implicit action, so it's
 never performed in reality. Every advanced branch contains exactly one advanced request action as
@@ -503,6 +504,7 @@ The following actions set obligee deadlines:
 
 
 ### Applicant Deadline Reminder
+
 Trigger: Daily at 9:00\
 For every opened inforequest with no waiting undecided e‑mails, and every branch which latest action
 sets an applicant deadline, which is about to be missed in 2 WD, we send a reminder to its applicant
@@ -524,6 +526,7 @@ list of all undecided e‑mails assigned to closed inforequests.
 ## User Actions
 
 ### Decide Undecided E‑mail
+
 URL: /en/inforequests/decide-email/\<action>/<inforequest_id>/<email_id>/
 
 Conditions:
@@ -566,149 +569,198 @@ of uploaded files is copied. The effective date of the action received by e‑ma
 e‑mail was received.
 
 ### Add Obligee Action received by S‑mail
-URL: /en/inforequests/add-smail/<action>/<inforequest_id>/
+
+URL: /en/inforequests/add-smail/\<action>/<inforequest_id>/
+
 Conditions:
-User is authenticated.
-User is the inforequest applicant.
-The inforequest is not closed.
-There is no undecided e‑mail in the inforequest.
-The applicant decides which obligee action the s‑mail represents. All actions that may be received by e‑mail may be received by s‑mail as well. Apart from them, the following actions may be received by s‑mail only:
-Affirmation: After this action is added, the branch is terminated. The applicant should input the reason why the information was refused to disclose.
-Reversion: After this action is added, the branch is terminated. As this action may contain part of the requested information disclosed, the applicant should input if any of the information was disclosed or not.
-Remandment: As this action may contain part of the requested information disclosed, the applicant should input if any of the information was disclosed or not.
-If the applicant add a new action received by s‑mail, he should input all its content either as a plain text or rather as a scanned attachment file. The effective date of the action received by s‑mail should be specified by the applicant. However it may not be older than the current last branch action. Moreover it may not be older than one month nor from the future.
+
+* User is authenticated.
+* User is the inforequest applicant.
+* The inforequest is not closed.
+* There is no undecided e‑mail in the inforequest.
+
+The applicant decides which obligee action the s‑mail represents. All actions that may be received
+by e‑mail may be received by s‑mail as well. Apart from them, the following actions may be received
+by s‑mail only:
+* **Affirmation**: After this action is added, the branch is terminated. The applicant should input
+  the reason why the information was refused to disclose.
+* **Reversion**: After this action is added, the branch is terminated. As this action may contain
+  part of the requested information disclosed, the applicant should input if any of the information
+  was disclosed or not.
+* **Remandment**: As this action may contain part of the requested information disclosed, the
+  applicant should input if any of the information was disclosed or not.
+
+If the applicant add a new action received by s‑mail, he should input all its content either as a
+plain text or rather as a scanned attachment file. The effective date of the action received by
+s‑mail should be specified by the applicant. However it may not be older than the current last
+branch action. Moreover it may not be older than one month nor from the future.\
 If there is undecided e‑mail waiting in the inforequest the user may not add any action received by s‑mail, however he may save it as a draft.
 
+### Extend Missed Obligee Deadline
 
-Extend Missed Obligee Deadline
 URL: /en/inforequests/extend-deadline/<inforequest_id>/<branch_id>/<action_id>
+
 Conditions:
-User is authenticated.
-User is the inforequest applicant.
-The inforequest is not closed.
-There is no undecided e‑mail in the inforequest.
-The latest branch action sets an obligee deadline, which is already missed taking into account all previous deadline extensions made by the applicant.
+* User is authenticated.
+* User is the inforequest applicant.
+* The inforequest is not closed.
+* There is no undecided e‑mail in the inforequest.
+* The latest branch action sets an obligee deadline, which is already missed taking into account all
+  previous deadline extensions made by the applicant.
+
 The applicant may extend the deadline by any number of WD, by default by 5 WD. The extension is expressed in a number of WD relative to the day the extension was made. After the extended deadline is missed as well, the applicant gets a notification about it.
+
 The following actions set obligee deadlines that can be extended:
-Applicant Actions: Request, Clarification Response, Appeal
-Obligee Actions: Confirmation, Extension, Remandment
-Implicit Actions: Advanced Request
+* Applicant Actions: Request, Clarification Response, Appeal
+* Obligee Actions: Confirmation, Extension, Remandment
+* Implicit Actions: Advanced Request
 
+### Make a Clarification Response Action
 
-Make a Clarification Response Action
 URL: /en/inforequests/new-action/clarification-response/<inforequest_id>/
+
 Conditions:
-User is authenticated.
-User is the inforequest applicant.
-The inforequest is not closed.
-There is no undecided raw e‑mail in the inforequest.
-The last branch action is clarification request
-Clarification responses may be made either by e‑mail or by s‑mail. However, if the respective clarification request was received by e‑mail, the clarification response should be sent by e‑mail as well, and vice versa. It's up to the applicant to decide. If he decides to send it by s‑mail, he should be able to print and/or download a pdf of the prepared action content.
-The obligee may respond from different e‑mail addresses during the inforequest branch. To ensure the clarification response is sent to the correct obligee address, it is sent to all e‑mail addresses collected during this branch. However not to addresses collected from other inforequest branches, as every branch represents communication with different obligee.
-The applicant may save the clarification response as a draft and send it later. There may be only one clarification response draft in the inforequest. If the conditions change while the applicant edits the clarification response, and it is not possible to send it any more, the clarification response is not sent, but the applicant may save it as a draft and send it later. For instance, this may happen if a new raw e‑mail is received while the applicant edits the clarification response. In such case, he must decide the received e‑mail foremost.
-The effective date of a clarification response is the date it was sent if it was sent by e‑mail, or the date it was generated if it was sent by s‑mail.
+* User is authenticated.
+* User is the inforequest applicant.
+* The inforequest is not closed.
+* There is no undecided raw e‑mail in the inforequest.
+* The last branch action is clarification request
 
+Clarification responses may be made either by e‑mail or by s‑mail. ~~However, if the respective
+clarification request was received by e‑mail, the clarification response should be sent by e‑mail as
+well, and vice versa. It's up to the applicant to decide.~~ If he decides to send it by s‑mail, he
+should be able to print ~~and/or download a pdf of~~ the prepared action content.\
+The obligee may respond from different e‑mail addresses during the inforequest branch. To ensure the clarification response is sent to the correct obligee address, it is sent to all e‑mail addresses
+collected during this branch. However not to addresses collected from other inforequest branches, as
+every branch represents communication with different obligee.\
+The applicant may save the clarification response as a draft and send it later. There may be only
+one clarification response draft in the inforequest. If the conditions change while the applicant
+edits the clarification response, and it is not possible to send it any more, the clarification
+response is not sent, but the applicant may save it as a draft and send it later. For instance,
+this may happen if a new raw e‑mail is received while the applicant edits the clarification
+response. In such case, he must decide the received e‑mail foremost.\
+The effective date of a clarification response is the date it was sent if it was sent by e‑mail, or
+the date it was generated if it was sent by s‑mail.
 
-Make an Appeal Action
+### Make an Appeal Action
+
 URL: /en/inforequests/new-action/appeal/<inforequest_id>/
+
 Conditions:
-User is authenticated.
-User is the inforequest applicant.
-The inforequest is not closed.
-There is no undecided raw e‑mail in the inforequest.
-The last branch action is a non-full disclosure, refusal or advancement, or if it is a request, clarification response, confirmation, extension, remandment or advanced request and its deadline is missed.
-Appeals may be sent by s‑mail only. They are sent to the postal address of the obligee, which should automatically forward it to its superior. The applicant should be able to print and/or download a pdf of the prepared action content.
-If the appeal is sent after an obligee deadline was missed, an implicit expiration action is added just before the appeal action.
-The applicant may save the appeal as a draft and send it later. There may be only one appeal draft in the inforequest. If the conditions change while the applicant edits the appeal, and it is not possible to send it any more, the appeal is not sent, but the applicant may save it as a draft and send it later. For instance, this may happen if a new raw e‑mail is received while the applicant edits the appeal. In such case, he must decide the received e‑mail foremost.
+* User is authenticated.
+* User is the inforequest applicant.
+* The inforequest is not closed.
+* There is no undecided raw e‑mail in the inforequest.
+* The last branch action is a non-full disclosure, refusal or advancement, or if it is a request,
+  clarification response, confirmation, extension, remandment or advanced request and its deadline
+  is missed.
+
+Appeals may be sent by s‑mail only. They are sent to the postal address of the obligee, which should automatically forward it to its superior. The applicant should be able to print ~~and/or download a
+pdf of~~ the prepared action content.\
+If the appeal is sent after an obligee deadline was missed, an implicit expiration action is added
+just before the appeal action.\
+The applicant may save the appeal as a draft and send it later. There may be only one appeal draft
+in the inforequest. If the conditions change while the applicant edits the appeal, and it is not
+possible to send it any more, the appeal is not sent, but the applicant may save it as a draft and
+send it later. For instance, this may happen if a new raw e‑mail is received while the applicant
+edits the appeal. In such case, he must decide the received e‑mail foremost.\
 The effective date of an appeal is the date it was generated.
 
+### ~~Resend Undelivered E-mail by S-mail~~
 
-Resend Undelivered E-mail by S-mail
-URL: /en/inforequests/...
+~~URL: /en/inforequests/...~~
+
 Conditions:
-User is authenticated.
-User is the inforequest applicant.
-The inforequest is not closed.
-There is no undecided raw e‑mail in the inforequest.
-The latest branch action is marked undelivered.
-If an applicant action sent by e‑mail returned as undelivered, the applicant may try to resend it by s‑mail.
+* ~~User is authenticated.~~
+* ~~User is the inforequest applicant.~~
+* ~~The inforequest is not closed.~~
+* ~~There is no undecided raw e‑mail in the inforequest.~~
+* ~~The latest branch action is marked undelivered.~~
+
+If an applicant action sent by e‑mail returned as undelivered, the applicant may try to resend it by
+s‑mail.\
 The following applicant actions may be sent by e‑mail:
-Request
-Clarification Response
+* Request
+* Clarification Response
 
+### Create a New Inforequest / Inforequest Draft
 
-Create a New Inforequest / Inforequest Draft
-URL: /en/inforequests/create/
-URL: /en/inforequests/create/<draft_id>/
+URL: /en/inforequests/create/\
+     /en/inforequests/create/<draft_id>/
+
 Conditions:
-User is authenticated.
-User has a verified e-mail address
+* User is authenticated.
+* User has a verified e-mail address
+
 Instead of submitting the created inforequest directly, the user may decide to save it as a inforequest draft and submit it later. The user may edit the draft until he submits it. The obligee property does not have to be set while the inforequest is just a draft. The user may own multiple unfinished request drafts.
 
+### Delete a Inforequest Draft
 
-Delete a Inforequest Draft
 URL: /en/inforequests/delete-draft/<draft_id>/
+
 Conditions:
-User is authenticated.
-User is the request draft owner.
+* User is authenticated.
+* User is the request draft owner.
 
+## Views
 
-Views
-List of all Inforequests
-URL: /en/inforequests/...
+### ~~List of all Inforequests~~
+
+~~URL: /en/inforequests/...~~\
+~~Visibility: Public~~\
+~~The view contains a link to create a new inforequest.~~
+
+### List of Inforequests Created by the User
+URL: /en/inforequests/\
+Visibility: Authenticated user\
+The user may see his inforequest drafts besides his submitted and closed inforequests as well. The
+view contains a link to create a new inforequest.
+
+### Inforequest Detail
+URL: /en/inforequests/detail/<inforequest_id>/\
 Visibility: Public
-The view contains a link to create a new inforequest.
+1. _For the applicant_:\
+   The applicant sees basic inforequest information, branch of actions in chronological order by
+   their effective date and his undecided e‑mails.\
+   The applicant may act on the inforequest if it's not closed, yet. He can:
+   - decide undecided e‑mails,
+   - add obligee actions based on obligee responses received by s‑mail,
+   - extend missed obligee deadlines,
+   - ~~resend undelivered e‑mail by s‑mail,~~
+   - send a clarification response,
+   - make an appeal.
+2. ~~For other users and the public:~~
+   Other users and the public see only anonymized request information, branch of actions, and
+   undecided e‑mails. If possible, content of actions and e‑mails should be anonymized as well.\
+   Neither other users nor the public may act on the case.
 
-
-List of Inforequests Created by the User
-URL: /en/inforequests/
-Visibility: Authenticated user
-The user may see his inforequest drafts besides his submitted and closed inforequests as well. The view contains a link to create a new inforequest.
-
-
-Inforequest Detail
-URL: /en/inforequests/detail/<inforequest_id>/
-Visibility: Public
-a) For the applicant:
-The applicant sees basic inforequest information, branch of actions in chronological order by their effective date and his undecided e‑mails.
-The applicant may act on the inforequest if it's not closed, yet. He can:
-decide undecided e‑mails,
-add obligee actions based on obligee responses received by s‑mail,
-extend missed obligee deadlines,
-resend undelivered e‑mail by s‑mail,
-send a clarification response,
-make an appeal.
-b) For other users and the public:
-Other users and the public see only anonymized request information, branch of actions, and undecided e‑mails. If possible, content of actions and e‑mails should be anonymized as well.
-Neither other users nor the public may act on the case.
 If the inforequest was advanced, details of all its descendant branches are shown in a tree structure as well.
 
+### Upload Attachment
+URL: /en/inforequests/attachments/\
+Visibility: Authenticated user\
+Uploaded files are attached to the user. The user may use uploaded files while composing an
+inforequest or an action. He may use only his uploaded files.
 
-Upload Attachment
-URL: /en/inforequests/attachments/
-Visibility: Authenticated user
-Uploaded files are attached to the user. The user may use uploaded files while composing an inforequest or an action. He may use only his uploaded files.
-
-
-Download Attachment
-URL: /en/inforequests/attachments/<attachment_id>/
-Visibility: Public
-Anonymous user may download only files attached to actions connected to public inforequests. Authenticated user may also download files attached to him, to his inforequest drafts or to any e‑mails, actions or action drafts connected to his inforequests.
-
-
-Administration
-List of Unassigned Received E‑mails
-May assign an unassigned e‑mail to a case
+### Download Attachment
+URL: /en/inforequests/attachments/<attachment_id>/\
+~~Visibility: Public~~\
+~~Anonymous user may download only files attached to actions connected to public inforequests.~~
+Authenticated user may also download files attached to him, to his inforequest drafts or to any
+e‑mails, actions or action drafts connected to his inforequests.
 
 
-List of Undecided Raw E‑mails Assigned to Closed Inforequests
+## Administration
 
+### List of Unassigned Received E‑mails
 
-List of E‑mails Marked as Unrelated
+* May assign an unassigned e‑mail to a case
 
+###List of Undecided Raw E‑mails Assigned to Closed Inforequests
 
-List of E‑mails the Users didn't Know how to Decide
-May decide the e‑mail
+### List of E‑mails Marked as Unrelated
 
+### List of E‑mails the Users didn't Know how to Decide
+* May decide the e‑mail
 
 <sub>*\* Features that are marked ~~strikethrough~~ are not implemented yet.*</sub>
