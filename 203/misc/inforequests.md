@@ -317,7 +317,7 @@ advanced requests as well. In the case the request was advanced the confirmation
 obligee. The confirmation action resets the obligee deadline. A confirmation may only be added if
 the last branch action is a request or advanced request.
 
-Properties that apply:
+_Properties that apply_:
 * If the confirmation was received by e‑mail:
   - `email`: a reference to the received e‑mail
   - `effective_date`: e‑mail received date
@@ -677,11 +677,11 @@ Conditions:
 * ~~There is no undecided raw e‑mail in the inforequest.~~
 * ~~The latest branch action is marked undelivered.~~
 
-If an applicant action sent by e‑mail returned as undelivered, the applicant may try to resend it by
-s‑mail.\
-The following applicant actions may be sent by e‑mail:
-* Request
-* Clarification Response
+~~If an applicant action sent by e‑mail returned as undelivered, the applicant may try to resend it
+by s‑mail.~~\
+~~The following applicant actions may be sent by e‑mail:~~
+* ~~Request~~
+* ~~Clarification Response~~
 
 ### Create a New Inforequest / Inforequest Draft
 
