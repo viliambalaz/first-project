@@ -185,12 +185,12 @@ Properties:
     _copyright restriction_; _business secret_; _personal information_; _confidential information_;
     _no reason specified_; _other reason_.
 * ~~`delivery_status`: Choice; May be NULL.~~\
-  ~~Mandatory choice for applicant actions, NULL otherwise. Whether the action was delivered.
-  - _delivered_: If we got e‑mail receipt confirmation, or the applicant got an s‑mail proof of
-    delivery.
-  - _undelivered_: If we got an e‑mail delivery status notification for all its recipients, or the
-    s‑mail was returned undelivered to the applicant.
-  - _unknown_.~~
+  ~~Mandatory choice for applicant actions, NULL otherwise. Whether the action was delivered.~~
+  - ~~_delivered_: If we got e‑mail receipt confirmation, or the applicant got an s‑mail proof of
+    delivery.~~
+  - ~~_undelivered_: If we got an e‑mail delivery status notification for all its recipients, or the
+    s‑mail was returned undelivered to the applicant.~~
+  - ~~_unknown_.~~
 * `last_deadline_reminder`: Datetime; May be NULL.
 
 Computed Properties:
