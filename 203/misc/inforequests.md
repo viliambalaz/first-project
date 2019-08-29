@@ -531,6 +531,7 @@ Conditions:
 * User is the inforequest applicant.
 * The inforequest is not closed.
 * There is no older undecided e‑mail in the inforequest.
+
 The applicant decides if the received raw e‑mail is related to the inforequest, and if so, he
 decides which obligee action the e‑mail represents. As advanced branches share their e‑mail
 addresses with their main branches, all raw e‑mails are associated to the inforequest only. It is up
@@ -559,6 +560,7 @@ the applicant should input if any of the information was disclosed or not.
   extent, only partially, or not at all. If he says the information was fully disclosed, the branch
   is terminated.
 * **Refusal**: The applicant should input the reason why the information was refused to disclose.
+
 The created action received e‑mail is set to the received e‑mail and its subject, content and list
 of uploaded files is copied. The effective date of the action received by e‑mail is the date the
 e‑mail was received.
