@@ -145,7 +145,7 @@ Computed Properties:
 
 ## `Action`
 Relations:
-* `branch`: Branch; May NOT be NULL\
+* `branch`: Branch; May NOT be NULL
 * `email`: E-mail Message; May be NULL;\
   Mandatory for actions sent or received by e‑mail, NULL otherwise.
 * `attachment_set`: List of Attachments; May be empty; Ordered by id.
@@ -184,13 +184,13 @@ Properties:
   - _does not have information_; _does not provide information_; _does not create information_;
     _copyright restriction_; _business secret_; _personal information_; _confidential information_;
     _no reason specified_; _other reason_.
-* ~~`delivery_status`~~: Choice; May be NULL.\
-  Mandatory choice for applicant actions, NULL otherwise. Whether the action was delivered.
+* ~~`delivery_status`: Choice; May be NULL.~~\
+  ~~Mandatory choice for applicant actions, NULL otherwise. Whether the action was delivered.
   - _delivered_: If we got e‑mail receipt confirmation, or the applicant got an s‑mail proof of
     delivery.
   - _undelivered_: If we got an e‑mail delivery status notification for all its recipients, or the
     s‑mail was returned undelivered to the applicant.
-  - _unknown_.
+  - _unknown_.~~
 * `last_deadline_reminder`: Datetime; May be NULL.
 
 Computed Properties:
@@ -756,7 +756,7 @@ e‑mails, actions or action drafts connected to his inforequests.
 
 * May assign an unassigned e‑mail to a case
 
-###List of Undecided Raw E‑mails Assigned to Closed Inforequests
+### List of Undecided Raw E‑mails Assigned to Closed Inforequests
 
 ### List of E‑mails Marked as Unrelated
 
