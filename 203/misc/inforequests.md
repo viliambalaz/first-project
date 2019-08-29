@@ -527,24 +527,43 @@ list of all undecided e‑mails assigned to closed inforequests.
 URL: /en/inforequests/decide-email/\<action>/<inforequest_id>/<email_id>/
 
 Conditions:
-User is authenticated.
-User is the inforequest applicant.
-The inforequest is not closed.
-There is no older undecided e‑mail in the inforequest.
-The applicant decides if the received raw e‑mail is related to the inforequest, and if so, he decides which obligee action the e‑mail represents. As advanced branches share their e‑mail addresses with their main branches, all raw e‑mails are associated to the inforequest only. It is up to the applicant and/or some heuristics to decide to which branch the action contained in the received e‑mail belongs.
-The applicant may say that he doesn't know how to decide the received e‑mail, for instance if he does not know what this e‑mail is. The administrator can see a list of e‑mails  the users didn't know how to decide.
-If there are multiple undecided e‑mails in the inforequest, the applicant must decide them in the order they were received. After a raw e‑mail is decided it's marked as decided and the corresponding obligee action is added to the branch. If the applicant decides the received e‑mail is unrelated to the inforequest, no action is added to the branch, but the received e‑mail is marked as unrelated instead.
+* User is authenticated.
+* User is the inforequest applicant.
+* The inforequest is not closed.
+* There is no older undecided e‑mail in the inforequest.
+The applicant decides if the received raw e‑mail is related to the inforequest, and if so, he
+decides which obligee action the e‑mail represents. As advanced branches share their e‑mail
+addresses with their main branches, all raw e‑mails are associated to the inforequest only. It is up
+to the applicant ~~and/or some heuristics~~ to decide to which branch the action contained in the
+received e‑mail belongs.\
+The applicant may say that he doesn't know how to decide the received e‑mail, for instance if he
+does not know what this e‑mail is. The administrator can see a list of e‑mails  the users didn't
+know how to decide.\
+If there are multiple undecided e‑mails in the inforequest, the applicant must decide them in the
+order they were received. After a raw e‑mail is decided it's marked as decided and the corresponding
+obligee action is added to the branch. If the applicant decides the received e‑mail is unrelated to
+the inforequest, no action is added to the branch, but the received e‑mail is marked as unrelated
+instead.\
 Only the following actions may be received by e‑mail:
-Confirmation
-Extension: The applicant may input custom obligee deadline specified in the obligee response. If there is no custom obligee deadline in the response, the default deadline is used.
-Advancement: After this action is added, new advanced branches containing implicit advanced request actions are created. While the obligee may advance the inforequest to multiple new obligees, multiple new advanced branches may be created. It's up to the applicant to input the list of all obligees to which the request advanced. The inforequest may not be advanced to the same obligee, nor to two identical obligees. As this action may contain part of the requested information disclosed, the applicant should input if any of the information was disclosed or not.
-Clarification Request
-Disclosure: The applicant should input if the requested information was disclosed to the full extent, only partially, or not at all. If he says the information was fully disclosed, the branch is terminated.
-Refusal: The applicant should input the reason why the information was refused to disclose.
-The created action received e‑mail is set to the received e‑mail and its subject, content and list of uploaded files is copied. The effective date of the action received by e‑mail is the date the e‑mail was received.
+* **Confirmation**
+* **Extension**: The applicant may input custom obligee deadline specified in the obligee response.
+  If there is no custom obligee deadline in the response, the default deadline is used.
+* **Advancement**: After this action is added, new advanced branches containing implicit advanced
+request actions are created. While the obligee may advance the inforequest to multiple new obligees,
+multiple new advanced branches may be created. It's up to the applicant to input the list of all
+obligees to which the request advanced. The inforequest may not be advanced to the same obligee, nor
+to two identical obligees. As this action may contain part of the requested information disclosed,
+the applicant should input if any of the information was disclosed or not.
+* **Clarification Request**
+* **Disclosure**: The applicant should input if the requested information was disclosed to the full
+  extent, only partially, or not at all. If he says the information was fully disclosed, the branch
+  is terminated.
+* **Refusal**: The applicant should input the reason why the information was refused to disclose.
+The created action received e‑mail is set to the received e‑mail and its subject, content and list
+of uploaded files is copied. The effective date of the action received by e‑mail is the date the
+e‑mail was received.
 
-
-Add Obligee Action received by S‑mail
+### Add Obligee Action received by S‑mail
 URL: /en/inforequests/add-smail/<action>/<inforequest_id>/
 Conditions:
 User is authenticated.
