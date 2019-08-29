@@ -524,7 +524,7 @@ list of all undecided e‑mails assigned to closed inforequests.
 ## User Actions
 
 ### Decide Undecided E‑mail
-URL: /en/inforequests/decide-email/<action>/<inforequest_id>/<email_id>/
+URL: /en/inforequests/decide-email/\<action>/<inforequest_id>/<email_id>/
 
 Conditions:
 User is authenticated.
