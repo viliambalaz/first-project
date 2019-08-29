@@ -723,18 +723,19 @@ Visibility: Public
    The applicant sees basic inforequest information, branch of actions in chronological order by
    their effective date and his undecided e‑mails.\
    The applicant may act on the inforequest if it's not closed, yet. He can:
-   * decide undecided e‑mails,
-   * add obligee actions based on obligee responses received by s‑mail,
-   * extend missed obligee deadlines,
-   * ~~resend undelivered e‑mail by s‑mail,~~
-   * send a clarification response,
-   * make an appeal.
+   - decide undecided e‑mails,
+   - add obligee actions based on obligee responses received by s‑mail,
+   - extend missed obligee deadlines,
+   - ~~resend undelivered e‑mail by s‑mail,~~
+   - send a clarification response,
+   - make an appeal.
 2. ~~For other users and the public:~~
-   Other users and the public see only anonymized request information, branch of actions, and
-   undecided e‑mails. If possible, content of actions and e‑mails should be anonymized as well.\
-   Neither other users nor the public may act on the case.
+   ~~Other users and the public see only anonymized request information, branch of actions, and
+   undecided e‑mails. If possible, content of actions and e‑mails should be anonymized as well.\~~
+   ~~Neither other users nor the public may act on the case.~~
 
-If the inforequest was advanced, details of all its descendant branches are shown in a tree structure as well.
+If the inforequest was advanced, details of all its descendant branches are shown in a tree
+structure as well.
 
 ### Upload Attachment
 URL: /en/inforequests/attachments/\
