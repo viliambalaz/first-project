@@ -730,8 +730,8 @@ Visibility: Public
    - send a clarification response,
    - make an appeal.
 2. ~~For other users and the public:~~
-   ~~Other users and the public see only anonymized request information, branch of actions, and
-   undecided e‑mails. If possible, content of actions and e‑mails should be anonymized as well.\~~
+   ~~Other users and the public see only anonymized request information, branch of actions, and~~
+   ~~undecided e‑mails. If possible, content of actions and e‑mails should be anonymized as well.\~~
    ~~Neither other users nor the public may act on the case.~~
 
 If the inforequest was advanced, details of all its descendant branches are shown in a tree
