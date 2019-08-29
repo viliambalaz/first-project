@@ -42,7 +42,7 @@ Relations:
 * `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.\
   List of all action drafts the applicant created for this inforequest. The inforequest may contain
   at most one draft of each action type.
-* `inforequestemail_set`: List of Inforequest E-mails; May be empty; Ordered by id.\
+* `inforequestemail_set`: List of Inforequest E-mails; May be empty; Ordered by id.
 
 Computed Relations:
 * `branch`: Branch; May NOT be NULL; Read-only.\
@@ -52,7 +52,7 @@ Computed Relations:
   new obligees.
 * `undecided_set`: List of E-mail Messages; May be empty; Read-only.\
   List of undecided inbound messages waiting for user decision.
-* `oldest_undecided_email` and `newest_undecided_email`: E-mail Message; May be NULL; Read-only.\
+* `oldest_undecided_email` and `newest_undecided_email`: E-mail Message; May be NULL; Read-only.
 
 Properties:
 * `applicant_name`, `applicant_street`, `applicant_city` and `applicant_zip`: String; May NOT be
@@ -271,175 +271,261 @@ _Properties that apply_:
 * If the request was sent by e‑mail:
   - `email`: a reference to the sent e‑mail
   - `effective_date`: e‑mail sent date
-* ~~If the request was sent by s‑mail:
-  - `effective_date`: the date the s‑mail was generated~~
+* ~~If the request was sent by s‑mail:~~
+  - ~~`effective_date`: the date the s‑mail was generated~~
 * `subject` + `content` + `attachment_set`
 * `deadline`: 8 WD for the obligee to response
 * `extension`
 * ~~`delivery_status`~~
 
-**Clarification Response**: represents an applicant action of providing the obligee an clarification to his inforequest. A clarification response may only be sent if the last branch action is a clarification request. The branch may contain multiple clarification responses as it may contain multiple clarification requests.
+**Clarification Response**: represents an applicant action of providing the obligee an clarification
+to his inforequest. A clarification response may only be sent if the last branch action is a
+clarification request. The branch may contain multiple clarification responses as it may contain
+multiple clarification requests.
+
 Properties that apply:
-If the clarification response was sent by e‑mail:
-email: a reference to the sent e‑mail
-effective_date: e‑mail sent date
-If the clarification response was sent by s‑mail:
-effective_date: the date the s‑mail was generated
-subject + content + attachment_set
-deadline: 8 WD for the Obligee to response
-extension
-delivery_status: notice that clarification response may be sent to multiple e‑mails; it is considered undelivered after it fails to be delivered to all its recipients.
+* If the clarification response was sent by e‑mail:
+  - `email`: a reference to the sent e‑mail
+  - `effective_date`: e‑mail sent date
+* If the clarification response was sent by s‑mail:
+  - `effective_date`: the date the s‑mail was generated
+* `subject` + `content` + `attachment_set`
+* `deadline`: 8 WD for the Obligee to response
+* `extension`
+* ~~`delivery_status`: notice that clarification response may be sent to multiple e‑mails; it is
+  considered undelivered after it fails to be delivered to all its recipients.~~
 
-Appeal: represents an applicant action of appealing against the obligee resolution. An appeal is sent to the obligee by s‑mail only. The obligee should forward it to its superior automatically. An appeal may only be sent if the last branch action is a non-full disclosure, refusal or advancement, or if it is a request, clarification response, confirmation, extension, remandment or advanced request and its deadline is missed. A branch may contain only one appeal until a remandment was made.
+**Appeal**: represents an applicant action of appealing against the obligee resolution. An appeal is
+sent to the obligee by s‑mail only. The obligee should forward it to its superior automatically. An
+appeal may only be sent if the last branch action is a non-full disclosure, refusal or advancement,
+or if it is a request, clarification response, confirmation, extension, remandment or advanced
+request and its deadline is missed. A branch may contain only one appeal until a remandment was
+made.
+
+_Properties that apply_:
+* `subject` + `content` + `attachment_set`
+* `effective_date`: the date the s‑mail was generated
+* `deadline`: 30 WD for the obligee superior to respond
+* `extension`
+* `delivery_status`
+
+## Obligee Actions
+
+**Confirmation**: represents an obligee action of confirming they received the inforequest. It may
+be received either by e‑mail or by s‑mail, and it applies to both the regular requests and the
+advanced requests as well. In the case the request was advanced the confirmation is sent by the new
+obligee. The confirmation action resets the obligee deadline. A confirmation may only be added if
+the last branch action is a request or advanced request.
+
 Properties that apply:
-subject + content + attachment_set
-effective_date: the date the s‑mail was generated
-deadline: 30 WD for the obligee superior to respond
-extension
-delivery_status
+* If the confirmation was received by e‑mail:
+  - `email`: a reference to the received e‑mail
+  - `effective_date`: e‑mail received date
+* If the confirmation was received by s‑mail:
+  - `effective_date`: the date the s‑mail was received on; filled by the Applicant
+* `subject` + `content` + `attachment_set`
+* `deadline`: 8 WD for the obligee to response
+* `extension`
 
+**Extension**: represents an obligee action of extending their deadline. An extension may only be
+added if the last branch action is a request, confirmation, clarification response, remandment or
+advanced request.
 
-Obligee Actions
-Confirmation: represents an obligee action of confirming they received the inforequest. It may be received either by e‑mail or by s‑mail, and it applies to both the regular requests and the advanced requests as well. In the case the request was advanced the confirmation is sent by the new obligee. The confirmation action resets the obligee deadline. A confirmation may only be added if the last branch action is a request or advanced request.
-Properties that apply:
-If the confirmation was received by e‑mail:
-email: a reference to the received e‑mail
-effective_date: e‑mail received date
-If the confirmation was received by s‑mail:
-effective_date: the date the s‑mail was received on; filled by the Applicant
-subject + content + attachment_set
-deadline: 8 WD for the obligee to response
-extension
+_Properties that apply_:
+* If the extension was received by e‑mail:
+  - `email`: a reference to the received e‑mail
+  - `effective_date`: e‑mail received date
+* If the extension was received by s‑mail:
+  - `effective_date`: the date the s‑mail was received on; filled by the applicant
+* `subject` + `content` + `attachment_set`
+* `deadline`: 10 WD for the obligee to response or the deadline specified by the obligee
+* `extension`
 
-Extension: represents an obligee action of extending their deadline. An extension may only be added if the last branch action is a request, confirmation, clarification response, remandment or advanced request.
-Properties that apply:
-If the extension was received by e‑mail:
-email: a reference to the received e‑mail
-effective_date: e‑mail received date
-If the extension was received by s‑mail:
-effective_date: the date the s‑mail was received on; filled by the applicant
-subject + content + attachment_set
-deadline: 10 WD for the obligee to response or the deadline specified by the obligee
-extension
+**Advancement**: represents an obligee action of advancing the inforequest to one or more other obligees. An advancement may only be added if the last branch action is a request, clarification response, confirmation or advanced request. An advancement may contain part of requested information disclosed. ~~Note, that
+the new obligee does not have to be in our database, yet. In such case we should let the applicant
+fill in the new obligee contact information.~~
 
-Advancement: represents an obligee action of advancing the inforequest to one or more other obligees. An advancement may only be added if the last branch action is a request, clarification response, confirmation or advanced request. An advancement may contain part of requested information disclosed. Note, that the new obligee does not have to be in our database, yet. In such case we should let the applicant fill in the new obligee contact information.
-Properties and relations that apply:
-If the advancement was received by e‑mail:
-email: a reference to the received e‑mail
-effective_date: e‑mail received date
-If the advancement was received by s‑mail:
-effective_date: the date the s‑mail was received on; filled by the applicant
-subject + content + attachment_set
-advanced_to_set: May NOT be empty. Branches of communication with the obligees the inforequest was advanced to.
-disclosure_level: (Mandatory)
+_Properties and relations that apply_:
+* If the advancement was received by e‑mail:
+  - `email`: a reference to the received e‑mail
+  - `effective_date`: e‑mail received date
+* If the advancement was received by s‑mail:
+  - `effective_date`: the date the s‑mail was received on; filled by the applicant
+* `subject` + `content` + `attachment_set`
+* `advanced_to_set`: May NOT be empty. Branches of communication with the obligees the inforequest
+  was advanced to.
+* `disclosure_level`: (Mandatory)
 
-Clarification Request: represents an obligee action of asking the applicant to clarify his inforequest. A clarification request may only be added if the last branch action is a   request, clarification response, confirmation, clarification request or advanced request.
-Properties that apply:
-If the clarification request was received by e‑mail:
-email: a reference to the received e‑mail
-effective_date: e‑mail received date
-If the clarification request was received by s‑mail:
-effective_date: the date the s‑mail was received on; filled by the applicant
-subject + content + attachment_set
-deadline: 7 WD for the applicant to response; the applicant should response to the obligee within the deadline, however, it is not enforced.
+**Clarification Request**: represents an obligee action of asking the applicant to clarify his
+inforequest. A clarification request may only be added if the last branch action is a   request,
+clarification response, confirmation, clarification request or advanced request.
 
-Disclosure: represents an obligee action of disclosing the requested information. The information may be disclosed to the full extent, or it may be disclosed partially. The applicant decides if the information was disclosed fully, partially, or not at all, despite the fact the obligee said they are disclosing it. If a branch contains a full disclosure action, it is its terminal action the branch is terminated. A disclosure may only be added if the last branch action is request, clarification response, confirmation, extension, remandment or advanced request.
-Properties that apply:
-If the disclosure was received by e‑mail:
-email: a reference to the received e‑mail
-effective_date: e‑mail received date
-If the disclosure was received by s‑mail:
-effective_date: the date the s‑mail was received on; filled by the applicant
-subject + content + attachment_set
-deadline: 15 WD for the applicant to appeal if the information was not fully disclosed; the applicant should appeal within the deadline, however, it is not enforced.
-disclosure_level: (Mandatory choice)
+_Properties that apply_:
+* If the clarification request was received by e‑mail:
+  - `email`: a reference to the received e‑mail
+  - `effective_date`: e‑mail received date
+* If the clarification request was received by s‑mail:
+  - `effective_date`: the date the s‑mail was received on; filled by the applicant
+* `subject` + `content` + `attachment_set`
+* `deadline`: 7 WD for the applicant to response; the applicant should response to the obligee
+  within the deadline, however, it is not enforced.
 
-Refusal: represents an obligee action of refusing to disclose the requested information. A refusal may only be added if the last branch action is request, clarification response, confirmation, extension, remandment or advanced request.
-Properties that apply:
-If the refusal was received by e‑mail:
-email: a reference to the received e‑mail
-effective_date: e‑mail received date
-If the refusal was received by s‑mail:
-effective_date: the date the s‑mail was received on; filled by the applicant
-subject + content + attachment_set
-deadline: 15 WD for the applicant to appeal; the applicant should appeal within the deadline, however, it is not enforced.
-refusal_reason: (Mandatory choice)
+**Disclosure**: represents an obligee action of disclosing the requested information. The
+information may be disclosed to the full extent, or it may be disclosed partially. The applicant
+decides if the information was disclosed fully, partially, or not at all, despite the fact the
+obligee said they are disclosing it. If a branch contains a full disclosure action, it is its
+terminal action the branch is terminated. A disclosure may only be added if the last branch action
+is request, clarification response, confirmation, extension, remandment or advanced request.
 
-Affirmation: represents an obligee superior action of affirming the obligee resolution. It may be received by s‑mail only and only if the last branch action is appeal. This action ends the appeal process and terminates the branch as well.
-Properties that apply:
-subject + content + attachment_set
-effective_date: the date the s‑mail was received on; filled by the applicant.
-refusal_reason: (Mandatory choice)
+_Properties that apply_:
+* If the disclosure was received by e‑mail:
+  - `email`: a reference to the received e‑mail
+  - `effective_date`: e‑mail received date
+* If the disclosure was received by s‑mail:
+  - `effective_date`: the date the s‑mail was received on; filled by the applicant
+* `subject` + `content` + `attachment_set`
+* `deadline`: 15 WD for the applicant to appeal if the information was not fully disclosed; the
+  applicant should appeal within the deadline, however, it is not enforced.
+* `disclosure_level`: (Mandatory choice)
 
-Reversion: represents an obligee superior action of reversing the obligee resolution. It may be received by s‑mail only and only if the last branch action is appeal. The obligee superior may disclose the requested information within this action. It may disclose it to the full extent, or just partially. This action ends the appeal process and terminates the branch as well.
-Properties that apply:
-subject + content + attachment_set
-effective_date: the date the s‑mail was received on; filled by the applicant.
-disclosure_level: (Mandatory choice)
+**Refusal**: represents an obligee action of refusing to disclose the requested information.
+A refusal may only be added if the last branch action is request, clarification response,
+confirmation, extension, remandment or advanced request.
 
-Remandment: represents an obligee superior action of remanding the inforequest back to the obligee. It may be received by s‑mail only and only if the last branch action is appeal.. The obligee superior may disclose the requested information within this action. If they disclose some information within this action, they usually disclose just its part, as the rest of the requested information should disclose the obligee to which the request was remanded. This action ends the appeal process, but does not terminate the branch itself. The obligee should act thereafter.
-Properties that apply:
-subject + content + attachment_set
-effective_date: the date the s‑mail was received on; filled by the applicant
-deadline: 8+5 = 13 WD for the obligee to response
-extension
-disclosure_level: (Mandatory choice)
+_Properties that apply_:
+* If the refusal was received by e‑mail:
+  - `email`: a reference to the received e‑mail
+  - `effective_date`: e‑mail received date
+* If the refusal was received by s‑mail:
+  - `effective_date`: the date the s‑mail was received on; filled by the applicant
+* `subject` + `content` + `attachment_set`
+* `deadline`: 15 WD for the applicant to appeal; the applicant should appeal within the deadline,
+  however, it is not enforced.
+* `refusal_reason`: (Mandatory choice)
 
+**Affirmation**: represents an obligee superior action of affirming the obligee resolution. It may
+be received by s‑mail only and only if the last branch action is appeal. This action ends the appeal
+process and terminates the branch as well.
 
-Implicit Actions
-Advanced Request: represents an implicit action of requesting the new obligee for information after the original request was advanced to the new obligee. It is just an implicit action, so it's never performed in reality. Every advanced branch contains exactly one advanced request action as its very first action. Main branches may not contain this action, they contain regular request action instead.
-Properties that apply:
-effective_date: the effective date of the advancement action from the branch this branch advanced from.
-deadline: 8+5 = 13 WD for the new obligee to response
-extension
+_Properties that apply_:
+* `subject` + `content` + `attachment_set`
+* `effective_date`: the date the s‑mail was received on; filled by the applicant.
+* `refusal_reason`: (Mandatory choice)
 
-Expiration: represents an implicit action of missing the inforequest deadline by the obligee. It is just an implicit action, so it's never performed in reality. The expiration action is added just before the applicant makes an appeal action or the branch is closed while there is a missed obligee deadline.
-Properties that apply:
-effective_date: the effective date of the corresponding appeal action or the date the branch was closed.
+**Reversion**: represents an obligee superior action of reversing the obligee resolution. It may be
+received by s‑mail only and only if the last branch action is appeal. The obligee superior may
+disclose the requested information within this action. It may disclose it to the full extent, or
+just partially. This action ends the appeal process and terminates the branch as well.
 
-Appeal Expiration: represents an implicit action of missing the appeal deadline by the obligee superior. It is just an implicit action, so it's never performed in reality. The appeal expiration action is added just before the branch is closed while there a missed obligee superior deadline.
-Properties that apply:
-effective_date: the date the branch was closed.
+_Properties that apply_:
+* `subject` + `content` + `attachment_set`
+* `effective_date`: the date the s‑mail was received on; filled by the applicant.
+* `disclosure_level`: (Mandatory choice)
 
+**Remandment**: represents an obligee superior action of remanding the inforequest back to the
+obligee. It may be received by s‑mail only and only if the last branch action is appeal. The obligee
+superior may disclose the requested information within this action. If they disclose some
+information within this action, they usually disclose just its part, as the rest of the requested
+information should disclose the obligee to which the request was remanded. This action ends the
+appeal process, but does not terminate the branch itself. The obligee should act thereafter.
 
-Events
-Received E‑mail
-Trigger: Received inbound e‑mail.
-When an inbound e‑mail is received, we assign the e‑mail to an inforequest according to the e‑mail recipient address and the inforequest unique e‑mail address. If there is no such inforequest, we leave the received e‑mail unassigned. The administrator can see a list of all unassigned inbound e‑mails.
-If the assigned request is opened, we send a notification to the inforequest applicant. If there are more undecided e‑mails waiting in the inforequest, the applicant is informed about it. The notification contains a link where the applicant may decide the received e‑mails.
-If the assigned inforequest is closed, no notification is sent. The administrator can see a list of all undecided e‑mails assigned to closed inforequests.
+_Properties that apply_:
+* `subject` + `content` + `attachment_set`
+* `effective_date`: the date the s‑mail was received on; filled by the applicant
+* `deadline`: 8+5 = 13 WD for the obligee to response
+* `extension`
+* `disclosure_level`: (Mandatory choice)
 
+## Implicit Actions
+**Advanced Request**: represents an implicit action of requesting the new obligee for information
+after the original request was advanced to the new obligee. It is just an implicit action, so it's
+never performed in reality. Every advanced branch contains exactly one advanced request action as
+its very first action. Main branches may not contain this action, they contain regular request
+action instead.
 
-Undecided E‑mail Reminder
-Trigger: Daily at 9:00
-For every opened inforequest with a newest undecided raw e‑mail received 5 WD ago, we send a notification to its applicant to remind him about the undecided e‑mails. The notification contains a link where the applicant may decide the received e‑mails.
+_Properties that apply_:
+* `effective_date`: the effective date of the advancement action from the branch this branch
+  advanced from.
+* `deadline`: 8+5 = 13 WD for the new obligee to response
+* `extension`
 
+**Expiration**: represents an implicit action of missing the inforequest deadline by the obligee.
+It is just an implicit action, so it's never performed in reality. The expiration action is added
+just before the applicant makes an appeal action or the branch is closed while there is a missed
+obligee deadline.
 
-Obligee Deadline Reminder
-Trigger: Daily at 9:00
-For every opened inforequest with no waiting undecided e-mails, and every its branch which latest action sets an obligee deadline, which was missed today taking into account all deadline extensions made by its applicant, we send a reminder to its applicant to remind him about the expiring deadline. The notification contains information about the action which deadline was missed and a link where the applicant may act or extend the deadline. If an extended deadline is missed again, we send the reminder again.
+_Properties that apply_:
+* `effective_date`: the effective date of the corresponding appeal action or the date the branch was
+closed.
+
+**Appeal Expiration**: represents an implicit action of missing the appeal deadline by the obligee
+superior. It is just an implicit action, so it's never performed in reality. The appeal expiration
+action is added just before the branch is closed while there a missed obligee superior deadline.
+
+_Properties that apply_:
+* `effective_date`: the date the branch was closed.
+
+## Events
+
+### Received E‑mail
+
+Trigger: Received inbound e‑mail.\
+When an inbound e‑mail is received, we assign the e‑mail to an inforequest according to the e‑mail
+recipient address and the inforequest unique e‑mail address. If there is no such inforequest, we
+leave the received e‑mail unassigned. The administrator can see a list of all unassigned inbound
+e‑mails.\
+If the assigned request is opened, we send a notification to the inforequest applicant. If there are
+more undecided e‑mails waiting in the inforequest, the applicant is informed about it. The
+notification contains a link where the applicant may decide the received e‑mails.\
+If the assigned inforequest is closed, no notification is sent. The administrator can see a list of
+all undecided e‑mails assigned to closed inforequests.
+
+### Undecided E‑mail Reminder
+
+Trigger: Daily at 9:00\
+For every opened inforequest with a newest undecided raw e‑mail received 5 WD ago, we send a
+notification to its applicant to remind him about the undecided e‑mails. The notification contains
+a link where the applicant may decide the received e‑mails.
+
+### Obligee Deadline Reminder
+
+Trigger: Daily at 9:00\
+For every opened inforequest with no waiting undecided e-mails, and every its branch which latest
+action sets an obligee deadline, which was missed today taking into account all deadline extensions
+made by its applicant, we send a reminder to its applicant to remind him about the expiring
+deadline. The notification contains information about the action which deadline was missed and a
+link where the applicant may act or extend the deadline. If an extended deadline is missed again, we
+send the reminder again.\
 The following actions set obligee deadlines:
-Applicant Actions: Request, Clarification Response, Appeal
-Obligee Actions: Confirmation, Extension, Remandment
-Implicit Actions: Advanced Request
+* Applicant Actions: Request, Clarification Response, Appeal
+* Obligee Actions: Confirmation, Extension, Remandment
+* Implicit Actions: Advanced Request
 
 
-Applicant Deadline Reminder
-Trigger: Daily at 9:00
-For every opened inforequest with no waiting undecided e‑mails, and every branch which latest action sets an applicant deadline, which is about to be missed in 2 WD, we send a reminder to its applicant to remind him about the expiring deadline. The notification contains information which action deadline is about to be missed and a link where the applicant may act.
+### Applicant Deadline Reminder
+Trigger: Daily at 9:00\
+For every opened inforequest with no waiting undecided e‑mails, and every branch which latest action
+sets an applicant deadline, which is about to be missed in 2 WD, we send a reminder to its applicant
+to remind him about the expiring deadline. The notification contains information which action
+deadline is about to be missed and a link where the applicant may act.\
 The following actions set applicant deadlines: Clarification Request, Disclosure, Refusal.
 
+### Close Inforequests
 
-Close Inforequests
-Trigger: Daily at 9:00
-We close all inforequests that have all their branches terminated or abandoned. A branch is abandoned if its latest action sets a deadline which was already missed at least 100 WD ago.
-Just before we close an inforequest, we add an implicit expiration or appeal expiration action to every its branch which latest action sets an obligee deadline. If the original latest action was an appeal action, we add an appeal expiration action. Otherwise, we add an expiration action.
-If there are any undecided e‑mails in the closed inforequest, the administrator can see them in a list of all undecided e‑mails assigned to closed inforequests.
+Trigger: Daily at 9:00\
+We close all inforequests that have all their branches terminated or abandoned. A branch is
+abandoned if its latest action sets a deadline which was already missed at least 100 WD ago.\
+Just before we close an inforequest, we add an implicit expiration or appeal expiration action to
+every its branch which latest action sets an obligee deadline. If the original latest action was an
+appeal action, we add an appeal expiration action. Otherwise, we add an expiration action.\
+If there are any undecided e‑mails in the closed inforequest, the administrator can see them in a
+list of all undecided e‑mails assigned to closed inforequests.
 
+## User Actions
 
-User Actions
-Decide Undecided E‑mail
+### Decide Undecided E‑mail
 URL: /en/inforequests/decide-email/<action>/<inforequest_id>/<email_id>/
+
 Conditions:
 User is authenticated.
 User is the inforequest applicant.
