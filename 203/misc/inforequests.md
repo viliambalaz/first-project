@@ -685,10 +685,9 @@ by s‑mail.~~\
 
 ### Create a New Inforequest / Inforequest Draft
 
-<pre>
 URL: /en/inforequests/create/\
-     /en/inforequests/create/<draft_id>/
-</pre>
+URL: /en/inforequests/create/<draft_id>/
+
 Conditions:
 * User is authenticated.
 * User has a verified e-mail address
