@@ -31,187 +31,254 @@ Relations:
 * `email_set`: List of E-mail Messages; through Inforequest E-mails; May be empty; Ordered by
   processed date.\
   List of all inbound and outbound messages related to the inforequest, decided or undecided. The
-  unique_email address generated for the inforequest is used for communication with all obligees the
-  request was advanced to. It is up to the applicant ~~and/or some heuristics~~ to decide to which
-  branch the action contained in the e‑mail belongs. The e‑mails are ordered by the date we sent or
-  received them, respectively. Queued outbound e-mails waiting to be sent are ordered by their id.
+  `unique_email` address generated for the inforequest is used for communication with all obligees
+  the request was advanced to. It is up to the applicant ~~and/or some heuristics~~ to decide to
+  which branch the action contained in the e‑mail belongs. The e‑mails are ordered by the date we
+  sent or received them, respectively. Queued outbound e-mails waiting to be sent are ordered by
+  their id.
 * `branch_set`: List of Branches; May NOT be empty; Ordered by obligee name.\
   List of all branches related to the inforequest. Every inforequest contains at least one branch,
   the main branch.
 * `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.\
-List of all action drafts the applicant created for this inforequest. The inforequest may contain at most one draft of each action type.
-inforequestemail_set: List of Inforequest E-mails; May be empty; Ordered by id.
+  List of all action drafts the applicant created for this inforequest. The inforequest may contain
+  at most one draft of each action type.
+* `inforequestemail_set`: List of Inforequest E-mails; May be empty; Ordered by id.\
+
 Computed Relations:
-branch: Branch; May NOT be NULL; Read-only.
-Main branch of communication with the original obligee the inforequest was submitted to. The inforequest must contain exactly one main branch. If the inforequest was advanced to other obligees, the respective advancement action contains recursive sub-branches of communication with new obligees.
-undecided_set: List of E-mail Messages; May be empty; Read-only.
-List of undecided inbound messages waiting for user decision.
-oldest_undecided_email and newest_undecided_email: E-mail Message; May be NULL; Read-only.
+* `branch`: Branch; May NOT be NULL; Read-only.\
+  Main branch of communication with the original obligee the inforequest was submitted to. The
+  inforequest must contain exactly one main branch. If the inforequest was advanced to other
+  obligees, the respective advancement action contains recursive sub-branches of communication with
+  new obligees.
+* `undecided_set`: List of E-mail Messages; May be empty; Read-only.\
+  List of undecided inbound messages waiting for user decision.
+* `oldest_undecided_email` and `newest_undecided_email`: E-mail Message; May be NULL; Read-only.\
+
 Properties:
-applicant_name, applicant_street, applicant_city and applicant_zip: String; May NOT be empty.
-To freeze applicant current contact information for the case he changes it in the future. The information is frozen to its state at the moment the inforequest was submitted.
-unique_email: E-mail; May NOT be empty; Unique.
-Every inforequest has a unique e‑mail address of the form *@mail.chcemvediet.sk. This address is used to identify which obligee e‑mail belongs to which inforequest. However, if the inforequest was advanced to other obligees, the same e‑mail address is used for communication with all such obligees, as there is no way to tell them to send their response to a different e‑mail address.
-submission_date: Date; May NOT be NULL.
-The effective date of the request action.
-closed: True/False; May NOT be NULL.
-True if the inforequest is closed and the applicant may not act on it any more. The inforequest is closed when the applicant or the administrator close it manually, or if all its branches are terminated, or the applicant abandon it for a very long time. If a request is not closed, we say that it is opened.
-last_undecided_email_reminder: Datetime; May be NULL.
+* `applicant_name`, `applicant_street`, `applicant_city` and `applicant_zip`: String; May NOT be
+  empty.\
+  To freeze applicant current contact information for the case he changes it in the future. The
+information is frozen to its state at the moment the inforequest was submitted.
+* `unique_email`: E-mail; May NOT be empty; Unique.\
+  Every inforequest has a unique e‑mail address of the form *@mail.chcemvediet.sk. This address is
+  used to identify which obligee e‑mail belongs to which inforequest. However, if the inforequest
+  was advanced to other obligees, the same e‑mail address is used for communication with all such
+  obligees, as there is no way to tell them to send their response to a different e‑mail address.
+* `submission_date`: Date; May NOT be NULL.\
+  The effective date of the request action.
+* `closed`: True/False; May NOT be NULL.\
+  True if the inforequest is closed and the applicant may not act on it any more. The inforequest is
+  closed ~~when the applicant or the administrator close it manually~~, or if all its branches are
+  terminated, or the applicant abandon it for a very long time. If a request is not closed, we say
+  that it is opened.
+* `last_undecided_email_reminder`: Datetime; May be NULL.
+
 Computed Properties:
-has_undecided_email: True/False; May NOT be NULL; Read-only.
-can_add_X: True/False; May NOT be NULL; Read-only.
-Whether the user can append action X to at least one of the inforequest branches.
-can_add_applicant_action, can_add_applicant_email_action, can_add_obligee_action, can_add_obligee_email_action:
-True/False; May NOT be NULL; Read-only.
-Whether the user can append applicant/obligee action received by s‑mail or e‑mail.
+* `has_undecided_email`: True/False; May NOT be NULL; Read-only.
+* `can_add_X`: True/False; May NOT be NULL; Read-only.\
+  Whether the user can append action X to at least one of the inforequest branches.
+* `can_add_applicant_action`, `can_add_applicant_email_action`, `can_add_obligee_action`,
+  `can_add_obligee_email_action`: True/False; May NOT be NULL; Read-only.\
+  Whether the user can append applicant/obligee action received by s‑mail or e‑mail.
 
+## `Inforequest E‑mail`
 
-Inforequest E‑mail
-Represents a relation between an inforequest and an inbound or outbound e‑mail message. Every inforequest has its unique e‑mail address which is used for communication with all obligees the request was advanced to. If there are multiple open branches in the inforequest, It is up to the applicant and/or some heuristics to decide to which branch the action contained in the received e‑mail belongs. The e‑mails are ordered by the date we processed them.
+Represents a relation between an inforequest and an inbound or outbound e‑mail message. Every
+inforequest has its unique e‑mail address which is used for communication with all obligees the
+request was advanced to. If there are multiple open branches in the inforequest, It is up to the
+applicant ~~and/or some heuristics~~ to decide to which branch the action contained in the received
+e‑mail belongs. The e‑mails are ordered by the date we processed them.
+
 Relations:
-inforequest: Inforequest; May NOT be NULL.
-Inforequest the e‑mail was assigned to.
-email: E-mail Message; May NOT be NULL.
+* `inforequest`: Inforequest; May NOT be NULL.\
+  Inforequest the e‑mail was assigned to.
+* `email`: E-mail Message; May NOT be NULL.
+
 Properties:
-type: Choice; May NOT be NULL.
-For inbound messages:
-obligee‑action: The e-mail represents and obligee action.
-undecided: The e-mail is waiting for applicant decision.
-unrelated: Marked as an unrelated e-mail.
-unknown: Marked as an e-mail the applicant didn't know how to decide.
-For outbound messages:
-applicant‑action: The e-mail represents an applicant action.
-Branch
-Represents communication with a single obligee concerning a single inforequest. If the obligee advances the inforequest to other obligees, the advancement action contains its own sub-branches of communication with new obligees. If the branch is the main branch of its inforequest, we say that the branch is main, otherwise we say that it's advanced. If the last branch action sets no deadline we say that this action is terminal and the branch is terminated. No further actions may be added to terminated branches.
+* `type`: Choice; May NOT be NULL.
+  - For inbound messages:
+    - _obligee‑action_: The e-mail represents and obligee action.
+    - _undecided_: The e-mail is waiting for applicant decision.
+    - _unrelated_: Marked as an unrelated e-mail.
+    - _unknown_: Marked as an e-mail the applicant didn't know how to decide.
+  - For outbound messages:
+    - _applicant‑action_: The e-mail represents an applicant action.
+
+## `Branch`
+Represents communication with a single obligee concerning a single inforequest. If the obligee
+advances the inforequest to other obligees, the advancement action contains its own sub-branches of
+communication with new obligees. If the branch is the main branch of its inforequest, we say that
+the branch is main, otherwise we say that it's advanced. If the last branch action sets no deadline
+we say that this action is terminal and the branch is terminated. No further actions may be added to
+terminated branches.
+
 Relations:
-inforequest: Inforequest; May NOT be NULL.
-The inforequest the branch belongs to.
-obligee: Obligee; May NOT be NULL.
-The obligee the inforequest was sent or advanced to.
-historicalobligee: Historical Obligee; May NOT be NULL.
-To freeze obligee current contact information for the case it changes in the future. The information is frozen to its state at the moment the request was submitted if it is the main branch, or the moment the advancement action was received.
-advanced_by: Action; May be NULL.
-NULL for main branches. The advancement action the inforequest was advanced by for advanced branches. Every Inforequest must contain exactly one main branch.
-action_set: List of Actions; May NOT be empty; Ordered by effective date.
-The communication with the obligee. The first action of every main branch is a request action and the first action of every advanced branch is an advanced request action. Actions are ordered by their effective date.
-actiondraft_set: List of Action Drafts; May be empty; Ordered by id.
+* `inforequest`: Inforequest; May NOT be NULL.\
+  The inforequest the branch belongs to.
+* `obligee`: Obligee; May NOT be NULL.\
+  The obligee the inforequest was sent or advanced to.
+* `historicalobligee`: Historical Obligee; May NOT be NULL.\
+  To freeze obligee current contact information for the case it changes in the future. The
+  information is frozen to its state at the moment the request was submitted if it is the main
+  branch, or the moment the advancement action was received.
+* `advanced_by`: Action; May be NULL.\
+  NULL for main branches. The advancement action the inforequest was advanced by for advanced
+  branches. Every Inforequest must contain exactly one main branch.
+* `action_set`: List of Actions; May NOT be empty; Ordered by effective date.\
+  The communication with the obligee. The first action of every main branch is a request action and
+  the first action of every advanced branch is an advanced request action. Actions are ordered by
+  their effective date.
+* `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.
+
 Computed Relations:
-last_action: Action; May NOT be NULL; Read-only
-The list of actions may not be empty, so the last action is always defined.
+* `last_action`: Action; May NOT be NULL; Read-only\
+  The list of actions may not be empty, so the last action is always defined.
+
 Computed Properties:
-is_main: True/False; May NOT be NULL; Read-only.
-Whether the branch is its inforequest main branch, or it's advanced.
-can_add_x: True/False; May NOT be NULL; Read-only.
-Whether the user can append action X to the branch.
-can_add_applicant_action, can_add_applicant_email_action, can_add_obligee_action, can_add_obligee_email_action:
-True/False; May NOT be NULL; Read-only.
-Whether the user can append applicant/obligee action received by s‑mail or e‑mail.
+* `is_main`: True/False; May NOT be NULL; Read-only.
+  Whether the branch is its inforequest main branch, or it's advanced.
+* `can_add_x`: True/False; May NOT be NULL; Read-only.\
+  Whether the user can append action X to the branch.
+* `can_add_applicant_action`, `can_add_applicant_email_action`, `can_add_obligee_action`,
+  `can_add_obligee_email_action`: True/False; May NOT be NULL; Read-only.\
+  Whether the user can append applicant/obligee action received by s‑mail or e‑mail.
 
-
-Action
+## `Action`
 Relations:
-branch: Branch; May NOT be NULL
-email: E-mail Message; May be NULL;
-Mandatory for actions sent or received by e‑mail, NULL otherwise.
-attachment_set: List of Attachments; May be empty; Ordered by id.
-advanced_to_set: List of Branches; May be empty.
-May NOT be empty for advancement actions. Must be empty otherwise.
+* `branch`: Branch; May NOT be NULL\
+* `email`: E-mail Message; May be NULL;\
+  Mandatory for actions sent or received by e‑mail, NULL otherwise.
+* `attachment_set`: List of Attachments; May be empty; Ordered by id.
+* `advanced_to_set`: List of Branches; May be empty.\
+  May NOT be empty for advancement actions. Must be empty otherwise.
+
 Properties:
-type: Choice; May NOT be NULL.
-Applicant Actions: Request; Clarification Response; Appeal;
-Obligee Actions: Confirmation; Extension; Advancement; Clarification Request; Disclosure; Refusal; Affirmation; Reversion; Remandment;
-Implicit Actions: Advanced Request; Expiration; Appeal Expiration.
-subject and content: String; May be empty.
-Action subject/content written by the applicant or copied from the e‑mail. May be empty for implicit actions, should NOT be empty for other actions.
-effective_date: Date; May NOT be NULL.
-The date at which the action was sent or received. If the action was sent/received by e‑mail it's set automatically. If it was sent/received by s‑mail it's filled by the applicant.
-deadline: Number; May be NULL.
-The deadline that apply after the action, if the action sets a deadline, NULL otherwise. The deadline is expressed in a number of working days (WD) counting since the effective date. It may apply to the applicant or to the obligee, depending on the action type.
-extension: Number; May be NULL.
-Applicant extension to the deadline, if the action sets an obligee deadline. The applicant may extend the deadline after it is missed in order to be patient and wait a little longer. He may extend it multiple times. Applicant deadlines may not be extended.
-disclosure_level: Choice; May be NULL.
-Mandatory choice for advancement, disclosure, reversion and remandment actions, NULL otherwise. Specifies if the obligee disclosed any requested information by this action. Possible levels:
-none: The obligee does not disclosed the requested information at all.
-part: The obligee disclosed the requested information partially.
-full: The obligee disclosed all requested information.
-refusal_reason: Choice; May be NULL.
-Mandatory choice for refusal and affirmation actions, NULL otherwise. Specifies the reason why the obligee refused to disclose the information. Possible reasons:
-does not have information; does not provide information; does not create information; copyright restriction; business secret; personal information; confidential information; no reason specified; other reason.
-delivery_status: Choice; May be NULL.
-Mandatory choice for applicant actions, NULL otherwise. Whether the action was delivered.
-delivered: If we got e‑mail receipt confirmation, or the applicant got an s‑mail proof of delivery.
-undelivered: If we got an e‑mail delivery status notification for all its recipients, or  the s‑mail was returned undelivered to the applicant.
-unknown.
-last_deadline_reminder: Datetime; May be NULL.
+* `type`: Choice; May NOT be NULL.
+  - Applicant Actions: _Request_; _Clarification Response_; _Appeal_;
+  - Obligee Actions: _Confirmation_; _Extension_; _Advancement_; _Clarification Request_;
+  _Disclosure_; _Refusal_; _Affirmation_; _Reversion_; _Remandment_;
+  - Implicit Actions: _Advanced Request_; _Expiration_; _Appeal Expiration_.
+* `subject` and `content`: String; May be empty.\
+  Action subject/content written by the applicant or copied from the e‑mail. May be empty for
+  implicit actions, should NOT be empty for other actions.
+* `effective_date`: Date; May NOT be NULL.\
+  The date at which the action was sent or received. If the action was sent/received by e‑mail it's
+  set automatically. If it was sent/received by s‑mail it's filled by the applicant.
+* `deadline`: Number; May be NULL.\
+  The deadline that apply after the action, if the action sets a deadline, NULL otherwise. The
+  deadline is expressed in a number of working days (WD) counting since the effective date. It may
+  apply to the applicant or to the obligee, depending on the action type.
+* `extension`: Number; May be NULL.\
+  Applicant extension to the deadline, if the action sets an obligee deadline. The applicant may
+  extend the deadline after it is missed in order to be patient and wait a little longer. He may
+  extend it multiple times. Applicant deadlines may not be extended.
+* `disclosure_level`: Choice; May be NULL.\
+  Mandatory choice for advancement, disclosure, reversion and remandment actions, NULL otherwise.
+  Specifies if the obligee disclosed any requested information by this action. Possible levels:
+  - _none_: The obligee does not disclosed the requested information at all.
+  - _part_: The obligee disclosed the requested information partially.
+  - _full_: The obligee disclosed all requested information.
+* `refusal_reason`: Choice; May be NULL.\
+  Mandatory choice for refusal and affirmation actions, NULL otherwise. Specifies the reason why the
+  obligee refused to disclose the information. Possible reasons:
+  - _does not have information_; _does not provide information_; _does not create information_;
+    _copyright restriction_; _business secret_; _personal information_; _confidential information_;
+    _no reason specified_; _other reason_.
+* ~~`delivery_status`~~: Choice; May be NULL.\
+  Mandatory choice for applicant actions, NULL otherwise. Whether the action was delivered.
+  - _delivered_: If we got e‑mail receipt confirmation, or the applicant got an s‑mail proof of
+    delivery.
+  - _undelivered_: If we got an e‑mail delivery status notification for all its recipients, or the
+    s‑mail was returned undelivered to the applicant.
+  - _unknown_.
+* `last_deadline_reminder`: Datetime; May be NULL.
+
 Computed Properties:
-is_applicant_action, is_obligee_action and is_implicit_action: True/False; May NOT be NULL; Read-only
-Whether the action was made by the applicant, by the obligee, or whether it was implicit.
-days_passed and days_passed_at: Number; May NOT be NULL; Read-only
-Number of WD since the effective date until today and until the specified date, respectively.
-deadline_remaining and deadline_remaining_at: Number; May be NULL; Read-only.
-Number of WD remaining until the deadline is missed including all its extensions with respect to today and with respect to the specified date, respectively. NULL if the action sets no deadline.
-deadline_missed and deadline_missed_at: True/False; May NOT be NULL; Read-only
-True if the deadline including all its extensions is already missed. False if it is not yet missed or if the action does not set any deadline. The value is computed with respect to today or to the the specified date, respectively.
-has_deadline, has_applicant_deadline and has_obligee_deadline: True/False; May NOT be NULL; Read-only.
-Whether the action sets a deadline, and whether it is set for the applicant or for the obligee.
+* `is_applicant_action`, `is_obligee_action` and `is_implicit_action`: True/False; May NOT be NULL;
+  Read-only\
+  Whether the action was made by the applicant, by the obligee, or whether it was implicit.
+* `days_passed` and `days_passed_at`: Number; May NOT be NULL; Read-only\
+  Number of WD since the effective date until today and until the specified date, respectively.
+* `deadline_remaining` and `deadline_remaining_at`: Number; May be NULL; Read-only.\
+  Number of WD remaining until the deadline is missed including all its extensions with respect to
+  today and with respect to the specified date, respectively. NULL if the action sets no deadline.
+* `deadline_missed` and `deadline_missed_at`: True/False; May NOT be NULL; Read-only\
+  True if the deadline including all its extensions is already missed. False if it is not yet missed
+  or if the action does not set any deadline. The value is computed with respect to today or to the
+  the specified date, respectively.
+* `has_deadline`, `has_applicant_deadline` and `has_obligee_deadline`: True/False; May NOT be NULL;
+  Read-only.\
+  Whether the action sets a deadline, and whether it is set for the applicant or for the obligee.
 
+## `Action Draft`
 
-Action Draft
 Relations:
-inforequest: Inforequest; May NOT be NULL
-branch: Branch; May be NULL.
-Must be owned by inforequest if set.
-obligee_set: List of Obligees; May be empty; Ordered by id.
-May be empty for advancement actions. Must be empty for all other actions.
-attachment_set: List of Attachments; May be empty; Ordered by id.
+* `inforequest`: Inforequest; May NOT be NULL
+* `branch`: Branch; May be NULL.\
+  Must be owned by `inforequest` if set.
+* `obligee_set`: List of Obligees; May be empty; Ordered by id.\
+  May be empty for advancement actions. Must be empty for all other actions.
+* `attachment_set`: List of Attachments; May be empty; Ordered by id.
+
 Properties:
-type: Choice; May NOT be NULL.
-Choices are the same as for action type.
-subject and content: String; May be empty.
-effective_date: Date; May be NULL.
-deadline: Number; May be NULL.
-Optional for extension actions. Must be NULL for all other actions.
-disclosure_level: Choice; May be NULL
-Optional for advancement, disclosure, reversion and remandment actions. Must be NULL for all other actions. Choices are the same as for action disclosure level.
-refusal_reason: Choice; May be NULL
-Optional for refusal and affirmation actions. Must be NULL for all other actions. Choices are the same as for action refusal reason.
+* `type`: Choice; May NOT be NULL.\
+  Choices are the same as for action type.
+* `subject` and `content`: String; May be empty.
+* `effective_date`: Date; May be NULL.
+* `deadline`: Number; May be NULL.\
+  Optional for extension actions. Must be NULL for all other actions.
+* `disclosure_level`: Choice; May be NULL\
+  Optional for advancement, disclosure, reversion and remandment actions. Must be NULL for all other
+  actions. Choices are the same as for action disclosure level.
+* `refusal_reason`: Choice; May be NULL\
+  Optional for refusal and affirmation actions. Must be NULL for all other actions. Choices are the
+  same as for action refusal reason.
 
+## Extended Backward Relations
 
-Extended Backward Relations
-User
-inforequestdraft_set: List of Inforequest Drafts; May be empty; Ordered by id.
-inforequest_set: List of Inforequest; May be empty; Ordered by submission date.
+### `User`
 
-Obligee
-inforequestdraft_set: List of Inforequest Drafts; May be empty; Ordered by id.
-branch_set: List of Branches; May be empty; Ordered by obligee name.
-actiondraft_set: List of Action Drafts; May be empty; Ordered by id.
+* `inforequestdraft_set`: List of Inforequest Drafts; May be empty; Ordered by id.
+* `inforequest_set`: List of Inforequest; May be empty; Ordered by submission date.
 
-Historical Obligee
-branch_set: List of Branches; May be empty; Ordered by obligee name.
+### `Obligee`
+* `inforequestdraft_set`: List of Inforequest Drafts; May be empty; Ordered by id.
+* `branch_set`: List of Branches; May be empty; Ordered by obligee name.
+* `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.
 
-E-mail Message
-inforequest_set: List of Inforequest; May be empty; Ordered by submission date.
-inforequestemail_set: List of InforequestEmail; May be empty; Ordered by id.
-action: Action; May be undefined.
+### `Historical Obligee`
+* `branch_set`: List of Branches; May be empty; Ordered by obligee name.
 
+### `E-mail Message`
+* `inforequest_set`: List of Inforequest; May be empty; Ordered by submission date.
+* `inforequestemail_set`: List of InforequestEmail; May be empty; Ordered by id.
+* `action`: Action; May be undefined.
 
-Applicant Actions
-Request: Represents an applicant action of requesting the obligee for information. A request may be sent either by e‑mail or by s‑mail. Every main branch must contain at least one instance of request action. Advanced branches may not contain any request actions, instead they contain advanced request actions. There are two cases that can happen for a main branch:
-a) it contains exactly one request action, either sent by e‑mail or by s‑mail. In this case the request action must be the very first branch action.
-b) It contains exactly two request actions, of which the first one was sent by e‑mail and was marked as undelivered later and the second one, which is a copy of the first one, was sent by s‑mail thereafter. In this case both these request actions must be the very first two actions of the branch.
-Properties that apply:
-If the request was sent by e‑mail:
-email: a reference to the sent e‑mail
-effective_date: e‑mail sent date
-If the request was sent by s‑mail:
-effective_date: the date the s‑mail was generated
-subject + content + attachment_set
-deadline: 8 WD for the obligee to response
-extension
-delivery_status
+## Applicant Actions
 
-Clarification Response: represents an applicant action of providing the obligee an clarification to his inforequest. A clarification response may only be sent if the last branch action is a clarification request. The branch may contain multiple clarification responses as it may contain multiple clarification requests.
+**Request**: Represents an applicant action of requesting the obligee for information. A request may
+be sent either by e‑mail ~~or by s‑mail~~. Every main branch must contain at least one instance of
+request action. Advanced branches may not contain any request actions, instead they contain advanced
+request actions. ~~There are two cases that can happen for a main branch:~~
+1. It contains exactly one request action, either sent by e‑mail ~~or by s‑mail~~. In this case the
+   request action must be the very first branch action.
+2. ~~It contains exactly two request actions, of which the first one was sent by e‑mail and was
+   marked as undelivered later and the second one, which is a copy of the first one, was sent by
+   s‑mail thereafter. In this case both these request actions must be the very first two actions of
+   the branch.~~
+
+_Properties that apply_:
+* If the request was sent by e‑mail:
+  - `email`: a reference to the sent e‑mail
+  - `effective_date`: e‑mail sent date
+* ~~If the request was sent by s‑mail:
+  - `effective_date`: the date the s‑mail was generated~~
+* `subject` + `content` + `attachment_set`
+* `deadline`: 8 WD for the obligee to response
+* `extension`
+* ~~`delivery_status`~~
+
+**Clarification Response**: represents an applicant action of providing the obligee an clarification to his inforequest. A clarification response may only be sent if the last branch action is a clarification request. The branch may contain multiple clarification responses as it may contain multiple clarification requests.
 Properties that apply:
 If the clarification response was sent by e‑mail:
 email: a reference to the sent e‑mail
