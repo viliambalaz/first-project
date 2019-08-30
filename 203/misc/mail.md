@@ -74,7 +74,7 @@ Trigger: every few minutes if there are any queued outbound messages waiting.
 
 ## IMAP transport events
 
-### Poll for inbound e-mails**
+### Poll for inbound e-mails
 
 Trigger: every few minutes.
 
@@ -96,7 +96,7 @@ Trigger: request to Mandrill webhook
 
 ## Mandrill transport views
 
-### Mandrill webhook**
+### Mandrill webhook
   URL: /mandrill/webhook/
 
 
