@@ -28,16 +28,19 @@
         stroke-width: 1pt;
       }
       .relation.from-many {
-        marker-start: url(#relation-many);
+        marker-start: url(#relation-many)
       }
       .relation.to-many {
-        marker-end: url(#relation-many);
+        marker-end: url(#relation-many)
       }
       .relation.from-optional {
-        marker-start: url(#relation-optional);
+        marker-start: url(#relation-optional)
       }
       .relation.to-optional {
-        marker-end: url(#relation-optional);
+        marker-end: url(#relation-optional)
+      }
+      .relation.to-link_attribute {
+        marker-end: url(#link_attribute)
       }
       .dependency {
         fill: none;
@@ -95,7 +98,7 @@
   <g transform="translate(300 300)">
     <use href="#model" />
     <text class="caption">Inforequest E-mail</text>
-    <path class="relation from-one to-link_attribute" d="M -100,0 -200,0" marker-end="url(#link_attribute)" />
+    <path class="relation from-one to-link_attribute" d="M -100,0 -200,0" />
   </g>
   <g transform="translate(600 100)">
     <use href="#model" />
