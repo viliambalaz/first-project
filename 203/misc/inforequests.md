@@ -58,7 +58,7 @@ Properties:
   To freeze applicant current contact information for the case he changes it in the future. The
 information is frozen to its state at the moment the inforequest was submitted.
 * `unique_email`: E-mail; May NOT be empty; Unique.\
-  Every inforequest has a unique e‑mail address of the form *@mail.chcemvediet.sk. This address is
+  Every inforequest has a unique e‑mail address of the form \*@mail.chcemvediet.sk. This address is
   used to identify which obligee e‑mail belongs to which inforequest. However, if the inforequest
   was advanced to other obligees, the same e‑mail address is used for communication with all such
   obligees, as there is no way to tell them to send their response to a different e‑mail address.
