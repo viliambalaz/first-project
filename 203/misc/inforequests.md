@@ -754,15 +754,11 @@ e‑mails, actions or action drafts connected to his inforequests.
 
 ## Administration
 
-### List of Unassigned Received E‑mails
-
-* May assign an unassigned e‑mail to a case
-
-### List of Undecided Raw E‑mails Assigned to Closed Inforequests
-
-### List of E‑mails Marked as Unrelated
-
-### List of E‑mails the Users didn't Know how to Decide
-* May decide the e‑mail
+* **List of Unassigned Received E‑mails**
+  - May assign an unassigned e‑mail to a case
+* **List of Undecided Raw E‑mails Assigned to Closed Inforequests**
+* **List of E‑mails Marked as Unrelated**
+* **List of E‑mails the Users didn't Know how to Decide**
+* **May decide the e‑mail**
 
 <sub>*\* Features that are marked ~~strikethrough~~ are not implemented yet.*</sub>
