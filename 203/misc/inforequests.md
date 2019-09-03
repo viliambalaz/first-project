@@ -26,7 +26,7 @@ Represents a single inforequest. Inforequests are ordered by their submission da
 Relations:
 * `applicant`: User; May NOT be NULL.\
   The inforequest owner, the user who submitted it.
-* `email_set`: List of E-mail Messages; through InforequestEmails; May be empty; Ordered by
+* `email_set`: List of E-mail Messages; through Inforequest E-mails; May be empty; Ordered by
   processed date.\
   List of all inbound and outbound messages related to the inforequest, decided or undecided. The
   `unique_email` address generated for the inforequest is used for communication with all obligees
@@ -40,7 +40,7 @@ Relations:
 * `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.\
   List of all action drafts the applicant created for this inforequest. The inforequest may contain
   at most one draft of each action type.
-* `inforequestemail_set`: List of InforequestEmails; May be empty; Ordered by id.
+* `inforequestemail_set`: List of Inforequest E-mails; May be empty; Ordered by id.
 
 Computed Relations:
 * `branch`: Branch; May NOT be NULL; Read-only.\
@@ -208,7 +208,7 @@ Computed Properties:
   Read-only.\
   Whether the action sets a deadline, and whether it is set for the applicant or for the obligee.
 
-## `Action Draft`
+## `ActionDraft`
 
 Relations:
 * `inforequest`: Inforequest; May NOT be NULL
@@ -244,10 +244,10 @@ Properties:
 * `branch_set`: List of Branches; May be empty; Ordered by obligee name.
 * `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.
 
-### `Historical Obligee`
+### `HistoricalObligee`
 * `branch_set`: List of Branches; May be empty; Ordered by obligee name.
 
-### `E-mail Message`
+### `EmailMessage`
 * `inforequest_set`: List of Inforequest; May be empty; Ordered by submission date.
 * `inforequestemail_set`: List of InforequestEmail; May be empty; Ordered by id.
 * `action`: Action; May be undefined.
