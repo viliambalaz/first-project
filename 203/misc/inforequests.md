@@ -26,7 +26,7 @@ Represents a single inforequest. Inforequests are ordered by their submission da
 Relations:
 * `applicant`: User; May NOT be NULL.\
   The inforequest owner, the user who submitted it.
-* `email_set`: List of E-mail Messages; through Inforequest E-mails; May be empty; Ordered by
+* `email_set`: List of E-mail Messages; through InforequestEmails; May be empty; Ordered by
   processed date.\
   List of all inbound and outbound messages related to the inforequest, decided or undecided. The
   `unique_email` address generated for the inforequest is used for communication with all obligees
@@ -40,7 +40,7 @@ Relations:
 * `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.\
   List of all action drafts the applicant created for this inforequest. The inforequest may contain
   at most one draft of each action type.
-* `inforequestemail_set`: List of Inforequest E-mails; May be empty; Ordered by id.
+* `inforequestemail_set`: List of InforequestEmails; May be empty; Ordered by id.
 
 Computed Relations:
 * `branch`: Branch; May NOT be NULL; Read-only.\
@@ -79,7 +79,7 @@ Computed Properties:
   `can_add_obligee_email_action`: True/False; May NOT be NULL; Read-only.\
   Whether the user can append applicant/obligee action received by s‑mail or e‑mail.
 
-## `Inforequest E‑mail`
+## `InforequestEmail`
 
 Represents a relation between an inforequest and an inbound or outbound e‑mail message. Every
 inforequest has its unique e‑mail address which is used for communication with all obligees the
@@ -236,11 +236,11 @@ Properties:
 
 ### `User`
 
-* `inforequestdraft_set`: List of Inforequest Drafts; May be empty; Ordered by id.
+* `inforequestdraft_set`: List of InforequestDrafts; May be empty; Ordered by id.
 * `inforequest_set`: List of Inforequest; May be empty; Ordered by submission date.
 
 ### `Obligee`
-* `inforequestdraft_set`: List of Inforequest Drafts; May be empty; Ordered by id.
+* `inforequestdraft_set`: List of InforequestDrafts; May be empty; Ordered by id.
 * `branch_set`: List of Branches; May be empty; Ordered by obligee name.
 * `actiondraft_set`: List of Action Drafts; May be empty; Ordered by id.
 
@@ -681,7 +681,7 @@ by s‑mail.~~\
 * ~~Request~~
 * ~~Clarification Response~~
 
-### Create a New Inforequest / Inforequest Draft
+### Create a New Inforequest / InforequestDraft
 
 URL: /en/inforequests/create/\
 URL: /en/inforequests/create/<draft_id>/
@@ -690,9 +690,12 @@ Conditions:
 * User is authenticated.
 * User has a verified e-mail address
 
-Instead of submitting the created inforequest directly, the user may decide to save it as a inforequest draft and submit it later. The user may edit the draft until he submits it. The obligee property does not have to be set while the inforequest is just a draft. The user may own multiple unfinished request drafts.
+Instead of submitting the created inforequest directly, the user may decide to save it as a
+inforequestdraft and submit it later. The user may edit the draft until he submits it. The obligee
+property does not have to be set while the inforequest is just a draft. The user may own multiple
+unfinished request drafts.
 
-### Delete a Inforequest Draft
+### Delete a InforequestDraft
 
 URL: /en/inforequests/delete-draft/<draft_id>/
 
@@ -711,7 +714,7 @@ Conditions:
 ### List of Inforequests Created by the User
 URL: /en/inforequests/\
 Visibility: Authenticated user\
-The user may see his inforequest drafts besides his submitted and closed inforequests as well. The
+The user may see his inforequestdrafts besides his submitted and closed inforequests as well. The
 view contains a link to create a new inforequest.
 
 ### Inforequest Detail
@@ -745,7 +748,7 @@ inforequest or an action. He may use only his uploaded files.
 URL: /en/inforequests/attachments/<attachment_id>/\
 ~~Visibility: Public~~\
 ~~Anonymous user may download only files attached to actions connected to public inforequests.~~
-Authenticated user may also download files attached to him, to his inforequest drafts or to any
+Authenticated user may also download files attached to him, to his inforequestdrafts or to any
 e‑mails, actions or action drafts connected to his inforequests.
 
 
