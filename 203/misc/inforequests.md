@@ -525,7 +525,7 @@ list of all undecided e‑mails assigned to closed inforequests.
 
 ### Decide Undecided E‑mail
 
-URL: /en/inforequests/decide-email/\<action>/<inforequest_id>/<email_id>/
+URL: `/en/inforequests/decide-email/<action>/<inforequest_id>/<email_id>/`
 
 Conditions:
 * User is authenticated.
@@ -568,7 +568,7 @@ e‑mail was received.
 
 ### Add Obligee Action received by S‑mail
 
-URL: /en/inforequests/add-smail/\<action>/<inforequest_id>/
+URL: `/en/inforequests/add-smail/<action>/<inforequest_id>/`
 
 Conditions:
 
@@ -596,7 +596,7 @@ If there is undecided e‑mail waiting in the inforequest the user may not add a
 
 ### Extend Missed Obligee Deadline
 
-URL: /en/inforequests/extend-deadline/<inforequest_id>/<branch_id>/<action_id>
+URL: `/en/inforequests/extend-deadline/<inforequest_id>/<branch_id>/<action_id>`
 
 Conditions:
 * User is authenticated.
@@ -615,7 +615,7 @@ The following actions set obligee deadlines that can be extended:
 
 ### Make a Clarification Response Action
 
-URL: /en/inforequests/new-action/clarification-response/<inforequest_id>/
+URL: `/en/inforequests/new-action/clarification-response/<inforequest_id>/`
 
 Conditions:
 * User is authenticated.
@@ -642,7 +642,7 @@ the date it was generated if it was sent by s‑mail.
 
 ### Make an Appeal Action
 
-URL: /en/inforequests/new-action/appeal/<inforequest_id>/
+URL: `/en/inforequests/new-action/appeal/<inforequest_id>/`
 
 Conditions:
 * User is authenticated.
@@ -666,7 +666,7 @@ The effective date of an appeal is the date it was generated.
 
 ### ~~Resend Undelivered E-mail by S-mail~~
 
-~~URL: /en/inforequests/...~~
+~~URL: `/en/inforequests/...`~~
 
 Conditions:
 * ~~User is authenticated.~~
@@ -683,8 +683,8 @@ by s‑mail.~~\
 
 ### Create a New Inforequest / InforequestDraft
 
-URL: /en/inforequests/create/\
-URL: /en/inforequests/create/<draft_id>/
+URL: `/en/inforequests/create/`\
+URL: `/en/inforequests/create/<draft_id>/`
 
 Conditions:
 * User is authenticated.
@@ -697,7 +697,7 @@ unfinished request drafts.
 
 ### Delete a InforequestDraft
 
-URL: /en/inforequests/delete-draft/<draft_id>/
+URL: `/en/inforequests/delete-draft/<draft_id>/`
 
 Conditions:
 * User is authenticated.
@@ -707,18 +707,18 @@ Conditions:
 
 ### ~~List of all Inforequests~~
 
-~~URL: /en/inforequests/...~~\
+~~URL: `/en/inforequests/...~~`\
 ~~Visibility: Public~~\
 ~~The view contains a link to create a new inforequest.~~
 
 ### List of Inforequests Created by the User
-URL: /en/inforequests/\
+URL: `/en/inforequests/`\
 Visibility: Authenticated user\
 The user may see his inforequestdrafts besides his submitted and closed inforequests as well. The
 view contains a link to create a new inforequest.
 
 ### Inforequest Detail
-URL: /en/inforequests/detail/<inforequest_id>/\
+URL: `/en/inforequests/detail/<inforequest_id>/`\
 Visibility: Public
 1. _For the applicant_:\
    The applicant sees basic inforequest information, branch of actions in chronological order by
@@ -739,13 +739,13 @@ If the inforequest was advanced, details of all its descendant branches are show
 structure as well.
 
 ### Upload Attachment
-URL: /en/inforequests/attachments/\
+URL: `/en/inforequests/attachments/`\
 Visibility: Authenticated user\
 Uploaded files are attached to the user. The user may use uploaded files while composing an
 inforequest or an action. He may use only his uploaded files.
 
 ### Download Attachment
-URL: /en/inforequests/attachments/<attachment_id>/\
+URL: `/en/inforequests/attachments/<attachment_id>/`\
 ~~Visibility: Public~~\
 ~~Anonymous user may download only files attached to actions connected to public inforequests.~~
 Authenticated user may also download files attached to him, to his inforequestdrafts or to any
