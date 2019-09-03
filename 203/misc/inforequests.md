@@ -2,7 +2,6 @@
 
 ![](assets/inforequests.svg)
 
-
 ## `InforequestDraft`
 
 Relations:
@@ -208,7 +207,7 @@ Computed Properties:
   Read-only.\
   Whether the action sets a deadline, and whether it is set for the applicant or for the obligee.
 
-## `ActionDraft`
+## `ActionDraft` <sup>[1](#footnote1)</sup>
 
 Relations:
 * `inforequest`: Inforequest; May NOT be NULL
@@ -761,4 +760,5 @@ e‑mails, actions or action drafts connected to his inforequests.
 * **List of E‑mails the Users didn't Know how to Decide**
 * **May decide the e‑mail**
 
+<a name="footnote1">1</a>: `ActionDraft` was replaced with `WizardDraft`
 <sub>*\* Features that are marked ~~strikethrough~~ are not implemented yet.*</sub>
