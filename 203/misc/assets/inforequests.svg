@@ -87,18 +87,18 @@
   </g>
   <g transform="translate(300 100)">
     <use href="#model" />
-    <text class="caption">Inforequest Draft</text>
+    <text class="caption">InforequestDraft</text>
     <path class="relation from-many to-one" d="M -100,0 -150,0" />
     <path class="relation from-many to-optional" d="M 0,-20 0,-40 500,-40 500,-20" />
   </g>
   <g transform="translate(300 300)">
     <use href="#model" />
-    <text class="caption">Inforequest E-mail</text>
+    <text class="caption">InforequestEmail</text>
     <path class="relation from-one to-link-attribute" d="M -100,0 -200,0 -200,-1" />
   </g>
   <g transform="translate(600 100)">
     <use href="#model" />
-    <text class="caption">Action Draft</text>
+    <text class="caption">ActionDraft</text>
     <path class="relation from-many to-optional" d="M 0,20 0,80" />
     <path class="relation from-many to-many" d="M 100,0 150,0" />
     <path class="relation from-many to-one" d="M -50,20 -50,40 -475,40 -475,80" />
@@ -126,7 +126,7 @@
   </g>
   <g transform="translate(800 200)">
     <use href="#model" class="external" />
-    <text class="caption">Historical Obligee</text>
+    <text class="caption">HistoricalObligee</text>
     <path class="external relation from-many to-one" d="M 25,-20 25,-80" />
   </g>
 
@@ -136,12 +136,12 @@
   </g>
   <g transform="translate(350 600)">
     <use href="#model" />
-    <text class="caption">Inforequest Draft</text>
+    <text class="caption">InforequestDraft</text>
     <path class="relation from-optional to-many" d="M 0,-20 0,-100 -100,-100" />
   </g>
   <g transform="translate(600 600)">
     <use href="#model" />
-    <text class="caption">Action Draft</text>
+    <text class="caption">ActionDraft</text>
     <path class="relation from-optional to-many" d="M 0,-20 0,-100 -350,-100" />
   </g>
   <g transform="translate(800 600)">
