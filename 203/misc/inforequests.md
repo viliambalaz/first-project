@@ -760,5 +760,5 @@ e‑mails, actions or action drafts connected to his inforequests.
 * **List of E‑mails the Users didn't Know how to Decide**
 * **May decide the e‑mail**
 
-<sub><a name="footnote1">1</a>: `ActionDraft` was replaced with `WizardDraft`</sub>
+<sub><a name="footnote1">1</a>: `ActionDraft` was replaced with `WizardDraft`</sub>\
 <sub>*\* Features that are marked ~~strikethrough~~ are not implemented yet.*</sub>
