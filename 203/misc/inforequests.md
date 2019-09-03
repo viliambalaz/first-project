@@ -2,10 +2,8 @@
 
 ![](assets/inforequests.svg)
 
-## Inforequest Flow
-![](assets/infore)
 
-## `Inforequest Draft`
+## `InforequestDraft`
 
 Relations:
 * `applicant`: User; May NOT be NULL.\
