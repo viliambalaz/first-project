@@ -41,7 +41,7 @@ to `"read|write"`. See the related [Imagemagick issue] why.
 [Imagemagick issue]: https://bugs.launchpad.net/ubuntu/+source/imagemagick/+bug/1796563
 
 
-#### 2.1.2. Libmagic Configuration
+#### 1.1.2. Libmagic Configuration
 
 Some word documents can sometimes fail to identify correctly. You can solve it by editing
 `/etc/magic` file with add rules for this documents. See the related [Libmagic issue] why.
@@ -222,15 +222,17 @@ and `{group}` are unix user and group names the server will run under.
 
  2. In the **Sites to search** section, add the `www.chcemvediet.sk` page.
 
- 3. Click **Create**. 
+ 3. Set **Language** to `Slovak`.
 
- 4. Go to the **Look and feel** section and click the **Layout** tab. Select and save the **Results
+ 4. Click **Create**. 
+
+ 5. Go to the **Look and feel** section and click the **Layout** tab. Select and save the **Results
     only** layout.
 
- 5. Go back to **Setup** section. On the **Basics** tab, in the **Details** section, copy **Search
+ 6. Go back to **Setup** section. On the **Basics** tab, in the **Details** section, copy **Search
     engine ID**.
 
- 6. Run `setup.py` to configure your google custom search API key.
+ 7. Run `setup.py` to configure your google custom search API key.
 
 
 ## 5. Mandrill transactional e-mail servis
