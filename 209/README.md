@@ -226,6 +226,12 @@ and `{group}` are unix user and group names the server will run under.
  3. Go to the **Look and feel** section and click the **Layout** tab. Select and save the **Results
     only** layout.
 
+ 4. `LookAndFeel` element in your context file should look like this: 
+    '''
+    <LookAndFeel element_layout="7" theme="7" custom_theme="false" url_length="full" element_branding="show" enable_cse_thumbnail="true" promotion_url_length="full" font="2">
+    '''
+    You can edit context file in **Setup** section on the **Advanced** tab.
+
  4. Go back to **Setup** section. On the **Basics** tab, in the **Details** section, copy **Search
     engine ID**.
 
