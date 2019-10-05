@@ -223,8 +223,8 @@ and `{group}` are unix user and group names the server will run under.
  2. In the **Sites to search** section, add the `www.chcemvediet.sk` page. Set **Language** to
     `Slovak`and click **Create**. 
 
- 3. Go to the **Look and feel** section and click the **Layout** tab. Select and save the **Results
-    only** layout.
+ 3. Go to the **Look and feel** section and click the **Layout** tab. Select and save the `Results
+    only` layout.
 
  4. Go back to **Setup** section. On the **Basics** tab, in the **Details** section, copy **Search
     engine ID**.
