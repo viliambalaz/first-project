@@ -213,7 +213,7 @@ and `{group}` are unix user and group names the server will run under.
     Where `{domain}` is your production domain or `127.0.0.1:8000` if in local development mode.
 
  3. Run the configuration script `setup.py` and enter given 'Client ID for web application' and
-    'Client secret'.Rad 
+    'Client secret'.
 
 
 ## 4. Google custom search engine key
