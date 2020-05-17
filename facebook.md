@@ -282,14 +282,14 @@ your browser.
 
  3. Go to 'Facebook Login' / 'Settings' and add 'Valid OAuth Redirect URIs':
 
-        	https://{domain}/accounts/facebook/login/callback/
-        	https://{domain}/sk/accounts/facebook/login/callback/
-        	https://{domain}/en/accounts/facebook/login/callback/
+    	https://{domain}/accounts/facebook/login/callback/
+    	https://{domain}/sk/accounts/facebook/login/callback/
+    	https://{domain}/en/accounts/facebook/login/callback/
 
     Where `{domain}` is your production domain or `127.0.0.1:8000` if in local development mode.
     'Site URL' in form `127.0.0.1:8000` is invalid use `localhost:8000` instead.
 
-To use Facebook Login, you need to use HTTPS. Setup default protocol in `settings/common.py`.
+To use Facebook Login, you need to use https. Setup default protocol in `settings/common.py`.
 
 	ACCOUNT_DEFAULT_HTTP_PROTOCOL = u'https'
 
