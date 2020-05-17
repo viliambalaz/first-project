@@ -307,7 +307,7 @@ Add it to `INSTALLED_APPS` in `settings/common.py` file:
 	...
 	'django_extensions',
 	...
-)
+	)
 
 Run the server in ssl mode with:
 
