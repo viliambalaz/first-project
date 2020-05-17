@@ -310,6 +310,7 @@ Add it to `INSTALLED_APPS` in `settings/common.py` file:
 )
 
 Run the server in ssl mode with:
+
 	./manage.py runserver_plus --cert /tmp/cert
 
 Or you can create a public https URL using [ngrok](https://ngrok.com/). Don't forget to add newly
