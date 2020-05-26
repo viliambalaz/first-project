@@ -325,8 +325,8 @@ your browser.
 
  5. Run the configuration script `setup.py` and enter given 'App ID' and 'App Secret'.
 
-To use Facebook Login on localhost, you need to use [https connection]
-(#15-viewing-the-site-using-https). 
+To use Facebook Login on localhost, you need to use [https connection](#15-viewing-the-site-using-https). 
+
 
 ## 4. Google custom search engine key
 
