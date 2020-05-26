@@ -116,6 +116,38 @@ If some migrations fail, try to run them once or twice again. Sometimes it helps
  4. Now, you can navigate your browser to: http://127.0.0.1:8000/ and start using it.
 
 
+### 1.5. Viewing the site using https
+
+To run a server with https you can use
+[RunServerPlus](https://django-extensions.readthedocs.org/en/latest/runserver_plus.html) from
+[django-extensions](https://github.com/django-extensions/django-extensions).
+
+ 1. Run the following commands:
+
+    	$ env/bin/pip install django-extensions==1.0.3
+    	$ env/bin/pip install Werkzeug==0.9
+    	$ env/bin/pip install pyOpenSSL==0.13
+
+ 2. Add `django_extension` to `INSTALLED_APPS` in `settings/common.py` file:
+
+    	INSTALLED_APPS = (
+    	...
+    	'django_extensions',
+    	...
+    	)
+
+ 3. Setup default protocol in `settings/common.py`.
+
+    	ACCOUNT_DEFAULT_HTTP_PROTOCOL = u'https'
+
+ 4. Run the server in ssl mode with:
+
+    	./manage.py runserver_plus --cert /tmp/cert
+
+Or you can create a public https URL using [ngrok](https://ngrok.com/). Don't forget to add newly
+generated URL in 'Valid OAuth Redirect URIs'.
+
+
 ## 2. Online Development and Production Servers
 
 We run production server on Apache using `mod_wsgi` and MySQL database.
@@ -289,33 +321,7 @@ your browser.
     Where `{domain}` is your production domain or `127.0.0.1:8000` if in local development mode.
     'Site URL' in form `127.0.0.1:8000` is invalid use `localhost:8000` instead.
 
-To use Facebook Login, you need to use https. Setup default protocol in `settings/common.py`.
-
-	ACCOUNT_DEFAULT_HTTP_PROTOCOL = u'https'
-
-To run a server with https you can use
-[RunServerPlus](https://django-extensions.readthedocs.org/en/latest/runserver_plus.html) from
-[django-extensions](https://github.com/django-extensions/django-extensions). To install run:
-
-	$ pip install django-extensions==1.0.3
-	$ pip install Werkzeug==0.16.1
-	$ pip install pyOpenSSL==19.1.0
-
-Add it to `INSTALLED_APPS` in `settings/common.py` file:
-
-	INSTALLED_APPS = (
-	...
-	'django_extensions',
-	...
-	)
-
-Run the server in ssl mode with:
-
-	./manage.py runserver_plus --cert /tmp/cert
-
-Or you can create a public https URL using [ngrok](https://ngrok.com/). Don't forget to add newly
-generated URL in 'Valid OAuth Redirect URIs'.
-
+To use Facebook Login, you need to use [https connection](#15-viewing-the-site-using-https). 
 
 ## 4. Google custom search engine key
 
