@@ -120,7 +120,8 @@ If some migrations fail, try to run them once or twice again. Sometimes it helps
 
 To run a server with https you can use
 [RunServerPlus](https://django-extensions.readthedocs.org/en/latest/runserver_plus.html) from
-[django-extensions](https://github.com/django-extensions/django-extensions).
+[django-extensions](https://github.com/django-extensions/django-extensions). You need the
+`libffi-dev` package installed in your system.
 
  1. Run the following commands:
 
@@ -128,24 +129,25 @@ To run a server with https you can use
     	$ env/bin/pip install Werkzeug==0.9
     	$ env/bin/pip install pyOpenSSL==0.13
 
- 2. Add `django_extension` to `INSTALLED_APPS` in `settings/common.py` file:
+ 2. Add `django_extension` to `INSTALLED_APPS` in `chcemvediet/settings/server_local.py` file:
 
     	INSTALLED_APPS = (
-    	...
-    	'django_extensions',
-    	...
-    	)
+    	    ...
+    	    u'django_extensions',
+    	    ...
+    	    )
 
- 3. Setup default protocol in `settings/common.py`.
+ 3. Setup default protocol in `chcemvediet/settings/server_local.py`.
 
     	ACCOUNT_DEFAULT_HTTP_PROTOCOL = u'https'
 
  4. Run the server in ssl mode with:
 
-    	./manage.py runserver_plus --cert /tmp/cert
+    	env/bin/python manage.py runserver_plus --cert /tmp/cert
 
-Or you can create a public https URL using [ngrok](https://ngrok.com/). Don't forget to add newly
-generated URL in 'Valid OAuth Redirect URIs'.
+ 5. Now, you can navigate your browser to: https://127.0.0.1:8000/ and start using it.
+
+Or you can create a public https URL using [ngrok](https://ngrok.com/download).
 
 
 ## 2. Online Development and Production Servers
@@ -308,7 +310,7 @@ your browser.
 
 ### 3.2. Facebook OAuth
 
- 1. Go to https://developers.facebook.com/ and create an app.
+ 1. Go to https://developers.facebook.com/apps/ and create an app.
 
  2. Add a Product 'Facebook Login' and select platform 'Web'. Enter 'Site URL' `https://{domain}/`.
 
@@ -321,7 +323,10 @@ your browser.
     Where `{domain}` is your production domain or `127.0.0.1:8000` if in local development mode.
     'Site URL' in form `127.0.0.1:8000` is invalid use `localhost:8000` instead.
 
-To use Facebook Login, you need to use [https connection](#15-viewing-the-site-using-https). 
+ 5. Run the configuration script `setup.py` and enter given 'App ID' and 'App Secret'.
+
+To use Facebook Login on localhost, you need to use [https connection]
+(#15-viewing-the-site-using-https). 
 
 ## 4. Google custom search engine key
 
