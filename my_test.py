@@ -19,5 +19,6 @@ class TestStringMethods(unittest.TestCase):
     def test_fail(self):
         self.assertEqual('foo', 'boo')
 
+
 if __name__ == '__main__':
     unittest.main()
