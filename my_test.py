@@ -19,9 +19,7 @@ class TestStringMethods(unittest.TestCase):
     
     def test_correct(self):
         self.assertEqual('foo', 'boo')
-        
-    def test_assert(self):
-        assert False
+        self.assertNotEqual('foo', 'boo')
 
 
 if __name__ == '__main__':
