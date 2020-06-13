@@ -26,6 +26,6 @@ class TestStringMethods(unittest.TestCase):
         assert False
         
     #@unittest.skip("skip test")
-    def test_assert2(self):
+    def test_assert23(self):
         assert False
 
