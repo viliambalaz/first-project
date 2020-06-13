@@ -1,4 +1,5 @@
 import unittest
+from unittest import skip
 
 class TestStringMethods(unittest.TestCase):
 
@@ -17,8 +18,12 @@ class TestStringMethods(unittest.TestCase):
             s.split(2)
     
     def test_correct(self):
-        self.assertNotEqual('foo', 'boo')
+        self.assertEqual('foo', 'boo')
+        
+    def test_assert(self):
+        assert False
 
 
 if __name__ == '__main__':
     unittest.main()
+
