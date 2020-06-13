@@ -17,10 +17,10 @@ class TestStringMethods(unittest.TestCase):
         with self.assertRaises(TypeError):
             s.split(2)
     
-    @unittest.skip("skip test")
+    #@unittest.skip("skip test")
     def test_correct(self):
         self.assertNotEqual('foo', 'boo')
     
-    @unittest.skip("skip test")
+    #@unittest.skip("skip test")
     def test_correct2(self):
         self.assertNotEqual('foo', 'boo')
