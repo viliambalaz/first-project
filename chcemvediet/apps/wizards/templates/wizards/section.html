@@ -1,0 +1,25 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "wizards/wizard.html" %}
+{% load paragraphs endparagraphs from chcemvediet.wizards %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.wizards.wizard.Wizard
+ %  -- step: chcemvediet.apps.wizards.wizard.SectionStep
+ %
+{% endcomment %}
+
+
+{% block body %}
+  {{ block.super }}
+  {% if step.section_template %}
+    <div class="panel chv-scheme-gray chv-paper-section chv-bellow-1">
+      <div class="panel-body">
+        {% paragraphs %}
+          {% include step.section_template %}
+        {% endparagraphs %}
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

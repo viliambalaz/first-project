@@ -1,0 +1,30 @@
+class OriginalValuesMixin(models.Model):
+    u"""
+    A mixin class that adds the fields and methods to support storing and comparing original and new
+    values of fields.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super(OriginalValuesMixin, self).__init__(*args, **kwargs)
+        self._originals = {}
+        for field_name in self._meta.get_all_field_names():
+            print "field name: ", field_name
+            print "field value: ", self._meta.get_field(field_name).value_from_object(self)
+            #self._originals[field_name] = self._meta.get_field(field_name).value_from_object(self)
+
+    @decorate(prevent_bulk_create=True)
+    def save(self, *args, **kwargs):
+        for field_name in self._meta.get_all_field_names():
+            print "original: ", self._originals[field_name], "new: ", self._meta.get_field(field_name).value_from_object(self)
+            self._originals[field_name] = self._meta.get_field(field_name).value_from_object(self)
+        super(OriginalValuesMixin, self).save(*args, **kwargs)
+
+
+
+class Foo(OriginalValuesMixin):
+
+    x = models.CharField(max_length=255)
+    y = models.IntegerField()
+    b = models.ManyToManyField('Boo')
+
+

@@ -1,0 +1,23 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/snippets/alerts/warning.html" %}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.clarification_response.ClarificationResponseWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.clarification_response.Main
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+{% block message %}
+  FIXME Mate
+  {% plural inforequest.undecided_emails_count "1:{n} nerozhodnutý mail" "2~4:{n} nerozhodnuté maily" "{n} nerozhodnutých mailov" %};
+  Clarification response sa neda poslat, kym sa nezaradia maily; Rozpracovane clarification
+  response ulozte, zaradte dosle maily; Potom, ak to bude stale aktualne, mozete pokracovat.
+  <a href="{{ inforequest.get_absolute_url }}">Linka na maily</a>
+{% endblock %}

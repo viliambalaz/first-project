@@ -1,0 +1,27 @@
+{# vim: set filetype=django :#}
+{% load squeeze from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- user: auth.User
+ %  -- current_site: django.contrib.sites.models.Site
+ %  -- activate_url: string
+ %  -- key: string
+ %
+{% endcomment %}
+
+
+{% autoescape off %}
+{% filter squeeze %}
+User {{ user.get_full_name }} at {{ current_site.name }} has given this as an email address.
+{% endfilter %}
+
+{% filter squeeze %}
+To confirm this is correct, go to {{ activate_url }}
+{% endfilter %}
+
+{% filter squeeze %}
+If this is a mistake, you do not need to perfom any action.
+{% endfilter %}
+{% endautoescape %}

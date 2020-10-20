@@ -1,0 +1,13 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- invitation: poleno.invitations.models.Invitation
+ %
+{% endcomment %}
+
+
+{% autoescape off %}
+Pozvanka / Invitation
+{% endautoescape %}

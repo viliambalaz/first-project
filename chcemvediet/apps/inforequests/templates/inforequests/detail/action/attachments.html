@@ -1,0 +1,37 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load url from poleno.utils %}
+{% load anonymize anonymized from chcemvediet.anonymization %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+<div class="pln-attachments-list">
+  {% for attachment in action.attachments %}
+    {% if not inforequest|anonymized %}
+      <div class="pln-attachment">
+        <a href="{% url 'inforequests:download_attachment' attachment=attachment %}">
+          {{ attachment.name }}
+        </a>
+      </div>
+    {% else %}
+      {% for attachment_finalization in attachment.attachmentfinalization_set.all %}
+        <div class="pln-attachment">
+          <a href="{% url 'inforequests:download_attachment_finalization' attachment_finalization=attachment_finalization %}">
+            {% anonymize inforequest attachment_finalization.name match_subwords=True %}
+          </a>
+        </div>
+      {% empty %}
+        <div class="pln-attachment">
+          {% anonymize inforequest attachment.name match_subwords=True %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>

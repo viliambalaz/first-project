@@ -1,0 +1,64 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load squeeze from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.SanitizationLevel
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Začiernenie citlivých informácií</h4>
+<p>
+  {% if step.number_of_reasons == 1 %}
+    Ako dôvod
+  {% elif step.number_of_reasons == step.actual_sanitizable_reasons|length %}
+    Ako dôvody
+  {% else %}
+    Medzi dôvodmi
+  {% endif %}
+  nesprístupnenia informácie bolo uvedené, že žiadaná informácia je
+  {% for reason in step.actual_sanitizable_reasons %}
+    {% filter squeeze %}
+      {% if reason == ACTION_REFUSAL_REASONS.BUSINESS_SECRET %}
+        obchodné tajomstvo
+      {% elif reason == ACTION_REFUSAL_REASONS.PERSONAL %}
+        osobný údaj podliehajúci ochrane osobných údajov
+      {% elif reason == ACTION_REFUSAL_REASONS.CONFIDENTIAL %}
+        utajovaná skutočnosť
+      {% endif %}
+    {% endfilter %}{% if forloop.revcounter > 2 %},
+    {% elif forloop.revcounter == 2 %} a
+    {% else %}.{% endif %}
+  {% endfor %}
+</p>
+<p>
+  Aj keby platilo, že časť žiadanej informácie nemôže inštitúcia sprístupniť, stále máte právo na
+  zvyšok informácie. Znamená to, že inštitúcia ma informáciu zverejniť tak, že
+  {% for reason in step.actual_sanitizable_reasons %}
+    {% filter squeeze %}
+      {% if reason == ACTION_REFUSAL_REASONS.BUSINESS_SECRET %}
+        obchodné tajomstvo
+      {% elif reason == ACTION_REFUSAL_REASONS.PERSONAL %}
+        osobné údaje podliehajúce ochrane osobných údajov
+      {% elif reason == ACTION_REFUSAL_REASONS.CONFIDENTIAL %}
+        utajované skutočnosti
+      {% endif %}
+    {% endfilter %}{% if forloop.revcounter > 2 %},
+    {% elif forloop.revcounter == 2 %} a
+    {% else %}{% endif %}
+  {% endfor %}
+  vyčierni a sprístupni aspoň dokument, v ktorom sú čitateľné všetky ostatné informácie. Stáva sa
+  však, že inštitúcia nesprístupní dokument vôbec, alebo v ňom vyčierni viac, ako by bolo nutné.
+</p>
+<p>
+  Stalo sa tak?
+</p>

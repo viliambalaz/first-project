@@ -1,0 +1,218 @@
+
+$chv-icon-sizes: ('half': 0.5, 'lg': 4/3, '2x': 2, '3x': 3)
+$chv-icon-rotations: ('90': 90deg, '180': 180deg, '270': 270deg)
+$chv-icon-flips: ('horizontal': (-1, 1), 'vertical': (1, -1))
+
+//
+// Fontello font definiton
+// Requires: fontello/css/fontello-codes.css
+//
+
+@font-face
+  $hash: md5('fontello/css/fontello-codes.css')
+  $dir: static('fontello/font')
+  $eot1: url('#{$dir}/fontello.eot?#{$hash}')
+  $eot2: url('#{$dir}/fontello.eot?#{$hash}#iefix') format('embedded-opentype')
+  $woff: url('#{$dir}/fontello.woff?#{$hash}') format('woff')
+  $ttf:  url('#{$dir}/fontello.ttf?#{$hash}') format('truetype')
+  $svg:  url('#{$dir}/fontello.svg?#{$hash}#fontello') format('svg')
+  font-family: 'fontello'
+  src: $eot1
+  src: $eot2, $woff, $ttf, $svg
+  font-weight: normal
+  font-style: normal
+
+//
+// Simple icon
+//
+
+.chv-icon
+  display: inline-block
+  position: relative
+  text-align: center
+  vertical-align: bottom
+  cursor: default
+  &:before
+    display: inline-block
+    position: relative
+    width: 1em
+    text-align: center
+    vertical-align: bottom
+    // Taken from fontello
+    font-family: "fontello"
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-decoration: inherit
+    text-transform: none
+    speak: none
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+a .chv-icon
+  cursor: inherit
+
+//
+// Stacked icons
+//
+
+.chv-icon-stack
+  display: inline-block
+  position: relative
+  width: 1em
+  text-align: center
+  vertical-align: top
+  > .chv-icon
+    float: left
+    width: 1em
+    margin-right: -1em
+
+//
+// List icons
+//
+
+.chv-icon-ul
+  list-style-type: none
+.chv-icon-li
+  float: left
+  left: (-1 * $chv-list-indent / 4)
+  &.chv-icon:before,
+  &.chv-icon-stack,
+    margin-left: -1em
+
+//
+// Icon sizes
+//
+
+@each $name, $size in $chv-icon-sizes
+  .chv-icon-#{$name}
+    &.chv-icon:before,
+    &.chv-icon-stack,
+      font-size: (1em * $size)
+
+//
+// Icon alignment (centered by default)
+//
+
+.chv-icon-left
+  text-align: left
+.chv-icon-right
+  text-align: right
+.chv-icon-top
+  &.chv-icon
+    bottom: 0.35em
+    &:before
+      bottom: -0.35em
+  &.chv-icon-stack
+    @each $name, $size in $chv-icon-sizes
+      &.chv-icon-#{$name}
+        bottom: (0.35em * (1/$size - 1))
+.chv-icon-bottom
+  &.chv-icon
+    bottom: -0.35em
+    &:before
+      bottom: 0.35em
+  &.chv-icon-stack
+    @each $name, $size in $chv-icon-sizes
+      &.chv-icon-#{$name}
+        bottom: (0.35em * (1 - 1/$size))
+
+//
+// Zero width icon
+//
+
+.chv-icon-zero-width
+  &.chv-icon:before,
+  &.chv-icon-stack,
+    margin-left: -0.5em
+    margin-right: -0.5em
+  &.chv-icon-left
+    &.chv-icon:before,
+    &.chv-icon-stack,
+      margin-left: 0
+      margin-right: -1em
+  &.chv-icon-right
+    &.chv-icon:before,
+    &.chv-icon-stack,
+      margin-left: -1em
+      margin-right: 0
+
+//
+// Rotated & flipped icons
+//
+
+@each $name, $rotation in $chv-icon-rotations
+  .chv-icon-rotate-#{$name}
+    &.chv-icon:before,
+    &.chv-icon-stack,
+      -webkit-transform: rotate($rotation)
+      -ms-transform:     rotate($rotation)
+      transform:         rotate($rotation)
+
+@each $name, $flip in $chv-icon-flips
+  .chv-icon-flip-#{$name}
+    &.chv-icon:before,
+    &.chv-icon-stack,
+      -webkit-transform: scale($flip)
+      -ms-transform:     scale($flip)
+      transform:         scale($flip)
+
+//
+// Spinning icons
+//
+
+.chv-icon-spin
+  &.chv-icon:before,
+  &.chv-icon-stack,
+    -webkit-animation: chv-icon-spin 2s infinite linear
+    animation:         chv-icon-spin 2s infinite linear
+.chv-icon-pulse
+  &.chv-icon:before,
+  &.chv-icon-stack,
+    -webkit-animation: chv-icon-spin 1s infinite steps(8)
+    animation:         chv-icon-spin 1s infinite steps(8)
+
+@-webkit-keyframes chv-icon-spin
+  0%
+    -webkit-transform: rotate(0deg)
+  100%
+    -webkit-transform: rotate(359deg)
+@keyframes chv-icon-spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(359deg)
+
+//
+// Icon badge
+//
+
+.chv-icon-badge
+  position: relative
+  bottom: 0.7em
+  margin-left: -1em
+  line-height: 0
+  padding: 0.1em 0.3em
+  color: $chv-color-white
+  background-color: $chv-color-red
+  border-radius: 1em
+  font-size: 60%
+  &:empty
+    display: none
+@each $name, $size in $chv-icon-sizes
+  .chv-icon-#{$name} + .chv-icon-badge
+    font-size: 60% * $size
+
+//
+// Custom fixes for particular icons
+//
+
+.icon-chv-horiz-40,
+.icon-chv-diag-40,
+  opacity: 0.4
+.icon-chv-horiz-70,
+.icon-chv-diag-70,
+  opacity: 0.7
+.icon-poleno
+  width: 3.4em
+  &:before
+    width: 3.4em

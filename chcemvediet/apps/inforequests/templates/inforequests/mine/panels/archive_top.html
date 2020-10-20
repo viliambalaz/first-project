@@ -1,0 +1,16 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "inforequests/mine/panels/base_top.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block color %}chv-color-red-l{% endblock %}
+{% block icon %}icon-doc-inv{% endblock %}
+{% block heading %}{% trans 'inforequests:mine:archive:heading' %}{% endblock %}
+{% block text %}{% include "inforequests/mine/texts/archive.html" %}{% endblock %}

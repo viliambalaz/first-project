@@ -1,0 +1,26 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/snippets/carousel/main.html" %}
+{% load lorem split capture from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block carousel %}
+  <h3>Carousel</h3>
+  <p>chv-carousel-blue <br>main/snippets/carousel/main.html</p>
+  <div class="sg-specimen chv-scheme-white">
+    {{ block.super }}
+  </div>
+{% endblock %}
+
+{% block items %}
+  {% for i in "1 2 3 5 6"|split %}
+    {% capture "text" %}<p>{% lorem i %}</p>{% endcapture %}
+    {% include "main/homepage/didyouknow/base.html" %}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends step.base_template %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.obligee_action.ObligeeActionWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.obligee_action.ObligeeActionStep
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- email: poleno.mail.models.Message | None
+ %
+{% endcomment %}
+
+
+{% block title %}
+  {% if email %}
+    {% trans 'inforequests:obligee_action:email:title' %}
+  {% else %}
+    {% trans 'inforequests:obligee_action:smail:title' %}
+  {% endif %}
+  | {{ block.super }}
+{% endblock %}
+
+{% block header-heading %}
+  {% if email %}
+    {% trans 'inforequests:obligee_action:email:heading' %}
+  {% else %}
+    {% trans 'inforequests:obligee_action:smail:heading' %}
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+  {{ block.super }}
+  {% if email %}
+    {% include "inforequests/obligee_action/email.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block footer-cancel-href %}{{ inforequest.get_absolute_url }}{% endblock %}
+
+{% block body-plus-footer %}
+  <div class="row">
+    <div class="col-sm-8">
+      {{ block.super }}
+    </div>
+    <div class="col-sm-4 chv-above-2">
+      {% if wizard.values.branch %}
+        {% with last_action=wizard.values.branch.last_action %}
+          {% include "inforequests/accordion/accordion.html" %}
+        {% endwith %}
+      {% else %}
+        {% with last_action=inforequest.main_branch.last_action %}
+          {% include "inforequests/accordion/accordion.html" %}
+        {% endwith %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

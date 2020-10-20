@@ -1,0 +1,22 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "styleguide/base.html" %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block heading %}Forms{% endblock %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      {% include "styleguide/forms/form.html" with class="form-horizontal" %}
+    </div>
+    <div class="col-md-6">
+      {% include "styleguide/forms/form.html" with class="chv-form-dense" %}
+    </div>
+  </div>
+{% endblock %}

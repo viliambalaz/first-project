@@ -1,0 +1,27 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load static from staticfiles %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- alternatives: [{lang: string, name: string, page: poleno.pages.pages.Page}]
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'pages:alternatives:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'pages:alternatives:heading' %}</h1>
+  {% include "pages/texts/alternatives_text.html" %}
+  <ul>
+    {% for alt in alternatives %}
+      <li>
+        <img src="{% static "main/images/languages/"|add:alt.lang|add:".png" %}">
+        {{ alt.name }}: <a href="{{ alt.page.url }}">{{ alt.page.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- pending_inforequests: [chcemvediet.apps.inforequests.models.Inforequest]
+ %  -- drafts: [chcemvediet.apps.inforequests.models.InforequestDraft]
+ %  -- successful_inforequests: [chcemvediet.apps.inforequests.models.Inforequest]
+ %  -- unsuccessful_inforequests: [chcemvediet.apps.inforequests.models.Inforequest]
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'inforequests:mine:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'inforequests:mine:heading' %}</h1>
+  {% include "inforequests/mine/panels/main.html" %}
+  {% include "inforequests/mine/drafts.html" %}
+  {% include "inforequests/mine/pending.html" %}
+  {% include "inforequests/mine/successful.html" %}
+  {% include "inforequests/mine/unsuccessful.html" %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.DoesNotProvideFallbackReason
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Informáciu neposkytuje</h4>
+{% include "inforequests/appeal/texts/refusal/does_not_provide_fallback_reason_alert.html" %}
+<p>
+  Označili ste, že žiadaná informácia nosúvisí s použitím verejných prostriedkov. Je teda
+  pravdepodobné, že inštitúcia žiadanú informáciu sprístupniť nemôže. Ak ste aj naďalej
+  presvedčený, že informácia má byť sprístupnená, skúste nižšie uviesť vlastné odôvodnenie, prečo
+  považujete postup inštitúcie za nesprávny.
+</p>
+<p>
+  {% include "main/forms/field.html" with field=step.does_not_provide_fallback %}
+</p>

@@ -1,0 +1,25 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/snippets/alerts/warning.html" %}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.common.AppealFinalStep
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %  -- calendar_days_behind_at_legal_date: int
+ %
+{% endcomment %}
+
+
+{% block message %}
+  Zadaný dátum odvolania {{ wizard.values.legal_date }} je
+  {% plural calendar_days_behind_at_legal_date "1:{n} kalendárny deň" "2~4:{n} kalendárne dni" "{n} kalendárnych dní" %}
+  po termíne na podanie odvolania.
+{% endblock %}

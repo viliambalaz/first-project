@@ -1,0 +1,113 @@
+
+//
+// Plain colors
+//
+
+@mixin chv-color($name, $color)
+  .chv-color-#{$name}
+    color: $color !important
+  .chv-bg-#{$name}
+    background-color: $color !important
+  .chv-border-#{$name}
+    border-color: $color !important
+  .chv-hover-#{$name}
+    &:focus, &:hover
+      color: $color !important
+  a, .chv-icon-stack
+    &:focus, &:hover
+      .chv-hover-#{$name}
+        color: $color !important
+
+@include chv-color("blue", $chv-color-blue)
+@include chv-color("blue-d", $chv-color-blue-d)
+@include chv-color("blue-dd", $chv-color-blue-dd)
+@include chv-color("blue-l", $chv-color-blue-l)
+@include chv-color("blue-ll", $chv-color-blue-ll)
+@include chv-color("blue-lll", $chv-color-blue-lll)
+@include chv-color("blue-aw", $chv-color-blue-aw)
+@include chv-color("blue-w", $chv-color-blue-w)
+@include chv-color("green", $chv-color-green)
+@include chv-color("green-l", $chv-color-green-l)
+@include chv-color("green-ll", $chv-color-green-ll)
+@include chv-color("green-aw", $chv-color-green-aw)
+@include chv-color("green-w", $chv-color-green-w)
+@include chv-color("red", $chv-color-red)
+@include chv-color("red-l", $chv-color-red-l)
+@include chv-color("red-ll", $chv-color-red-ll)
+@include chv-color("red-aw", $chv-color-red-aw)
+@include chv-color("red-w", $chv-color-red-w)
+@include chv-color("gray", $chv-color-gray)
+@include chv-color("gray-d", $chv-color-gray-d)
+@include chv-color("gray-l", $chv-color-gray-l)
+@include chv-color("gray-ll", $chv-color-gray-ll)
+@include chv-color("gray-aw", $chv-color-gray-aw)
+@include chv-color("gray-w", $chv-color-gray-w)
+
+@include chv-color("black", $chv-color-black)
+@include chv-color("white", $chv-color-white)
+@include chv-color("facebook", $chv-color-facebook)
+@include chv-color("gplus", $chv-color-gplus)
+@include chv-color("twitter", $chv-color-twitter)
+
+//
+// Color schemes
+//
+
+@mixin chv-scheme($bg, $text, $title, $link, $hover, $icon)
+  background-color: $bg
+  color: $text
+  @include chv-link-color($link, $hover)
+  h1, h2, h3, h4
+    color: $title
+  .chv-icon
+    color: $icon
+  .chv-icon-inv
+    color: $bg !important
+  .chv-text-default
+    color: $text
+
+// White scheme must be first so it can be overriden
+.chv-scheme-white
+  $bg: $chv-color-white
+  $text: #4d4d4d
+  $title: $chv-color-blue
+  $link: $chv-color-blue
+  $hover: $chv-color-blue-ll
+  $icon: #999999
+  @include chv-scheme($bg, $text, $title, $link, $hover, $icon)
+
+.chv-scheme-blue
+  $bg: $chv-color-blue-w
+  $text: #4d4d4d
+  $title: $chv-color-blue
+  $link: $chv-color-blue
+  $hover: $chv-color-blue-ll
+  $icon: $chv-color-gray-l
+  @include chv-scheme($bg, $text, $title, $link, $hover, $icon)
+
+.chv-scheme-gray
+  $bg: $chv-color-gray-w
+  $text: #4d4d4d
+  $title: #4d4d4d
+  $link: $chv-color-blue
+  $hover: $chv-color-blue-ll
+  $icon: $chv-color-gray-l
+  @include chv-scheme($bg, $text, $title, $link, $hover, $icon)
+
+.chv-scheme-inv-blue
+  $bg: $chv-color-blue
+  $text: $chv-color-white
+  $title: $chv-color-white
+  $link: $chv-color-white
+  $hover: $chv-color-white
+  $icon: $chv-color-white
+  @include chv-scheme($bg, $text, $title, $link, $hover, $icon)
+
+.chv-scheme-inv-gray
+  $bg: $chv-color-gray
+  $text: #c2c2c2
+  $title: $chv-color-gray-ll
+  $link: #c2c2c2
+  $hover: $chv-color-gray-w
+  $icon: $chv-color-gray-l
+  @include chv-scheme($bg, $text, $title, $link, $hover, $icon)

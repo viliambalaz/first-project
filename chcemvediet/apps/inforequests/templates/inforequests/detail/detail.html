@@ -1,0 +1,20 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends request.is_ajax|yesno:"main/base/ajax.html,main/base/single_column.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'inforequests:detail:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'inforequests:detail:heading' %}</h1>
+  {% include "inforequests/detail/request.html" %}
+  {% include "inforequests/detail/response.html" %}
+  {% include "inforequests/detail/branch/main.html" %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- account: allauth.socialaccount.models.SocialLogin
+ %
+{% endcomment %}
+
+
+<p>
+  Idete sa prihlásiť použitím Vášho {{ account.get_provider.name }} účtu. Ako posledný krok, je
+  ešte potrebné vyplniť údaje nižšie:
+</p>

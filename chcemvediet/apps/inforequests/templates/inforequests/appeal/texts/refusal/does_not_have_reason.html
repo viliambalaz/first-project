@@ -1,0 +1,25 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.DoesNotHaveReason
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Informáciu nemá</h4>
+{% include "inforequests/appeal/texts/refusal/does_not_have_reason_alert.html" %}
+<p>
+  Ako {% include "inforequests/appeal/texts/refusal/cislo_dovodu.html" %} nesprístupnenia
+  informácie bolo uvedené, že inštitúcia žiadanú informáciu nemá.
+  Ak sa aj napriek tomuto vyjadreniu domnievate, že inštitúcia požadovanú informáciu má, doplňte
+  nižšie uvedené odvolanie.
+</p>

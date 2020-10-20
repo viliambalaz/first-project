@@ -1,0 +1,24 @@
+from chcemvediet.apps.anonymization.models import AttachmentAnonymization as AA
+from chcemvediet.apps.anonymization.models import AttachmentFinalization as AF
+from poleno.attachments.models import Attachment as A
+from chcemvediet.apps.inforequests.models import Action, Branch, Inforequest 
+from django.contrib.auth.models import User
+
+def foo(user_id):
+    user = User.objects.get(id=user_id)
+    print user
+    aas = AA.objects.owned_by(user)
+    for aa in aas:
+        print aa
+
+
+def boo(user_id):
+    user = User.objects.get(id=user_id)
+    print user
+    afs = AF.objects.owned_by(user)
+    for af in afs:
+        print af
+
+
+
+

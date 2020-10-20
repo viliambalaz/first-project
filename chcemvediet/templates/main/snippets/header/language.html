@@ -1,0 +1,28 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load static from staticfiles %}
+{% load change_lang from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% for lang in LANGUAGES %}
+  {% if lang.0 != request.LANGUAGE_CODE %}
+    <a href="{% url 'set_language' %}" class="chv-navbar-item hidden-xs pln-post"
+       data-post-csrfmiddlewaretoken="{{ csrf_token }}"
+       data-post-language="{{ lang.0 }}"
+       data-post-next="{% change_lang lang.0 %}">
+      <span class="chv-hover-bold" data-content="{{ lang.1 }}">{{ lang.1 }}</span>
+    </a>
+    <a href="{% url 'set_language' %}" class="chv-navbar-item visible-xs pln-post"
+       data-post-csrfmiddlewaretoken="{{ csrf_token }}"
+       data-post-language="{{ lang.0 }}"
+       data-post-next="{% change_lang lang.0 %}">
+      <span class="chv-hover-bold" data-content="{{ lang.0|upper }}">{{ lang.0|upper }}</span>
+    </a>
+  {% endif %}
+{% endfor %}

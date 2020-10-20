@@ -1,0 +1,33 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.PersonalFallbackReason
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Osobné údaje</h4>
+{% include "inforequests/appeal/texts/refusal/personal_fallback_reason_alert.html" %}
+<p>
+  Označili ste, že žiadané osobné údaje sa týkaju iných osôb než verejných zamestnancov. Inštitúcia
+  má pravdepodobne pravdu a žiadané osobné údaje sprístupneniť nemôže. Na záver odvolania
+  inštitúciu požiadame, aby informáciu sprístupnila s vyčiernenými osobnými údajmi, ktoré
+  podliehajú ochrane.
+</p>
+<p>
+  Ak si myslíte, že napriek tomu je nesprístupnenie neoprávnené, skúste zdôvodniť, prečo by
+  inštitúcia mala žiadanú informáciu sprístupniť v plnej nevyčiernenej podobe. Konzultácia
+  s právnikom alebo nahliadnutie do príručky a zákona môže pomôcť.
+</p>
+<p>
+  {% include "main/forms/field.html" with field=step.personal_fallback %}
+</p>

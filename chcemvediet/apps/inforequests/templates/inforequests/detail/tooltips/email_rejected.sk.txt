@@ -1,0 +1,13 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+Email bol odmietnutý systémom príjemcu na druhej strane. To znamená, že emailová adresa
+prijímateľa na strane inštitúcie nie je správna, alebo že emailová schránka prijímateľa je
+preplnená, alebo nastala iná technická chyba.

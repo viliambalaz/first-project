@@ -1,0 +1,11 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+Saves the request as a draft. You can later re-open the draft and edit it, even if you sign-out.

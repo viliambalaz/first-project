@@ -1,0 +1,26 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% for message in messages %}
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.DEBUG %}
+    {% include "main/snippets/alerts/debug.html" with close=True %}
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    {% include "main/snippets/alerts/info.html" with close=True %}
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    {% include "main/snippets/alerts/success.html" with close=True %}
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    {% include "main/snippets/alerts/warning.html" with close=True %}
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    {% include "main/snippets/alerts/error.html" with close=True %}
+  {% else %}
+    {% include "main/snippets/alerts/warning.html" with close=True %}
+  {% endif %}
+{% endfor %}

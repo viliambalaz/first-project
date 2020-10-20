@@ -1,0 +1,42 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends step.base_template %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.common.AppealStep
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'inforequests:appeal:title' %} | {{ block.super }}{% endblock %}
+
+{% block header-heading %}{% trans 'inforequests:appeal:heading' %}{% endblock %}
+
+{% block footer-cancel-href %}{{ inforequest.get_absolute_url }}{% endblock %}
+
+{% block body %}
+  {% if inforequest.has_undecided_emails %}
+    {% include "inforequests/appeal/texts/undecided_alert.html" %}
+  {% endif %}
+  {{ block.super }}
+{% endblock %}
+
+{% block body-plus-footer %}
+  <div class="row">
+    <div class="col-sm-8">
+      {{ block.super }}
+    </div>
+    <div class="col-sm-4 chv-above-2">
+      {% include "inforequests/accordion/accordion.html" %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{# vim: set filetype=htmldjango :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.obligee_action.ObligeeActionWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.obligee_action.Categorized
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- email: poleno.mail.models.Message | None
+ %
+{% endcomment %}
+
+
+{% if wizard.values.branch.last_action.type == ACTION_TYPES.REQUEST %}
+  Doručenie žiadosti
+{% elif wizard.values.branch.last_action.type == ACTION_TYPES.CLARIFICATION_RESPONSE %}
+  Doručenie doplnenia
+{% elif wizard.values.branch.last_action.type == ACTION_TYPES.APPEAL %}
+  Doručenie odvolania
+{% elif wizard.values.branch.last_action.type == ACTION_TYPES.ADVANCED_REQUEST %}
+  Doručenie postúpenia
+{% endif %}

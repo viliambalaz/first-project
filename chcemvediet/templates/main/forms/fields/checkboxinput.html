@@ -1,0 +1,21 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/forms/fields/base.html" %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- field: django.forms.Field
+ %
+{% endcomment %}
+
+
+{% block label %}{% endblock %}
+{% block offset %}col-sm-offset-3{% endblock %}
+
+{% block field %}
+  <div class="checkbox">
+    <label>
+      {{ field }} {{ field.label }}
+    </label>
+  </div>
+{% endblock %}

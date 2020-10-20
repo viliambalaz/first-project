@@ -1,0 +1,21 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+{% load provider_login_url from socialaccount %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- process: 'login' | 'connect'
+ %
+{% endcomment %}
+
+
+<div class="chv-social-login-buttons">
+  <a href="{% provider_login_url "google" process=process %}"
+     title="{% trans 'account:social_buttons:google' %}">
+    <span class="chv-icon-stack chv-icon-3x">
+      <i class="chv-icon icon-circle chv-color-gplus"></i>
+      <i class="chv-icon chv-icon-half chv-icon-inv icon-gplus"></i>
+    </span>
+  </a>
+</div>

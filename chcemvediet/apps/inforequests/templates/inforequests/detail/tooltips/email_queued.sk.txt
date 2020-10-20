@@ -1,0 +1,11 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+Email so žiadosťou je zaradený v našom systéme. Bude odoslaný za okamih.

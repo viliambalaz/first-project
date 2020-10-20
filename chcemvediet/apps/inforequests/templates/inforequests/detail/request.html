@@ -1,0 +1,37 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load anonymize anonymized from chcemvediet.anonymization %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %
+{% endcomment %}
+
+
+<div class="panel panel-border-gray">
+  <div class="panel-body">
+    <ul class="chv-icon-ul">
+      <li>
+        <i class="chv-icon chv-icon-li chv-icon-lg icon-doc-inv"></i>
+          <strong>{% anonymize inforequest inforequest.subject %}</strong>
+      </li>
+      <li>
+        <i class="chv-icon chv-icon-li chv-icon-lg icon-building"></i>
+        {{ inforequest.main_branch.historicalobligee.name }}
+      </li>
+      <li>
+        <i class="chv-icon chv-icon-li chv-icon-lg icon-user"></i>
+        {% if inforequest|anonymized %}
+          {{ ANONYMIZATION_STRING }} {{ ANONYMIZATION_STRING }}
+        {% else %}
+          {{ inforequest.applicant_name }}
+        {% endif %}
+      </li>
+      <li>
+        <i class="chv-icon chv-icon-li chv-icon-lg icon-calendar"></i>
+        {{ inforequest.submission_date }}
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+{% load page from poleno.pages %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- form: allauth.account.forms.SignupForm
+ %  -- login_url: string
+ %  -- redirect_field_name: string
+ %  -- redirect_field_value: string
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'account:signup:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <form class="form-horizontal" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8">
+        <h1>{% trans 'account:signup:heading' %}</h1>
+        {% include "account/texts/signup_text.html" %}
+      </div>
+      <div class="col-md-4 chv-pull-right-md chv-above-half">
+        {% include "account/snippets/why_register.html" %}
+      </div>
+      <div class="col-md-8 chv-above-1">
+        {% include "main/forms/form_horizontal.html" %}
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+        {% endif %}
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <p class="chv-dense">Najmä:</p>
+            <ul>
+              <li class="chv-dense">nebudem podávať obťažujúce žiadosti</li>
+              <li class="chv-dense">portál neslúži na podávanie sťažností</li>
+              <li class="chv-dense">ak mi príde papierová odpoveď poštou, odfotím ju alebo naskenujem, a nahrám ju späť na portál</li>
+              <li class="chv-dense">nebudem zneužívať portál na spamovanie, používať vulgarizmy, a pod. </li>
+            </ul>
+            <p>
+            <a href="{% page "/podmienky-pouzivania/" %}">Kompletné podmienky používania chcemvediet.sk</a>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">
+              {% trans 'account:signup:submit' %}
+            </button>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <h3>{% trans 'account:signup:social_buttons' %}</h3>
+            {% include "account/snippets/social_login_buttons.html" with process="login" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

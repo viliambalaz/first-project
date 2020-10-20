@@ -1,0 +1,12 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+The deadline expired. You can provide a few more days to institution to reply, before you take
+another action.

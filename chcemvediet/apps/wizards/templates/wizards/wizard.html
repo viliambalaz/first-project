@@ -1,0 +1,116 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans blocktrans from i18n %}
+{% load eq yes no from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.wizards.wizard.Wizard
+ %  -- step: chcemvediet.apps.wizards.wizard.Step
+ %
+{% endcomment %}
+
+
+{% block content %}
+  <form class="form-horizontal" method="post" action="{{ step.get_url }}">
+    {% csrf_token %}
+    {% block header %}
+      <h1>
+        {% block header-heading %}{% endblock %}
+      </h1>
+    {% endblock %}
+    {% block body-plus-footer %}
+      {% block steps %}
+        {% if wizard.steps|length > 1 %}
+          <div class="chv-wizard-steps">
+            <div class="chv-wizard-steps-text">
+              {% with index=step.index|add:1 count=wizard.steps|length %}
+                {% blocktrans %}wizards:wizard:steps {{ index }} {{ count }}{% endblocktrans %}
+              {% endwith %}
+            </div>
+            <div class="chv-wizard-steps-dots">
+              {% for other_step in wizard.steps %}
+                <a class="chv-wizard-steps-dot pln-with-tooltip
+                          {{ other_step|eq:step|yes:"chv-wizard-steps-dot-current" }}
+                          {{ other_step.accessible|yes:"chv-wizard-steps-dot-accessible" }}"
+                   href="{{ other_step.get_url }}" data-toggle="tooltip"
+                   title="{{ other_step.label }}">
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endblock %}
+      {% block body %}
+        {% block body-text %}
+          {% if step.text_template %}{% include step.text_template %}{% endif %}
+        {% endblock %}
+        {% block body-form %}
+          {% if step.form_template %}
+            <div>{% include step.form_template with form=step %}</div>
+          {% elif step.non_field_errors %}
+            <div class="form-group has-error">
+              <div class="col-sm-9 col-sm-offset-3">
+                {% for error in form.non_field_errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endblock %}
+      {% endblock %}
+      <div class="form-group chv-above-half">
+        <div class="col-sm-offset-3 col-sm-9">
+          {% block footer %}
+            {% block footer-prev %}
+              {% if not step.is_first %}
+                <a class="btn btn-default" href="{{ step.prev.get_url }}">
+                  {% block footer-prev-label %}
+                    <i class="chv-icon chv-icon-lg icon-chevron-left"></i>
+                    &nbsp;
+                    {% trans 'wizards:wizard:prev' %}
+                  {% endblock %}
+                </a>
+              {% endif %}
+            {% endblock %}
+            {% block footer-next %}
+              <button type="submit" class="btn btn-primary" name="button" value="next">
+                {% if step.is_last %}
+                  {% block footer-finish-label %}
+                    <i class="chv-icon chv-icon-lg icon-chevron-right"></i>
+                    &nbsp;
+                    {% trans 'wizards:wizard:finish' %}
+                  {% endblock %}
+                {% else %}
+                  {% block footer-next-label %}
+                    <i class="chv-icon chv-icon-lg icon-chevron-right"></i>
+                    &nbsp;
+                    {% trans 'wizards:wizard:next' %}
+                  {% endblock %}
+                {% endif %}
+              </button>
+            {% endblock %}
+            {% block footer-save %}
+              <button type="submit" class="btn btn-default" name="button" value="save">
+                {% block footer-save-label %}
+                  <i class="chv-icon chv-icon-lg icon-floppy"></i>
+                  &nbsp;
+                  {% trans 'wizards:wizard:save' %}
+                {% endblock %}
+              </button>
+            {% endblock %}
+            {% block footer-cancel %}
+              <a class="btn btn-link pull-right" href="{% block footer-cancel-href %}{% endblock %}">
+                {% block footer-cancel-label %}
+                  <i class="chv-icon chv-icon-lg icon-cancel"></i>
+                  {% trans 'wizards:wizard:cancel' %}
+                {% endblock %}
+              </a>
+            {% endblock %}
+          {% endblock %}
+        </div>
+      </div>
+    {% endblock %}
+  </form>
+{% endblock %}

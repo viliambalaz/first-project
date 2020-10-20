@@ -1,0 +1,181 @@
+
+//
+// Make sure the page is not smaller than the viewport so the footer is always at the bottom
+//
+
+#content
+  min-height: 100vh
+
+//
+// Adjust container padding
+//
+
+.container
+  padding-left: $chv-container-padding
+  padding-right: $chv-container-padding
+
+//
+// Fixed vertical sizes maintaining rhythm
+//
+
+@mixin chv-height($name, $lead)
+  .chv-height-#{$name}
+    height: ($chv-baseline * $lead) !important
+
+@mixin chv-above($name, $lead)
+  .chv-above-#{$name}
+    padding-top: ($chv-baseline * $lead) !important
+  .chv-bellow-#{$name}
+    padding-bottom: ($chv-baseline * $lead) !important
+
+@mixin chv-heights($screen)
+  // height
+  @include chv-height("0#{$screen}", 0)
+  @include chv-height("half#{$screen}", 0.5)
+  @for $i from 1 through 5
+    @include chv-height("#{$i}#{$screen}", $i)
+    @include chv-height("#{$i}-half#{$screen}", $i + 0.5)
+  // above and bellow
+  @include chv-above("0#{$screen}", 0)
+  @include chv-above("half#{$screen}", 0.5)
+  @for $i from 1 through 3
+    @include chv-above("#{$i}#{$screen}", $i)
+    @include chv-above("#{$i}-half#{$screen}", $i + 0.5)
+
+//
+// Widths without float to use in columns or anywhere else
+//
+
+@mixin chv-widths($screen)
+  @for $i from 1 through 12
+    .chv-width-#{$i}#{$screen}
+      width: (100% * $i / 12) !important
+  @for $i from 1 through 5
+    .chv-maxwidth-#{$i * 100}#{$screen}
+      max-width: ($i * 100px)
+
+//
+// Common style settings based on screen size
+//
+
+@mixin chv-common($screen)
+  //
+  // Width and seight
+  //
+  .chv-width-auto#{$screen}
+    width: auto !important
+  .chv-width-full#{$screen}
+    width: 100% !important
+  .chv-height-auto#{$screen}
+    height: auto !important
+  .chv-height-full#{$screen}
+    height: 100% !important
+  //
+  // Pull left/right
+  //
+  .chv-pull-left#{$screen}
+    float: left !important
+  .chv-pull-right#{$screen}
+    float: right !important
+  //
+  // Display style
+  //
+  .chv-hidden#{$screen}
+    display: none !important
+  .chv-block#{$screen}
+    display: block !important
+  .chv-inline#{$screen}
+    display: inline !important
+  .chv-inlineblock#{$screen}
+    display: inline-block !important
+  .chv-tablecell#{$screen}
+    display: table-cell !important
+  .chv-tablerow#{$screen}
+    display: table-row !important
+  //
+  // Cursor
+  //
+  .chv-cursor-auto#{$screen}
+    cursor: auto !important
+  .chv-pointer#{$screen}
+    cursor: pointer !important
+    .chv-icon
+      cursor: pointer !important
+
+//
+// Apply chv-heights(), chv-widths() and chv-common() for different screen sizes. Bigger screen
+// styles override smaller screen styles, and all screen styles override general styles.
+//
+
+@mixin chv-responsive-styles($screen)
+  @include chv-heights($screen)
+  @include chv-widths($screen)
+  @include chv-common($screen)
+
+@include chv-responsive-styles("")
+@include chv-responsive-styles("-xs")
+@for $i from 1 through 5
+  @media(min-width:#{$i * 100px})
+    @include chv-responsive-styles("-#{$i * 100}")
+@media(min-width:$screen-sm-min)
+  @include chv-responsive-styles("-sm")
+@media(min-width:$screen-md-min)
+  @include chv-responsive-styles("-md")
+@media(min-width:$screen-lg-min)
+  @include chv-responsive-styles("-lg")
+
+//
+// Element with fixed aspect ratio
+//
+
+.chv-aspect
+  position: relative
+  height: 0
+.chv-aspect-inner
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+.chv-aspect-parners
+  padding-top: 8%
+
+//
+// Columns with equal heights using tables
+//
+
+@media(min-width:$screen-sm-min)
+  .chv-eq-rows
+    display: table
+    width: calc(100% + #{$grid-gutter-width} * 2)
+    margin-left: (-$grid-gutter-width)
+    border-collapse: separate
+    border-spacing: $grid-gutter-width 0
+  .chv-eq-row
+    display: table-row
+  .chv-eq-col
+    display: table-cell
+    &.chv-eq-col-border
+      border: solid 1px red
+      border-radius: 5px
+      padding: ($chv-baseline - 1px)
+    &.chv-eq-col-border-first
+      border: solid 1px red
+      border-bottom: none
+      border-radius: 5px 5px 0 0
+      padding: ($chv-baseline - 1px)
+      padding-bottom: 0
+    &.chv-eq-col-border-mid
+      border: solid 1px red
+      border-top: none
+      border-bottom: none
+      border-radius: 0
+      padding: ($chv-baseline - 1px)
+      padding-top: 0
+      padding-bottom: 0
+    &.chv-eq-col-border-last
+      border: solid 1px red
+      border-top: none
+      border-radius: 0 0 5px 5px
+      padding: ($chv-baseline - 1px)
+      padding-top: 0

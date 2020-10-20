@@ -1,0 +1,77 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+{% load active yes from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% if user.is_authenticated %}
+  {% with active=request|active:'accounts,account_change_password,account_email,socialaccount_connections,invitations' %}
+    {% if user.profile.undecided_emails_count %}
+      <a class="chv-navbar-item chv-navbar-item-gray" href="{% url 'inforequests:obligee_action_dispatcher' %}">
+        <i class="chv-icon chv-icon-lg icon-mail"></i>
+        <span class="chv-icon-badge">{{ user.profile.undecided_emails_count }}</span>
+      </a>
+    {% endif %}
+    <span class="chv-navbar-item chv-navbar-item-gray-blue dropdown {{ active|yes:"active" }}">
+      <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+        <span class="chv-hidden chv-inline-sm">{{ user.email }}  </span>
+        {% include "main/snippets/icons/account.html" with class="chv-icon-2x" hover=1 %}
+        <i class="chv-icon icon-down-dir"></i>
+      </a>
+      <ul class="dropdown-menu pull-right">
+        <li>
+          <a href="{% url 'accounts:profile' %}">
+            {% trans 'main:menu:account:profile' %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'account_change_password' %}">
+            {% trans 'main:menu:account:password' %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'account_email' %}">
+            {% trans 'main:menu:account:email' %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'socialaccount_connections' %}">
+            {% trans 'main:menu:account:connections' %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'accounts:settings' %}">
+            {% trans 'main:menu:account:settings' %}
+          </a>
+        </li>
+        {% if user.invitationsupply.can_use_invitations %}
+          <li class="divider"></li>
+          <li>
+            <a href="{% url 'invitations:invite' %}">
+              {% trans 'main:menu:account:invite' %}
+            </a>
+          </li>
+        {% endif %}
+        <li class="divider"></li>
+        <li>
+          <a href="{% url 'account_logout' %}" class="pln-post"
+             data-post-csrfmiddlewaretoken="{{ csrf_token }}">
+            {% trans 'main:menu:account:logout' %}
+          </a>
+        </li>
+      </ul>
+    </span>
+  {% endwith %}
+{% else %}
+  <a class="chv-navbar-item chv-navbar-item-gray" href="{% url 'account_login' %}">
+    <span class="chv-hover-bold" data-content="{% trans 'main:menu:account:login' %}">
+      {% trans 'main:menu:account:login' %}
+    </span>
+  </a>
+{% endif %}

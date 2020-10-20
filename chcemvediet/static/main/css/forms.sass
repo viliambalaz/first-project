@@ -1,0 +1,255 @@
+
+//
+// Adjust form elements margins to baseline
+// WARNING: Hardcoded for baseline 20px
+//
+
+.input-group,
+.form-control,
+.btn,
+  $fix: chv_baseline_fix($chv-fontsize-base, 1)
+  margin-top: ($fix - 7px)
+  margin-bottom: (13px - $fix)
+
+.control-label.control-label
+  @include chv-baseline($chv-fontsize-base, 1, 0, 0.5)
+  font-weight: normal
+
+.form-horizontal
+  .form-control-static
+    @include chv-baseline($chv-fontsize-base, 1, 0, 0.5)
+
+.input-group,
+  .btn,
+  .form-control,
+    margin-top: 0
+    margin-bottom: 0
+
+.form-horizontal
+  $fix: chv_baseline_fix($chv-fontsize-base, 1)
+  .form-group
+    margin-bottom: ($chv-baseline * 0.5)
+  .checkbox, .radio
+    padding-top: $fix
+    padding-bottom: 0
+    margin-top: 0
+    margin-bottom: ($chv-baseline * 0.5 - $fix)
+  .help-block
+    padding-top: $fix
+    padding-bottom: 0
+    margin-top: 0
+    margin-bottom: ($chv-baseline * 0.5 - $fix)
+
+.form-horizontal.chv-form-dense
+  $fix: chv_baseline_fix($chv-fontsize-base, 1)
+  .form-group
+    margin-bottom: 0
+  .checkbox, .radio
+    padding-top: $fix
+    padding-bottom: 0
+    margin-top: 0
+    margin-bottom: (0 - $fix)
+    &:last-child
+      padding-bottom: $chv-baseline
+    + .help-block
+      padding-top: ($fix + $chv-baseline * 0.5)
+  .help-block
+    padding-top: 0
+    padding-bottom: 0
+    margin-top: ($fix - $chv-baseline * 0.5)
+    margin-bottom: ($chv-baseline - $fix)
+
+.form-control
+  box-shadow: none !important
+
+.has-error
+  @include form-control-validation($chv-color-red, $chv-color-red-ll, $chv-color-red-w)
+  .input-group-btn
+    .chv-btn-plain
+      border-color: $chv-color-red-ll
+      background-color: $chv-color-red-w
+      &:hover, &:focus, &:active
+        background-color: mix($chv-color-red-w, $chv-color-gray, 90%)
+  .chv-icon
+    color: $chv-color-red
+
+//
+// Textarea with autosize should not be resizable, because autosize overrides user defined size.
+//
+
+.pln-autosize
+  resize: none
+
+//
+// Social icons used in forms
+//
+
+.chv-social-login-buttons
+  height: ($chv-baseline * 2)
+  line-height: ($chv-baseline * 2)
+  margin-top: -4px
+  margin-bottom: 14px
+
+//
+// Static info field used for applicant and obligee static adresses
+//
+
+.chv-info-field
+  $fix: chv_baseline_fix($chv-fontsize-base, 1)
+  position: relative
+  padding-top: $fix
+  padding-bottom: ($chv-baseline * 0.5 - $fix)
+  padding-left: ($chv-baseline * 3.5)
+  padding-right: ($padding-base-horizontal + 1px)
+  margin-bottom: ($chv-baseline * 0.5)
+  background-color: $chv-color-blue-w
+  @media(min-width:$screen-sm-min)
+    width: 300px
+    max-width: 100%
+.chv-info-field-icon
+  position: absolute
+  top: 50%
+  left: ($chv-baseline * 0.75)
+  margin-top: (-$chv-baseline * 0.5)
+  font-size: ($chv-baseline * 2)
+
+//
+// Obligee autocomplete field
+//
+
+.chv-obligee-widget-input
+  input
+    border-top-left-radius: 4px !important
+    border-bottom-left-radius: 4px !important
+.chv-obligee-widget-details
+  margin: -8px 0 8px 0
+  padding: 13px $padding-base-horizontal 6px
+  border: solid #CCC
+  border-width: 0 1px 1px 1px
+  border-radius: 0 0 4px 4px
+.chv-obligee-widget-no-email
+  display: none
+  color: $chv-color-red
+.chv-obligee-widget-email:empty + .chv-obligee-widget-no-email
+  display: inline
+.chv-obligee-widget-hide,
+.chv-obligee-widget-skel,
+  display: none
+
+//
+// Composite text field
+//
+
+.pln-composite-text
+  @extend .form-control
+  height: auto
+  white-space: pre-wrap
+  textarea
+    width: calc(100% + 2px * 2)
+  textarea, input
+    margin: -2px
+    padding: 2px
+    border: none
+    border-radius: 0
+    outline: none
+    background-color: $chv-color-blue-w
+    resize: none
+.pln-composite-text-focus
+  @extend .form-control:focus
+
+//
+// Attachments field
+//
+
+.pln-attachments-btn
+  position: relative
+  margin-right: ($chv-baseline/2)
+  overflow: hidden
+  > input
+    position: absolute
+    display: block
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    cursor: inherit
+    @include opacity(0)
+.pln-attachments-skel
+  display: none
+.pln-attachments-list
+  padding-bottom: ($chv-baseline/2)
+.pln-attachment
+  float: left
+  margin: ($chv-baseline/4) ($chv-baseline/2) ($chv-baseline/4) 0
+  padding: 0 ($chv-baseline*0.2)
+  border-radius: ($chv-baseline*0.2)
+  color: $chv-color-white
+  background-color: $chv-color-blue-ll
+  white-space: nowrap
+  a, a:focus, a:hover
+    color: inherit
+.pln-attachment-del
+  margin: 0 (-$chv-baseline*0.2) 0 0
+  padding: 0 ($chv-baseline*0.1)
+  background-color: transparent
+  border: none
+  border-radius: 0 ($chv-baseline*0.2) ($chv-baseline*0.2) 0
+  .chv-icon
+    color: $chv-color-blue-l
+  &:hover
+    background-color: $chv-color-blue-l
+    .chv-icon
+      color: $chv-color-blue-ll
+.pln-attachments-progress
+  display: none
+  .progress-bar
+    min-width: 20px
+.pln-attachments-error
+  .alert
+    display: none
+@media(min-width:$screen-sm-min)
+  .pln-attachments
+    display: table
+    width: 100%
+  .pln-attachments-controls
+    display: table-cell
+    vertical-align: top
+  .pln-attachments-list
+    display: table-cell
+    width: 100%
+    vertical-align: top
+
+//
+// Editable span field
+//
+
+.pln-editable-span
+  background-color: $chv-color-blue-aw
+  white-space: pre-wrap;
+  &:focus
+    outline: none
+  &:after
+    content: attr(data-padding)
+    visibility: hidden
+.pln-editable-container.focus
+  outline: 1px dotted
+
+//
+// Range Widget
+//
+
+.pln-range-widget
+  display: flex
+  align-items: center
+
+  > input
+    margin-right: 15px
+    cursor: pointer
+
+//
+// Hide placeholder on active inputs
+//
+
+textarea, input
+  &:focus
+    @include placeholder(transparent)

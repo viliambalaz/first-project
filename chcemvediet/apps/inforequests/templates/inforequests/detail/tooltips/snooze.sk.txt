@@ -1,0 +1,12 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+Lehota vypršala. Môžete poskytnuúť inštitúcii ešte pár dní na odpoveď, skôr, než vykonáte ďalšiu
+akciu.

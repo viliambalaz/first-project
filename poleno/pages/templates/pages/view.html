@@ -1,0 +1,16 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends page.base_template|default:"pages/views/with_navigation.html" %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- page: poleno.pages.pages.Page
+ %
+{% endcomment %}
+
+
+{% block title %}{{ page.title }} | {{ block.super }}{% endblock %}
+
+{% block page %}
+  {{ page.render }}
+{% endblock %}

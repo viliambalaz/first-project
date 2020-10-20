@@ -1,0 +1,23 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "styleguide/base.html" %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block heading %}Components{% endblock %}
+{% block content %}
+  <div class="row">
+    <div class="col-sm-4">{% include "styleguide/components/breadcrumbs.html" %}</div>
+    <div class="col-sm-4">{% include "styleguide/components/bigstats.html" %}</div>
+    <div class="col-sm-4">{% include "styleguide/components/steps.html" %}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">{% include "styleguide/components/blog.html" %}</div>
+    <div class="col-sm-4">{% include "styleguide/components/carousel.html" %}</div>
+  </div>
+{% endblock %}

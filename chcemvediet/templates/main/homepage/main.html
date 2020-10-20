@@ -1,0 +1,50 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/full_width.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- users: int
+ %  -- obligees: int
+ %  -- inforequests: int
+ %
+{% endcomment %}
+
+
+{% block content %}
+  <div class="chv-scheme-inv-blue">
+    <div class="container text-center">
+      {% include "main/snippets/search.html" %}
+      {% include "main/homepage/texts/search_text.html" %}
+      {% include "main/homepage/steps.html" %}
+    </div>
+  </div>
+  <div class="container chv-above-1 chv-bellow-1">
+    {% include "main/homepage/about.html" %}
+  </div>
+  <div class="chv-scheme-gray chv-above-1 chv-bellow-1">
+    <div class="container">
+      {% include "main/homepage/bigstats.html" %}
+    </div>
+  </div>
+  <div class="container">
+    <div class="row chv-above-1 chv-bellow-1">
+      <div class="hidden-xs hidden-sm col-md-4 text-center">
+        {% include "main/homepage/funding.html" %}
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <h2 id="{% trans 'main:homepage:blogs:anchor' %}" class="text-center">
+          {% trans 'main:homepage:blogs:heading' %}
+        </h2>
+        {% include "main/homepage/blogs/items.html" %}
+      </div>
+      <div class="hidden-xs col-sm-6 col-md-4">
+        <h2 id="{% trans 'main:homepage:didyouknow:anchor' %}" class="text-center">
+          {% trans 'main:homepage:didyouknow:heading' %}
+        </h2>
+        {% include "main/homepage/didyouknow/items.html" %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

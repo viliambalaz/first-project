@@ -1,0 +1,23 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- devtools: string (template name)
+ %
+{% endcomment %}
+
+
+{% if DEBUG and devtools %}
+  <div class="chv-navbar-item chv-navbar-item-gray dropdown">
+    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+      <i class="chv-icon icon-wrench"></i> <i class="chv-icon icon-down-dir"></i>
+    </a>
+    <div class="dropdown-menu chv-dropdown-panel chv-scheme-white pull-right">
+      <p class="alert alert-info">
+        <strong>Note:</strong> You see these tools because development mode is enabled.
+      </p>
+      {% include devtools %}
+    </div>
+  </div>
+{% endif %}

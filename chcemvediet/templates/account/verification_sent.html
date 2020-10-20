@@ -1,0 +1,18 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'account:verification_sent:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'account:verification_sent:heading' %}</h1>
+  {% include "account/texts/verification_sent_text.html" %}
+{% endblock %}

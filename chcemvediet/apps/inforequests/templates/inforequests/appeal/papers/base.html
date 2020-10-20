@@ -1,0 +1,56 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load paragraph from chcemvediet.wizards %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.common.AppealSectionStep
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %  -- finalize: boolean
+ %
+{% endcomment %}
+
+
+<div style="margin-top: 2ex; text-align: center;">
+  <strong>{% if rozklad %}Rozklad{% else %}Odvolanie{% endif %}</strong>
+</div>
+<div style="text-align: center;">
+  <small>
+    {% if fiktivne %}
+      voči fiktívnemu rozhodnutiu o neposkytnutí informácie (§ 18 ods. 3 zák. 211/2000 Z. z.)
+    {% else %}
+      voči rozhodnutiu o neposkytnutí informácie
+    {% endif %}
+  </small>
+</div>
+{% paragraph before=2 %}
+  V zmysle § 19 ods. 1 zákona 211/2000 Z. z. o slobodnom prístupe k informáciám (ďalej len
+  „zákon o slobode informácií” alebo len „zákon”) podávam
+  {% if rozklad %}rozklad{% else %}odvolanie{% endif %}
+  voči {% if fiktivne %}fiktívnemu{% endif %} rozhodnutiu
+  {{ branch.obligee.name_genitive }}
+  (ďalej len „povinná osoba”){% if not fiktivne and last_action.file_number %}
+    číslo {{ last_action.file_number}}
+  {% endif%},
+  {% if fiktivne %}
+    ku ktorému došlo
+    {% if not_at_all %}nesprístupnením{% else %}len čiastočným sprístupnením{% endif%}
+  {% else %}
+    ktorým došlo k
+    {% if not_at_all %}nesprístupneniu{% else %}len čiastočnému sprístupneniu{% endif%}
+  {% endif %}
+  informácie v zmysle mojej žiadosti o informácie zo dňa
+  {{ inforequest.submission_date|date:"d.m.Y" }} (ďalej len „žiadosť”).
+{% endparagraph %}
+
+<div style="margin-top: 2ex; text-align: center;">
+  <strong>Odôvodnenie:</strong>
+</div>
+{% include "inforequests/appeal/papers/retrospection.html" %}
+{% block reasoning %}{% endblock %}

@@ -1,0 +1,17 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load lorem capture from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- class: string
+ %  -- tpl: string
+ %
+{% endcomment %}
+
+
+<p class="text-center">{{ class }} <br>{{ tpl }}</p>
+<div class="sg-specimen chv-scheme-white">
+  {% capture "message" %}{% lorem 3 %}{% endcapture %}
+  {% include tpl with close=True %}
+</div>

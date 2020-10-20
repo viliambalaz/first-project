@@ -1,0 +1,29 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/snippets/carousel/item.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- text: string
+ %
+{% endcomment %}
+
+
+{% block content %}
+  <div class="chv-height-4">
+    {% block text %}{{ text }}{% endblock %}
+  </div>
+  <div class="chv-above-1 chv-bellow-1">
+    <a class="btn chv-btn-blue pln-not-implemented" href="#">
+      <i class="chv-icon icon-twitter"></i>
+      &nbsp;
+      {% trans 'main:homepage:didyouknow:twitter' %}
+    </a>
+    <a class="btn chv-btn-blue pln-not-implemented" href="#">
+      <i class="chv-icon icon-facebook"></i>
+      &nbsp;
+      {% trans 'main:homepage:didyouknow:facebook' %}
+    </a>
+  </div>
+{% endblock %}

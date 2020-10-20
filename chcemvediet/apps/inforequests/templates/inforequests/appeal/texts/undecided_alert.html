@@ -1,0 +1,26 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/snippets/alerts/warning.html" %}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.common.AppealStep
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+{% block message %}
+  FIXME
+  {% plural inforequest.undecided_emails_count "1:{n} nerozhodnutý mail" "2~4:{n} nerozhodnuté maily" "{n} nerozhodnutých mailov" %};
+  Odvolanie sa neda podat, kym sa nezaradia maily; Rozpracovane odvolanie ulozte, zaradte dosle
+  maily; Potom, ak to bude stale aktualne, mozete pokracovat.
+  <a href="{{ inforequest.get_absolute_url }}">Linka na maily</a>
+{% endblock %}

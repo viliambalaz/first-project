@@ -1,0 +1,29 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.DoesNotProvidePublicFunds
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Informáciu neposkytuje</h4>
+<p>
+  Ako {% include "inforequests/appeal/texts/refusal/cislo_dovodu.html" %} nesprístupnenia
+  informácie bolo uvedené, že inštitúcia žiadanú informáciu neposkytuje.
+</p>
+<p>
+  Niektoré inštitúcie majú povinnosť sprístupniť len časť informácií, s ktorými pracujú. Jedná sa
+  o informácie, ktoré sa týkajú hospodárenia s verejnými prostriedkami, nakladania s majetkom
+  štátu, vyššieho územného celku alebo obce, informácie o životnom prostredí, o úlohách alebo
+  odborných službách týkajúcich sa životného prostredia a o obsahu, plnení a činnostiach
+  vykonávaných na základe uzatvorenej zmluvy. Súvisí vami požadovaná informácia s vyššie uvedeným?
+</p>

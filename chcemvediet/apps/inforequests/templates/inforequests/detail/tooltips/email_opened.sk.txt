@@ -1,0 +1,11 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+Email bol doručený a zobrazený na strane prijímateľa, čiže bol aspoň otvorený.

@@ -1,0 +1,22 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "styleguide/base.html" %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block heading %}Labels{% endblock %}
+{% block content %}
+  <div>
+    {% include "styleguide/labels/label.html" with class="label-primary" %}
+    {% include "styleguide/labels/label.html" with class="label-info" %}
+    {% include "styleguide/labels/label.html" with class="label-success" %}
+    {% include "styleguide/labels/label.html" with class="label-warning" %}
+    {% include "styleguide/labels/label.html" with class="label-danger" %}
+    {% include "styleguide/labels/label.html" with class="label-default" %}
+  </div>
+{% endblock %}

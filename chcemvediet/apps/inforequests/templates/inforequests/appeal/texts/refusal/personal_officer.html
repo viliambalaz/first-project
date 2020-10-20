@@ -1,0 +1,24 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.PersonalOfficer
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Osobné údaje</h4>
+<p>
+  Ako {% include "inforequests/appeal/texts/refusal/cislo_dovodu.html" %} nesprístupnenia
+  informácie ste uviedli, že podľa inštitúcie žiadaná informácia podlieha ochrane osobných údajov.
+  Osobné údaje tretích osôb inštitúcia sprístupniť nemôže. Avšak napríklad platy vedúcich
+  zamestnancov, sú verejné. Týkajú sa žiadané osobné údaje verejných zamestnancov?
+</p>

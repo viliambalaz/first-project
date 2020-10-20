@@ -1,0 +1,16 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- user: auth.User
+ %  -- current_site: django.contrib.sites.models.Site
+ %  -- activate_url: string
+ %  -- key: string
+ %
+{% endcomment %}
+
+
+{% autoescape off %}
+Confirm E-mail Address
+{% endautoescape %}

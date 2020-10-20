@@ -1,0 +1,20 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/snippets/alerts/warning.html" %}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.clarification_response.ClarificationResponseWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.clarification_response.Main
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+{% block message %}
+  Termin na doplnenie žiadosti vypršal pred
+  {% plural last_action.deadline.calendar_days_behind "1:{n} kalendárnym dňom" "{n} kalendárnymi dnami" %}.
+{% endblock %}

@@ -1,0 +1,28 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.common.AppealFinalStep
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %  -- is_deadline_missed_at_today: bool | undefined
+ %  -- calendar_days_behind_at_today: int | undefined
+ %  -- is_deadline_missed_at_legal_date: bool | undefined
+ %  -- calendar_days_behind_at_legal_date: int | undefined
+ %
+{% endcomment %}
+
+
+<h4>Dokončenie odvolania</h4>
+{% if is_deadline_missed_at_today %}
+  {% include "inforequests/appeal/texts/deadline_missed_at_today.html" %}
+{% elif is_deadline_missed_at_legal_date %}
+  {% include "inforequests/appeal/texts/deadline_missed_at_legal_date.html" %}
+{% endif %}
+<p>Vykonajte test tlače a dokončite odvolanie.</p>

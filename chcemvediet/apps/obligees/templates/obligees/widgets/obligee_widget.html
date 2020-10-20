@@ -1,0 +1,17 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- widget_attrs: {string -> string}
+ %  -- input_attrs: {string -> string}
+ %  -- obligee: chcemvediet.apps.obligees.models.Obligee | None
+ %
+{% endcomment %}
+
+
+<div {% for k, v in widget_attrs.items %}{{ k }}="{{ v }}" {% endfor %}>
+  <div class="chv-obligee-widget-inputs">
+    {% include "obligees/widgets/obligee_widget_input.html" %}
+  </div>
+</div>

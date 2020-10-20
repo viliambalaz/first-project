@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-04 20:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgid "invitations:InviteForm:email:label"
+msgstr "Pozvi"
+
+msgid "invitations:InviteForm:email:placeholder"
+msgstr "E-mail"
+
+msgid "invitations:invite:title"
+msgstr "Pozvánky"
+
+msgid "invitations:invite:heading"
+msgstr "Pošli pozvánku"
+
+msgid "invitations:invite:supply"
+msgstr "Počet voľných pozvánok"
+
+msgid "invitations:invite:unlimited"
+msgstr "Neobmedzene"
+
+msgid "invitations:invite:submit"
+msgstr "Pozvi"
+
+#, python-brace-format
+msgid "invitations:validate_unused_emails:one {0}"
+msgstr "E-mail {0} je už zaregistrovaný."
+
+#, python-brace-format
+msgid "invitations:validate_unused_emails:few {0} {1}"
+msgstr "E-maily {0} a {1} sú už zaregistrované."
+
+#, python-brace-format
+msgid "invitations:validate_unused_emails:many {0}"
+msgstr "E-maily {0} a niektoré ďalie e-maily sú už zaregistrované."

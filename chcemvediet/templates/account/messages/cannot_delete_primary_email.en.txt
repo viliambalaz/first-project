@@ -1,0 +1,11 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- email: string
+ %
+{% endcomment %}
+
+
+You cannot remove your primary e-mail address ({{ email }}).

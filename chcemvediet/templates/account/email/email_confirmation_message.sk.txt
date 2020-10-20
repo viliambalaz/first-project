@@ -1,0 +1,28 @@
+{# vim: set filetype=django :#}
+{% load squeeze from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- user: auth.User
+ %  -- current_site: django.contrib.sites.models.Site
+ %  -- activate_url: string
+ %  -- key: string
+ %
+{% endcomment %}
+
+
+{% autoescape off %}
+{% filter squeeze %}
+Užívateľ {{ user.get_full_name }} zadal na našej stránke {{ current_site.name }} túto emailovú
+adresu.
+{% endfilter %}
+
+{% filter squeeze %}
+Pre potvrdenie, prosím, kliknite na odkaz: {{ activate_url }}
+{% endfilter %}
+
+{% filter squeeze %}
+Ak došlo k omylu a neželáte sa registrovať, nemusíte robiť nič.
+{% endfilter %}
+{% endautoescape %}

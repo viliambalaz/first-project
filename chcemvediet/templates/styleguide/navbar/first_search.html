@@ -1,0 +1,25 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+<div class="sg-container">
+  <h3>First navbar &ndash; Search field (collapses for screen-xs)</h3>
+  <p>chv-navbar-first <br>main/snippets/header/search.html <br>main/snippets/header/search_icon.html</p>
+</div>
+<div class="sg-specimen">
+  {% with collapse_id=idgenerator.next %}
+    <nav class="chv-navbar chv-navbar-first">
+      <div class="container">
+        <div class="chv-navbar-items">
+          {% include "main/snippets/header/search_icon.html" %}
+        </div>
+        {% include "main/snippets/header/search.html" with pull="pull-left" %}
+      </div>
+    </nav>
+  {% endwith %}
+</div>

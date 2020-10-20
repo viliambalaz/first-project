@@ -1,0 +1,19 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- email_address: allauth.account.models.EmailAddress (not sure)
+ %  -- confirmation: allauth.account.models.EmailConfirmation (not sure)
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'account:email_confirmed:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'account:email_confirmed:heading' %}</h1>
+  {% include "account/texts/email_confirmed_text.html" %}
+{% endblock %}

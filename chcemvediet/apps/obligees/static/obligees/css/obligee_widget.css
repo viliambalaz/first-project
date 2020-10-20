@@ -1,0 +1,10 @@
+/* For chcemvediet.apps.obligees.forms.ObligeeWidget and MultipleObligeeWidget
+ * NOTE: Not used in chcemvediet. Chcemvediet has custom style. So, it's probably outdated.
+ */
+
+.chv-obligee-widget-input { margin-top: 20px; }
+.chv-obligee-widget-input:first-child { margin-top: 0; }
+.chv-obligee-widget-details { padding: 5px 12px; border: solid #CCC; border-width: 0 1px 1px 1px; border-radius: 0 0 4px 4px; }
+.chv-obligee-widget-buttons { margin-top: 10px; text-align: right; }
+.chv-obligee-widget-hide { display: none; }
+.chv-obligee-widget-skel { display: none; }

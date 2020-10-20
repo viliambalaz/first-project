@@ -1,0 +1,29 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.BusinessSecretDefinitionReason
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %  -- finalize: boolean
+ %
+{% endcomment %}
+
+
+{% if step.number_of_reasons == 1 %}
+  dôvod
+{% elif step.reason_number_on_paper == 1 %}
+  jeden z dôvodov
+{% elif step.reason_number_on_paper == 2 %}
+  druhý dôvod
+{% elif step.reason_number_on_paper == 3 %}
+  tretí dôvod
+{% else %}
+  ďalší dôvod
+{% endif %}

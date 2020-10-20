@@ -1,0 +1,18 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "styleguide/base.html" %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% block heading %}Tables{% endblock %}
+{% block content %}
+  {% include "styleguide/tables/table.html" with class="chv-table-blue" %}
+  {% include "styleguide/tables/table.html" with class="chv-table-green" %}
+  {% include "styleguide/tables/table.html" with class="chv-table-red" %}
+  {% include "styleguide/tables/table.html" with class="chv-table-gray" %}
+{% endblock %}

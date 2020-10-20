@@ -1,0 +1,99 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+{% load url from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+<h3 id="{% trans 'inforequests:accordion:anchor' %}">
+  {% trans 'inforequests:accordion:heading' %}
+</h3>
+{% with accordion_id=idgenerator.next %}
+  <div id="{{ accordion_id }}" class="panel-group">
+    {% for action in last_action.action_path %}
+      {% with collapse_id=idgenerator.next %}
+        <div class="panel panel-default">
+          <div class="panel-heading chv-pointer" data-toggle="collapse"
+               data-parent="#{{ accordion_id }}" data-target="#{{ collapse_id }}">
+            <h4>
+              <i class="chv-icon icon-down-dir pull-right"></i>
+              {{ action.get_extended_type_display }}
+            </h4>
+          </div>
+          <div id="{{ collapse_id }}" class="panel-collapse collapse">
+            <div class="panel-body panel-body-max-height">
+              <div class="chv-bellow-1">
+                {% if action.legal_date %}
+                  <p class="chv-dense">
+                    <strong>{% trans 'inforequests:accordion:action:legal_date' %}:</strong>
+                    {{ action.legal_date }}
+                  </p>
+                {% endif %}
+                {% if action.type == ACTION_TYPES.EXTENSION %}
+                  <p class="chv-dense">
+                    <strong>{% trans 'inforequests:accordion:action:extension' %}:</strong>
+                    {% include "inforequests/accordion/texts/extension.html" %}
+                  </p>
+                {% endif %}
+                {% if action.file_number %}
+                  <p class="chv-dense">
+                    <strong>{% trans 'inforequests:accordion:action:file_number' %}:</strong>
+                    {{ action.file_number }}
+                  </p>
+                {% endif %}
+                {% if action.subject %}
+                  <p class="chv-dense">
+                    <strong>{% trans 'inforequests:accordion:action:subject' %}:</strong>
+                    {{ action.subject }}
+                  </p>
+                {% endif %}
+                {% if action.disclosure_level %}
+                  <p class="chv-dense">
+                    <strong>{% trans 'inforequests:accordion:action:disclosure_level' %}:</strong>
+                    {{ action.get_disclosure_level_display }}
+                  </p>
+                {% endif %}
+                {% if action.refusal_reason %}
+                  <p class="chv-dense">
+                    <strong>{% trans 'inforequests:accordion:action:refusal_reason' %}:</strong>
+                    {{ action.get_refusal_reason_list|join:" " }}
+                  </p>
+                {% endif %}
+                {% if action.attachments %}
+                  <div class="pln-attachments">
+                    <div class="pln-attachments-controls">
+                      <div class="form-control-static">
+                        <strong>{% trans 'inforequests:accordion:action:attachments' %}:&nbsp;</strong>
+                      </div>
+                    </div>
+                    <div class="pln-attachments-list">
+                      {% for attachment in action.attachments %}
+                        <div class="pln-attachment">
+                          <a href="{% url 'inforequests:download_attachment' attachment=attachment %}">
+                            {{ attachment.name }}
+                          </a>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+              {% if action.content %}
+                {% if action.content_type == action.CONTENT_TYPES.PLAIN_TEXT %}
+                  <p class="chv-preline">{{ action.content }}</p>
+                {% elif action.content_type == action.CONTENT_TYPES.HTML %}
+                  {{ action.content|safe }}
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endwith %}
+    {% endfor %}
+  </div>
+{% endwith %}

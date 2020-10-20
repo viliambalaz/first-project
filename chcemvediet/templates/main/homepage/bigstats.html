@@ -1,0 +1,37 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- users: int
+ %  -- obligees: int
+ %  -- inforequests: int
+ %
+{% endcomment %}
+
+
+<div class="row">
+  <div class="col-sm-4">
+    {% with icon="icon-users" stats=users text=_('main:homepage:bigstats:users') %}
+      {% include "main/homepage/bigstats_item.html" %}
+    {% endwith %}
+  </div>
+  <div class="col-sm-4">
+    {% with icon="icon-docs" stats=inforequests text=_('main:homepage:bigstats:inforequests') %}
+      {% include "main/homepage/bigstats_item.html" %}
+    {% endwith %}
+  </div>
+  <div class="col-sm-4">
+    {% with icon="icon-building" stats=obligees text=_('main:homepage:bigstats:obligees') %}
+      {% include "main/homepage/bigstats_item.html" %}
+    {% endwith %}
+  </div>
+</div>
+<div class="chv-above-1">
+  <p class="chv-color-gray">
+    <span class="badge chv-bg-gray-l">beta</span>
+    &nbsp;
+    {% trans 'main:homepage:bigstats:beta' %}
+  </p>
+</div>

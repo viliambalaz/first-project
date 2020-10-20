@@ -1,0 +1,182 @@
+
+.chv-navbar
+  min-height: $chv-navbar-height
+
+.chv-navbar-items
+  margin: 0 (-$chv-navber-padding-x)
+
+.chv-navbar-item
+  &, & > a
+    display: block
+    float: left
+    min-width: $chv-navbar-height
+    height: $chv-navbar-height
+    line-height: $chv-navbar-height
+    padding: 0 $chv-navber-padding-x
+    text-align: center
+  & > a
+    margin-left: -$chv-navber-padding-x
+    margin-right: -$chv-navber-padding-x
+
+.chv-navbar-toggle
+  @media(min-width:$screen-sm-min)
+    display: none
+
+.chv-navbar-collapse
+  @media(max-width:$screen-xs-max)
+    margin-top: $chv-navbar-height
+    margin-left: -$chv-container-padding
+    margin-right: -$chv-container-padding
+    .chv-navbar-item
+      float: none
+      text-align: left
+    .chv-hover-bold
+      text-align: left
+    a
+      padding-left: $chv-container-padding
+    &:after
+      content: ""
+      display: block
+      height: $chv-baseline
+  @media(min-width:$screen-sm-min)
+    display: block
+
+.dropdown-menu
+  text-align: left
+  > li
+    padding: 0 !important
+    margin: 0
+
+//
+// Srandard colors
+//
+
+.chv-navbar-first
+  color: $chv-color-white
+  background-color: $chv-color-blue
+  a
+    color: $chv-color-white
+
+.chv-navbar-second
+  color: $chv-color-blue
+  background-color: $chv-color-gray-w
+  a
+    color: $chv-color-blue
+  @media(max-width:$screen-xs-max)
+    .chv-navbar-toggle:not(.collapsed)
+      color: $chv-color-white
+      background-color: $chv-color-gray-l
+    .chv-navbar-collapse
+      a
+        color: $chv-color-white
+        background-color: $chv-color-gray-l
+        &:hover, &:active
+          background-color: $chv-color-gray
+  @media(min-width:$screen-sm-min)
+    .chv-navbar-item.active
+      position: relative
+      &:after
+        content: ""
+        position: absolute
+        left: 50%
+        bottom: 0
+        width: 0
+        height: 0
+        margin-left: -8px
+        border: 8px solid transparent
+        border-bottom-color: $chv-color-white
+
+.chv-navbar-item-gray
+  &, & > a
+    color: $chv-color-gray !important
+
+.chv-navbar-item-gray-blue
+  &, & > a
+    color: $chv-color-gray !important
+  &:hover, &:active
+    &, & > a
+      color: $chv-color-blue !important
+
+.chv-navbar-item-green
+  &, & > a
+    color: $chv-color-white !important
+    background-color: $chv-color-green-l
+    font-weight: 700
+  &:hover, &:active
+    &, & > a
+      background-color: $chv-color-green
+
+//
+// Brand component
+//
+
+.chv-navbar-brand
+  font-size: 1.5em
+  .chv-navbar-logo
+    margin-right: $chv-navber-padding-x
+    background-color: $chv-color-blue-d
+  b
+    font-weight: 700
+  tt
+    text-transform: uppercase
+    font-size: 0.7em
+    font-weight: 700
+    font-family: $font-family-sans-serif
+  .badge
+    margin-left: 5px
+    background-color: $chv-color-blue-ll
+    font-weight: 500
+    vertical-align: 30%
+
+//
+// Search component
+//
+
+.chv-navbar-search
+  float: right
+  .chv-navbar-search-inner
+    max-height: $chv-navbar-height
+    line-height: $chv-navbar-height
+    overflow: hidden
+  input
+    display: inline !important
+    color: $chv-color-white
+    background-color: $chv-color-blue-d
+    border-color: $chv-color-blue-d !important
+    box-shadow: none !important
+  .btn
+    color: $chv-color-white
+    font-weight: 700
+    &:hover, &:active, &:focus
+      color: $chv-color-white
+      background-color: $chv-color-blue-dd
+@media(max-width:$screen-xs-max)
+  .chv-navbar-search
+    width: 100%
+    .chv-navbar-search-inner
+      margin-left: -$chv-container-padding
+      margin-right: -$chv-container-padding
+      background-color: $chv-color-blue-d
+    input
+      padding-left: $chv-container-padding
+    .btn
+      margin-right: ($chv-container-padding - $chv-navber-padding-x)
+      background-color: $chv-color-blue-dd
+  .chv-navbar-search-toggle:not(.collapsed)
+    background-color: $chv-color-blue-d
+@media(min-width:$screen-sm-min)
+  .chv-navbar-search
+    padding-right: ($chv-navber-padding-x * 2)
+    .chv-navbar-search-inner
+      height: $chv-navbar-height !important
+    .input-group
+      width: 10px
+    input
+      padding-right: 0
+      width: 100px !important
+      &:focus
+        width: 200px !important
+    .btn
+      background-color: $chv-color-blue-d
+    .collapse
+      display: block

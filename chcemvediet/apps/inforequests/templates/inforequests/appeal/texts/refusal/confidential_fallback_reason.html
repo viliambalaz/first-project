@@ -1,0 +1,32 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- wizard: chcemvediet.apps.inforequests.forms.appeal.AppealWizard
+ %  -- step: chcemvediet.apps.inforequests.forms.appeal.refusal.ConfidentialFallbackReason
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- last_action: chcemvediet.apps.inforequests.models.Action
+ %  -- rozklad: boolean
+ %  -- fiktivne: boolean
+ %  -- not_at_all: boolean
+ %
+{% endcomment %}
+
+
+<h4>Utajovaná skutočnosť</h4>
+{% include "inforequests/appeal/texts/refusal/confidential_fallback_reason_alert.html" %}
+<p>
+  Zvolili ste možnosť, že vami žiadanú informáciu nie je možné priradiť k uvedeným kategóriám.
+  Žiaľ, náš portál v súčasnosti nedokáže pokryť všetky alternatívy. Z toho dôvodu, v závere
+  pripravovaného odvolania požiadame inštitúciu, aby informáciu sprístupnila v takom rozsahu, aby
+  bola vyčiernená len utajovaná skutočnosť.
+</p>
+<p>
+  Ak ste aj naďalej presvedčený, že informácia má byť sprístupnená v plnom znení, skúste nižšie
+  uviesť vlastné odôvodnenie, prečo považujete postup inštitúcie za nesprávny.
+</p>
+<p>
+  {% include "main/forms/field.html" with field=step.confidential_fallback %}
+</p>

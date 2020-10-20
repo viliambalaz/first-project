@@ -1,0 +1,40 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load yes no from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- field: django.forms.Field
+ %
+{% endcomment %}
+
+
+<div class="form-group {{ field.errors|yes:"has-error" }}">
+  {% block label %}
+    {% if field.label.strip %}
+      <label class="control-label col-sm-3" for="{{ field.auto_id }}">
+        {% if field.field.required %}*{% endif %}
+        {{ field.label.strip }}
+      </label>
+    {% endif %}
+  {% endblock %}
+  <div class="col-sm-9 {% block offset %}{{ field.label.strip|no:"col-sm-offset-3" }}{% endblock %}">
+    {% block field %}
+      {{ field }}
+    {% endblock %}
+    {% block help %}
+      {% if field.field.help_text.strip %}
+        <span class="help-block">
+          {{ field.field.help_text.strip }}
+        </span>
+      {% endif %}
+    {% endblock %}
+    {% block errors %}
+      {% if field.errors %}
+        {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- action: chcemvediet.apps.inforequests.models.Action
+ %  -- url: string
+ %
+{% endcomment %}
+
+
+{% autoescape off %}
+{% if action.deadline.is_deadline_missed %}
+  Vaša lehota uplynula
+{% else %}
+  Vaša lehota čoskoro uplynie
+{% endif %}
+{% endautoescape %}

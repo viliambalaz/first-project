@@ -1,0 +1,22 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- pending_inforequests: [chcemvediet.apps.inforequests.models.Inforequest]
+ %
+{% endcomment %}
+
+
+{% if pending_inforequests %}
+  <h2 id="{% trans 'inforequests:mine:pending:anchor' %}">
+    {% with class="chv-icon-lg" color="chv-color-red-l" %}
+      {% include "main/snippets/icons/chv-diag.html" %}
+    {% endwith %}
+    {% trans 'inforequests:mine:pending:heading' %}
+  </h2>
+  {% with class="chv-table-red" objects=pending_inforequests %}
+    {% include "inforequests/tables/inforequests.html" %}
+  {% endwith %}
+{% endif %}

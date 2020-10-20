@@ -1,0 +1,50 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+{% if DEVBAR_MESSAGE %}
+  <div class="chv-devbar">
+    <div class="container">
+      <p>{{ DEVBAR_MESSAGE|safe }}</p>
+    </div>
+  </div>
+{% endif %}
+
+<nav class="chv-navbar chv-navbar-first">
+  <div class="container">
+    {% with search_id=idgenerator.next %}
+      <div class="chv-navbar-items">
+        {% include "main/snippets/header/brand.html" %}
+      </div>
+      <div class="chv-navbar-items pull-right chv-hidden chv-block-300">
+        {% include "main/snippets/header/search_icon.html" with collapse_id=search_id %}
+        {% include "main/snippets/header/language.html" %}
+      </div>
+      {% include "main/snippets/header/search.html" with collapse_id=search_id %}
+    {% endwith %}
+  </div>
+</nav>
+<nav class="chv-navbar chv-navbar-second">
+  <div class="container">
+    <div class="chv-navbar-items pull-right">
+      {% include "main/snippets/header/devtools.html" %}
+      {% include "main/snippets/header/account.html" %}
+      {% include "main/snippets/header/menu_right.html" %}
+    </div>
+    {% with collapse_id=idgenerator.next %}
+      <a class="chv-navbar-item chv-navbar-toggle collapsed" href="#{{ collapse_id }}"
+         data-toggle="collapse">
+        <i class="chv-icon chv-icon-lg icon-menu"></i>
+      </a>
+      <div id="{{ collapse_id }}" class="chv-navbar-items chv-navbar-collapse collapse">
+        {% include "main/snippets/header/menu_left.html" %}
+      </div>
+    {% endwith %}
+  </div>
+</nav>

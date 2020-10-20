@@ -1,0 +1,37 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- obligee_page: django.core.paginator.Paginator(chcemvediet.apps.obligees.models.Obligee.objects)
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'obligees:index:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'obligees:index:heading' %}</h1>
+  {% include "obligees/texts/index.html" %}
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>{% trans 'obligees:index:table:name' %}</th>
+        <th>{% trans 'obligees:index:table:address' %}</th>
+        <th>{% trans 'obligees:index:table:emails' %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for obligee in obligee_page %}
+        <tr>
+          <td>{{ obligee.name }}</td>
+          <td>{{ obligee.street }}; {{ obligee.zip }} {{ obligee.city }}</td>
+          <td>{{ obligee.emails }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include "main/snippets/paging.html" with page=obligee_page %}
+{% endblock %}

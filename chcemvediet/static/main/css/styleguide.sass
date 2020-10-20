@@ -1,0 +1,65 @@
+
+body#styleguide
+  padding-bottom: ($chv-baseline * 5)
+
+  .sg-collapse
+    display: none
+  .sg-collapse-open
+    display: block
+  .sg-collapse-close
+    display: none
+  *:target
+    + .sg-collapse
+      display: block
+    .sg-collapse-open
+      display: none
+    .sg-collapse-close
+      display: block
+
+  .sg-container
+    margin-left: 50px
+    margin-right: 50px
+
+  .sg-table
+    width: 100%
+    table-layout: fixed
+    th, td
+      text-align: center
+      vertical-align: middle
+
+  .sg-specimen
+    padding-bottom: $chv-baseline
+
+  .sg-specimen-inline
+    display: inline-block
+    min-width: 250px
+    min-height: ($chv-baseline * 2)
+    padding-right: 20px
+    padding-bottom: $chv-baseline
+    vertical-align: top
+
+  .sg-color
+    width: ($chv-baseline * 2)
+    height: ($chv-baseline * 2)
+    line-height: ($chv-baseline * 2 - 6px)
+    margin: ($chv-baseline * 0.5) auto
+    border: solid 3px transparent
+    border-radius: 50%
+    font-size: ($chv-baseline * 1.2)
+    background-color: gray
+
+  .sg-scheme
+    padding: $chv-baseline
+    padding-bottom: 0
+    border-radius: 1em
+
+  .sg-checkbox
+    margin-left: 50px
+    line-height: $chv-baseline
+    vertical-align: top
+  .sg-checkbox ~ label
+    margin-bottom: $chv-baseline
+  .sg-checkbox:checked ~ .sg-grid
+    @extend .chv-baseline-grid
+  .sg-grid
+    padding-bottom: ($chv-baseline * 2)

@@ -1,0 +1,12 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+o {% plural action.extension "1:{n} pracovný deň" "2~4:{n} pracovné dni" "{n} pracovných dní" %}

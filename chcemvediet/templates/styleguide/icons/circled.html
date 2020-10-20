@@ -1,0 +1,21 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- icon: string
+ %  -- extra: string
+ %
+{% endcomment %}
+
+
+<div class="sg-specimen-inline chv-scheme-white">
+  <p>
+    <span class="chv-icon-stack {{ extra }}">
+      <i class="chv-icon icon-circle"></i>
+      <i class="chv-icon chv-icon-half chv-icon-inv {{ icon }}"></i>
+    </span>
+    &nbsp;
+    {{ icon }}
+  </p>
+</div>

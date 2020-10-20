@@ -1,0 +1,121 @@
+
+//
+// Paragraphs and headings with vertical rhythm.
+//
+
+@function chv_baseline_fix($fontsize, $lead)
+  @return ($lead * $chv-baseline * 37 / 88 - $fontsize / 4)
+
+@mixin chv-baseline($fontsize, $lead: 1, $above: 0, $below: 0)
+  $fix: chv_baseline_fix($fontsize, $lead)
+  padding-top: ($fix + $above * $chv-baseline)
+  margin-top: 0
+  @if $below * $chv-baseline - $fix >= 0
+    padding-bottom: ($below * $chv-baseline - $fix)
+    margin-bottom: 0
+  @else
+    padding-bottom: 0
+    margin-bottom: ($below * $chv-baseline - $fix)
+  font-size: $fontsize
+  line-height: $lead * $chv-baseline
+
+h1
+  @include chv-baseline($chv-fontsize-h1, 2, 0, 1)
+h2
+  @include chv-baseline($chv-fontsize-h2, 2, 0, 1)
+h3
+  @include chv-baseline($chv-fontsize-h3, 1, 0, 1)
+h4
+  @include chv-baseline($chv-fontsize-h4, 1, 0, 1)
+p.lead
+  @include chv-baseline($chv-fontsize-p-lead, 1, 0, 1)
+p
+  @include chv-baseline($chv-fontsize-p, 1, 0, 1)
+p.chv-semidense
+  @include chv-baseline($chv-fontsize-p, 1, 0, 0.5)
+p.chv-dense
+  @include chv-baseline($chv-fontsize-p, 1, 0, 0)
+li
+  @include chv-baseline($chv-fontsize-li, 1, 0, 0.5)
+li.chv-dense
+  @include chv-baseline($chv-fontsize-li, 1, 0, 0)
+
+//
+// Adjust margins of some other elements
+//
+
+ul, ol
+  margin-top: 0
+  margin-bottom: 0
+  padding-top: 0
+  padding-bottom: 0
+  padding-left: $chv-list-indent
+
+li
+  &:last-child
+    padding-bottom: ($chv-baseline - chv_baseline_fix($chv-fontsize-li, 1))
+    margin-bottom: 0
+  li
+    &:first-child
+      padding-top: ($chv-baseline * 0.5)
+      margin-top: 0
+    &:last-child
+      padding-bottom: 0
+      margin-bottom: 0
+
+.chv-indent
+  padding-left: $chv-list-indent
+
+hr
+  margin-top: 0
+  padding-top: ($chv-baseline - 1px)
+  margin-bottom: $chv-baseline
+  border-top: none
+  border-bottom: 1px solid #eee
+
+//
+// Base paragraph and heading styles
+//
+
+p.lead
+  font-weight: 500
+h1, h2
+  font-weight: 400
+h3, h4
+  font-weight: 700
+a, .btn-link
+  text-decoration: none
+  &:focus, &:hover
+    text-decoration: none
+
+//
+// Override bootstrap close button line height
+//
+.close
+  line-height: $chv-baseline
+
+//
+// Simple grid overlay for baseline visualization
+//
+
+.chv-baseline-grid
+  position: relative
+  &:after
+    $a: #ef9f9f 0px
+    $b: #ef9f9f 1px
+    $c: transparent 1px
+    $d: transparent ($chv-baseline / 2)
+    $e: #c9e4ef ($chv-baseline / 2)
+    $f: #c9e4ef ($chv-baseline / 2 + 1px)
+    $g: transparent ($chv-baseline / 2 + 1px)
+    $h: transparent $chv-baseline
+    content: " "
+    position: absolute
+    display: block
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    background-image: repeating-linear-gradient(180deg, $a, $b, $c, $d, $e, $f, $g, $h)
+    z-index: 2000
+    pointer-events: none

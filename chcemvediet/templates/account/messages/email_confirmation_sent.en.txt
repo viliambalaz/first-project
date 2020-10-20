@@ -1,0 +1,11 @@
+{# vim: set filetype=django :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- email: string
+ %
+{% endcomment %}
+
+
+Confirmation e-mail sent to {{ email }}.

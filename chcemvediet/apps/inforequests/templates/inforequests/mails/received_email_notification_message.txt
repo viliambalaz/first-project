@@ -1,0 +1,37 @@
+{# vim: set filetype=django :#}
+{% load squeeze from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- email: poleno.mail.models.Message
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- url: string
+ %
+{% endcomment %}
+
+
+{% autoescape off %}
+{% filter squeeze %}
+We received a new e-mail regarding your inforequest to
+{{ inforequest.main_branch.historicalobligee.name }}.
+{% if inforequest.undecided_emails_count > 1 %}
+  We already have {{ inforequest.undecided_emails_count }} waiting e-mails regarding your
+  inforequest.
+{% endif %}
+The e-mail was sent from: {{ email.from_formatted }}
+{% endfilter %}
+
+{% filter squeeze %}
+To read the e-mail and decide what it is, go to {{ url }}
+{% endfilter %}
+
+
+---------- Received message ----------
+From: {{ email.from_formatted }}
+Date: {{ email.processed }}
+Subject: {{ email.subject }}
+To: {{ email.to_formatted }}
+
+{{ email.text }}
+{% endautoescape %}

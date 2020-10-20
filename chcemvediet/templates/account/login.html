@@ -1,0 +1,54 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- form: allauth.account.forms.LoginForm
+ %  -- signup_url: string
+ %  -- redirect_field_name: string
+ %  -- redirect_field_value: string
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'account:login:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <form class="form-horizontal" method="post" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8">
+        <h1>{% trans 'account:login:heading' %}</h1>
+        {% include "account/texts/login_text.html" %}
+      </div>
+      <div class="col-md-4 chv-pull-right-md chv-above-half">
+        {% include "account/snippets/why_register.html" %}
+      </div>
+      <div class="col-md-8 chv-above-1">
+        {% include "main/forms/form_horizontal.html" %}
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+        {% endif %}
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">
+              {% trans 'account:login:submit' %}
+            </button>
+            <a class="btn btn-link" href="{% url 'account_reset_password' %}">
+              {% trans 'account:login:reset_password' %}
+            </a>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <h3>{% trans 'account:login:social_buttons' %}</h3>
+            {% include "account/snippets/social_login_buttons.html" with process="login" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

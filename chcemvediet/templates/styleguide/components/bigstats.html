@@ -1,0 +1,17 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+
+{% comment %}
+ %
+ % Context:
+ %  -- None
+ %
+{% endcomment %}
+
+
+<h3>Big number statics</h3>
+<p>chv-bigstats <br>main/homepage/bigstats_item.html</p>
+<div class="sg-specimen chv-scheme-white">
+  {% with icon="icon-docs" stats=532 text=_('main:homepage:bigstats:inforequests') %}
+    {% include "main/homepage/bigstats_item.html" %}
+  {% endwith %}
+</div>

@@ -1,0 +1,803 @@
+
+    <div class="chv-body-clip">
+      <header>
+        
+
+
+
+
+
+
+<nav class="chv-navbar chv-navbar-first">
+  <div class="container">
+    
+      <div class="chv-navbar-items">
+        
+
+
+
+
+<div class="chv-navbar-item chv-navbar-brand">
+  <div class="chv-navbar-item chv-navbar-logo chv-hidden chv-block-400">
+    
+
+
+
+
+<span class="chv-icon-stack ">
+  <i class="chv-icon icon-chv-horiz-40 "></i>
+  <i class="chv-icon icon-chv-horiz-70 "></i>
+  <i class="chv-icon icon-chv-horiz-100 "></i>
+</span>
+
+  </div>
+  <a href="/en/">chcem<b>vediet</b>.<tt>sk</tt></a>
+  <span class="badge chv-hidden chv-inline-400">beta</span>
+</div>
+
+      </div>
+      <div class="chv-navbar-items pull-right chv-hidden chv-block-300">
+        
+
+
+
+
+<a class="chv-navbar-item chv-navbar-search-toggle visible-xs collapsed" href="#1" data-toggle="collapse">
+  <i class="chv-icon icon-search"></i>
+</a>
+
+        
+
+
+
+
+
+
+
+  
+    <a href="/i18n/setlang/" class="chv-navbar-item hidden-xs pln-post" data-post-csrfmiddlewaretoken="wHL1P3HxA2gJFibd1gQK7KHEykLlBzHV" data-post-language="sk" data-post-next="/sk/infoziadosti/attachment-filename-184/prisla-posta/4/">
+      <span class="chv-hover-bold" data-content="Slovensky">Slovensky</span>
+    </a>
+    <a href="/i18n/setlang/" class="chv-navbar-item visible-xs pln-post" data-post-csrfmiddlewaretoken="wHL1P3HxA2gJFibd1gQK7KHEykLlBzHV" data-post-language="sk" data-post-next="/sk/infoziadosti/attachment-filename-184/prisla-posta/4/">
+      <span class="chv-hover-bold" data-content="SK">SK</span>
+    </a>
+  
+
+  
+
+
+      </div>
+      
+
+
+
+
+
+<div class="chv-navbar-search ">
+  <div id="1" class="chv-navbar-search-inner collapse">
+      <form action="/en/vyhladavanie/" method="get">
+        <div class="input-group">
+          <input class="form-control" type="text" name="q" autocomplete="off" placeholder="Hľadaj...">
+          <span class="input-group-btn">
+          <button class="btn" type="submit">
+            <span class="hidden-xs"><i class="chv-icon icon-search"></i></span>
+            <span class="visible-xs">Hľadaj</span>
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+
+    
+  </div>
+</nav>
+<nav class="chv-navbar chv-navbar-second">
+  <div class="container">
+    <div class="chv-navbar-items pull-right">
+      
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+  
+    
+    <span class="chv-navbar-item chv-navbar-item-gray-blue dropdown ">
+      <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+        <span class="chv-hidden chv-inline-sm">philipfry@centrum.sk&nbsp;&nbsp;</span>
+        
+
+
+
+
+
+<span class="chv-icon-stack chv-icon-2x">
+  <i class="chv-icon icon-circle chv-color-blue-ll chv-hover-blue-lll"></i>
+  <i class="chv-icon chv-icon-half chv-color-blue icon-user chv-hover-blue-ll"></i>
+</span>
+
+        <i class="chv-icon icon-down-dir"></i>
+      </a>
+      <ul class="dropdown-menu pull-right">
+        <li>
+          <a href="/en/accounts/profile/">
+            Profil užívateľa
+          </a>
+        </li>
+        <li>
+          <a href="/en/accounts/password/change/">
+            Zmeniť heslo
+          </a>
+        </li>
+        <li>
+          <a href="/en/accounts/email/">
+            Spravovať e-maily
+          </a>
+        </li>
+        <li>
+          <a href="/en/accounts/social/connections/">
+            Spravovať napojenia
+          </a>
+        </li>
+        <li>
+          <a href="/en/accounts/nastavenia/">
+            Nastavenia
+          </a>
+        </li>
+        
+          <li class="divider"></li>
+          <li>
+            <a href="/en/pozvanky/">
+              Pozvať
+            </a>
+          </li>
+        
+        <li class="divider"></li>
+        <li>
+          <a href="/en/accounts/logout/" class="pln-post" data-post-csrfmiddlewaretoken="wHL1P3HxA2gJFibd1gQK7KHEykLlBzHV">
+            Odhlásiť
+          </a>
+        </li>
+      </ul>
+    </span>
+  
+
+
+      
+
+
+
+
+
+<a class="chv-navbar-item chv-navbar-item-green chv-hidden chv-block-300" href="/en/infoziadosti/nova-ziadost/">
+  <i class="chv-icon icon-plus"></i>
+  &nbsp;
+  <span class="chv-hidden chv-inline-500">Podať žiadosť</span>
+</a>
+
+    </div>
+    
+      <a class="chv-navbar-item chv-navbar-toggle collapsed" href="#2" data-toggle="collapse">
+        <i class="chv-icon chv-icon-lg icon-menu"></i>
+      </a>
+      <div id="2" class="chv-navbar-items chv-navbar-collapse collapse">
+        
+
+
+
+
+
+
+
+<a class="chv-navbar-item " href="/en/about/">
+  <span class="chv-hover-bold" data-content="O projekte">
+    O projekte
+  </span>
+</a>
+<a class="chv-navbar-item " href="/en/support-us/">
+  <span class="chv-hover-bold" data-content="Podporte nás">
+    Podporte nás
+  </span>
+</a>
+
+<a class="chv-navbar-item active" href="/en/infoziadosti/moje/">
+  <span class="chv-hover-bold" data-content="Žiadosti">
+    Žiadosti
+  </span>
+</a>
+<a class="chv-navbar-item " href="/en/institucie/">
+  <span class="chv-hover-bold" data-content="Inštitúcie">
+    Inštitúcie
+  </span>
+</a>
+
+      </div>
+    
+  </div>
+</nav>
+
+      </header>
+      <div class="chv-scheme-white">
+        
+  <div id="content" class="container chv-above-1">
+    
+
+
+
+
+
+
+
+    
+  <form class="form-horizontal" method="post" action="/en/infoziadosti/attachment-filename-184/prisla-posta/4/">
+    <input type="hidden" name="csrfmiddlewaretoken" value="wHL1P3HxA2gJFibd1gQK7KHEykLlBzHV">
+    
+      <h1>
+        
+  
+    Nová pošta od inštitúcie
+  
+
+      </h1>
+    
+    
+  <div class="row">
+    <div class="col-sm-8">
+      
+      
+        
+          <div class="chv-wizard-steps">
+            <div class="chv-wizard-steps-text">
+              
+                Krok 5 / 5
+              
+            </div>
+            <div class="chv-wizard-steps-dots">
+              
+                <a class="chv-wizard-steps-dot pln-with-tooltip                                                      chv-wizard-steps-dot-accessible hasTooltip" href="/en/infoziadosti/attachment-filename-184/prisla-posta/0/" data-toggle="tooltip" title="" data-original-title="Kedy vám prišla odpoveď od inštitúcie?">
+                </a>
+              
+                <a class="chv-wizard-steps-dot pln-with-tooltip                                                      chv-wizard-steps-dot-accessible hasTooltip" href="/en/infoziadosti/attachment-filename-184/prisla-posta/1/" data-toggle="tooltip" title="" data-original-title="Je odpoveď inštitúcie otázka?">
+                </a>
+              
+                <a class="chv-wizard-steps-dot pln-with-tooltip                                                      chv-wizard-steps-dot-accessible hasTooltip" href="/en/infoziadosti/attachment-filename-184/prisla-posta/2/" data-toggle="tooltip" title="" data-original-title="Potvrdenie">
+                </a>
+              
+                <a class="chv-wizard-steps-dot pln-with-tooltip                                                      chv-wizard-steps-dot-accessible hasTooltip" href="/en/infoziadosti/attachment-filename-184/prisla-posta/3/" data-toggle="tooltip" title="" data-original-title="K veci">
+                </a>
+              
+                <a class="chv-wizard-steps-dot pln-with-tooltip                           chv-wizard-steps-dot-current                           chv-wizard-steps-dot-accessible hasTooltip" href="/en/infoziadosti/attachment-filename-184/prisla-posta/4/" data-toggle="tooltip" title="" data-original-title="Nezaradené">
+                </a>
+              
+            </div>
+          </div>
+        
+      
+      
+  
+        
+          
+
+
+
+
+<h4>Nezaradenie odpovede</h4>
+<p>
+  Mrzí nás to, ale odpoveď, ktorú vám poslala inštitúcia, sa nepodarilo zaradiť.  Súvisí odpoveď so
+  žiadosťou?
+</p>
+
+        
+        
+          
+            <div>
+
+
+
+
+
+  
+
+
+  
+    
+      
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+<div class="form-group ">
+  
+    
+  
+  <div class="col-sm-9 col-sm-offset-3">
+    
+  
+    <div class="radio">
+      <label for="id_ObligeeActionWizard-184-wants_help_0"><input class="pln-toggle-changed" data-container="form" data-disable-target-1=".chv-visible-if-wants-help" data-hide-target-1=".form-group:has(.chv-visible-if-wants-help)" id="id_ObligeeActionWizard-184-wants_help_0" name="ObligeeActionWizard-184-wants_help" type="radio" value="1"> Áno, odpoveď nejako súvisí, chcem, aby mi admin pomohol identifikovať odpoveď inštitúcie.</label>
+    </div>
+  
+    <div class="radio">
+      <label for="id_ObligeeActionWizard-184-wants_help_1"><input class="pln-toggle-changed" data-container="form" data-disable-target-1=".chv-visible-if-wants-help" data-hide-target-1=".form-group:has(.chv-visible-if-wants-help)" id="id_ObligeeActionWizard-184-wants_help_1" name="ObligeeActionWizard-184-wants_help" type="radio" value="0"> Nie, odpoveď inštitúcie zjavne nesúvisí s mojou žiadosťou.</label>
+    </div>
+  
+
+    
+      
+    
+    
+      
+    
+  </div>
+</div>
+
+  
+
+
+    
+  
+    
+      
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+<div class="form-group " style="display: block;">
+  
+    
+      <label class="control-label col-sm-3" for="id_ObligeeActionWizard-184-help_request">
+        
+        Správa pre admina
+      </label>
+    
+  
+  <div class="col-sm-9 ">
+    
+  <textarea class="pln-autosize chv-visible-if-wants-help form-control" cols="" id="id_ObligeeActionWizard-184-help_request" name="ObligeeActionWizard-184-help_request" placeholder="Popíšte adminovi, čomu ste nerozumeli" rows="" style="height: 154px; overflow-y: hidden;"></textarea>
+
+    
+      
+    
+    
+      
+    
+  </div>
+</div>
+
+  
+
+
+    
+  
+
+</div>
+          
+        
+      
+  
+
+      <div class="form-group chv-above-half">
+        <div class="col-sm-offset-3 col-sm-9">
+          
+            
+              
+                <a class="btn btn-default" href="/en/infoziadosti/attachment-filename-184/prisla-posta/3/">
+                  
+                    <i class="chv-icon chv-icon-lg icon-chevron-left"></i>
+                    &nbsp;
+                    Späť
+                  
+                </a>
+              
+            
+            
+              <button type="submit" class="btn btn-primary" name="button" value="next">
+                
+                  
+                    <i class="chv-icon chv-icon-lg icon-chevron-right"></i>
+                    &nbsp;
+                    Dokončiť
+                  
+                
+              </button>
+            
+            
+              <button type="submit" class="btn btn-default" name="button" value="save">
+                
+                  <i class="chv-icon chv-icon-lg icon-floppy"></i>
+                  &nbsp;
+                  Uložiť
+                
+              </button>
+            
+            
+              <a class="btn btn-link pull-right" href="/en/infoziadosti/attachment-filename-184/">
+                
+                  <i class="chv-icon chv-icon-lg icon-cancel"></i>
+                  Zrušiť
+                
+              </a>
+            
+          
+        </div>
+      </div>
+    
+    </div>
+    <div class="col-sm-4 chv-above-2">
+      
+        
+          
+
+
+
+
+
+
+<h3 id="historia-ziadosti">
+  História žiadosti
+</h3>
+
+  <div id="3" class="panel-group">
+    
+      
+        <div class="panel panel-default">
+          <div class="panel-heading chv-pointer" data-toggle="collapse" data-parent="#3" data-target="#4">
+            <h4>
+              <i class="chv-icon icon-down-dir pull-right"></i>
+              Žiadosť
+            </h4>
+          </div>
+          <div id="4" class="panel-collapse collapse">
+            <div class="panel-body panel-body-max-height">
+              <div class="chv-bellow-1">
+                
+                  <p class="chv-dense">
+                    <strong>Dátum:</strong>
+                    Jan. 22, 2020
+                  </p>
+                
+                
+                
+                
+                  <p class="chv-dense">
+                    <strong>Predmet:</strong>
+                    Žiadosť o informácie podľa 211/2000 Z.z.: Attachment Filename
+                  </p>
+                
+                
+                
+                
+                  <div class="pln-attachments">
+                    <div class="pln-attachments-controls">
+                      <div class="form-control-static">
+                        <strong>Prílohy:&nbsp;</strong>
+                      </div>
+                    </div>
+                    <div class="pln-attachments-list">
+                      
+                        <div class="pln-attachment">
+                          <a href="/en/infoziadosti/prilohy/588/">
+                            FooPhilipKezmarokBoo.txt
+                          </a>
+                        </div>
+                      
+                    </div>
+                  </div>
+                
+              </div>
+              
+                
+                  <p class="chv-preline">Povinná osoba: Agentúra Slovenskej akadémie pôdohospodárskych vied, Hlohovská 2, Nitra 949 01, agentura-slovenskej-akademie-p_mail@mail.chcemvediet.sk
+
+Žiadateľ: Philip Fry, Lanskronska, Kezmarok 06001, gafe_mail@mail.chcemvediet.sk
+
+
+Dobrý deň,
+
+na základe zákona č. 211/2000 Z. z. o slobodnom prístupe k informáciám v znení neskorších predpisov žiadam o nasledovné informácie:
+
+nic
+
+Informáciu žiadam zaslať v elektronickej podobe na moju emailovú adresu: gafe_mail@mail.chcemvediet.sk
+
+V zmysle § 14 ods 5. zákona žiadam o potvrdenie prijatia žiadosti o informácie.
+
+Ďakujem,
+
+Philip Fry</p>
+                
+              
+            </div>
+          </div>
+        </div>
+      
+    
+      
+        <div class="panel panel-default">
+          <div class="panel-heading chv-pointer" data-toggle="collapse" data-parent="#3" data-target="#5">
+            <h4>
+              <i class="chv-icon icon-down-dir pull-right"></i>
+              Potvrdenie prijatia žiadosti
+            </h4>
+          </div>
+          <div id="5" class="panel-collapse collapse">
+            <div class="panel-body panel-body-max-height">
+              <div class="chv-bellow-1">
+                
+                  <p class="chv-dense">
+                    <strong>Dátum:</strong>
+                    Jan. 22, 2020
+                  </p>
+                
+                
+                
+                  <p class="chv-dense">
+                    <strong>Spis:</strong>
+                    123
+                  </p>
+                
+                
+                
+                
+                
+                  <div class="pln-attachments">
+                    <div class="pln-attachments-controls">
+                      <div class="form-control-static">
+                        <strong>Prílohy:&nbsp;</strong>
+                      </div>
+                    </div>
+                    <div class="pln-attachments-list">
+                      
+                        <div class="pln-attachment">
+                          <a href="/en/infoziadosti/prilohy/591/">
+                            Foo - Philip Kezmarok.txt
+                          </a>
+                        </div>
+                      
+                    </div>
+                  </div>
+                
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+
+  </form>
+
+  </div>
+
+      </div>
+      <footer>
+        
+
+
+
+
+
+
+<div class="chv-above-1"></div>
+<div class="chv-scheme-gray chv-bellow-1-half">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 chv-above-1">
+        <h3 id="partneri-projektu">
+          Partneri projektu
+        </h3>
+        <div class="chv-height-3">
+          <div class="chv-aspect chv-aspect-parners">
+            <div class="chv-aspect-inner chv-justify-all">
+              
+
+
+
+
+
+<a href="http://www.governance.sk/">
+  <img class="chv-height-full" src="/static/main/images/partners/sgi.svg">
+</a>
+<a href="http://www.nadaciapontis.sk/">
+  <img class="chv-height-full" src="/static/main/images/partners/pontis.svg">
+</a>
+<a href="http://www.cpf.sk/">
+  <img class="chv-height-full" src="/static/main/images/partners/cpf.svg">
+</a>
+<a href="http://slovakia.taylorwessing.com/">
+  <img class="chv-height-full" src="/static/main/images/partners/tw.svg">
+</a>
+<a href="http://www.startlab.sk/">
+  <img class="chv-height-full" src="/static/main/images/partners/startlab.svg">
+</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-md-offset-1 chv-above-1">
+        <h3 id="individualni-darcovia">
+          Individuálni darcovia
+        </h3>
+        <div>
+          <a class="btn chv-btn-gray" href="/en/projekt-podporili/">
+            Zobraziť zoznam
+          </a>
+          <a class="btn chv-btn-blue" href="/en/podporte-nas/">Chcem prispieť</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chv-scheme-inv-gray chv-above-half">
+  <div class="container">
+    <p class="pull-right">
+       
+      
+
+
+
+
+<a href="mailto:aj.ja@chcemvediet.sk">
+  <span class="chv-icon-stack chv-icon-2x">
+    <i class="chv-icon icon-circle chv-hover-white"></i>
+    <i class="chv-icon chv-icon-half chv-icon-inv icon-mail"></i>
+  </span>
+</a>
+<a href="https://twitter.com/chcemvedietsk">
+  <span class="chv-icon-stack chv-icon-2x">
+    <i class="chv-icon icon-circle chv-hover-white"></i>
+    <i class="chv-icon chv-icon-half chv-icon-inv icon-twitter"></i>
+  </span>
+</a>
+<a href="https://www.facebook.com/chcemvedietsk/">
+  <span class="chv-icon-stack chv-icon-2x">
+    <i class="chv-icon icon-circle chv-hover-white"></i>
+    <i class="chv-icon chv-icon-half chv-icon-inv icon-facebook"></i>
+  </span>
+</a>
+
+    </p>
+    <p class="small">
+      <b>chcemvediet.sk&nbsp;©&nbsp;2015</b>
+      <span class="chv-hidden chv-inline-sm">|</span>
+      <span class="chv-hidden-sm"><br></span>
+      
+
+
+
+
+
+<a href="/en/podmienky-pouzivania/">Podmienky&nbsp;používania</a> |
+<a href="/en/podporte-nas/">Podporte nás</a> |
+<a href="/en/ochrana-osobnych-udajov/">Ochrana osobných údajov</a> |
+<a href="/en/o-projekte/#kontakt">Kontakt</a>
+
+      <span class="chv-hidden chv-inline-md">|</span>
+      <span class="chv-hidden-md"><br><br></span>
+      Developed by
+      <a href="http://www.poleno-solutions.sk/"><i class="chv-icon icon-poleno"></i></a>
+    </p>
+  </div>
+</div>
+
+      </footer>
+      <div id="ajax-fail-modal" class="modal fade">
+        
+
+
+
+
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3>Niečo sa pokazilo</h3>
+    </div>
+    <div class="modal-body">
+      
+
+
+
+
+<p>Požadované údaje nie sú k dispozícii. Zrejme došlo k chybe. Prosíme, obnovte stránku.</p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary pln-reload">
+        <i class="chv-icon chv-icon-lg icon-reload"></i>
+        &nbsp;
+        Obnoviť stránku
+      </button>
+      <button type="button" class="btn btn-link" data-dismiss="modal">
+        <i class="chv-icon chv-icon-lg icon-cancel"></i>
+        &nbsp;
+        Zavrieť
+      </button>
+    </div>
+  </div>
+</div>
+
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+      <script src="/static/main/3part/jqueryui/1.10.3/datepicker-sk.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/main/3part/jqueryplugins/jquery.iframe-transport.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/main/3part/jqueryplugins/jquery.fileupload.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/main/3part/jqueryplugins/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/main/3part/jqueryplugins/jquery.PrintArea.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/affix.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/alert.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/button.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/carousel.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/collapse.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/dropdown.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/modal.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/tooltip.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/popover.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/scrollspy.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/tab.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/javascripts/transition.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/00.confirm_button.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/autosize_textarea.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/composite_text.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/datepicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/editable.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/hide_bootstrap_modal.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/not_implemented.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/post_link.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/print_button.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/recursive_bootstrap_modal.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/reload_button.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/scrollto.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/toggle_changed.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/poleno/js/tooltip.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/attachments/js/fileupload.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/obligees/js/obligee_widget.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/main/js/01.bootstrapfix.js" type="text/javascript" charset="utf-8"></script>
+    </div>
+  
+
+

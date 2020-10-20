@@ -1,0 +1,38 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+<p>
+  {% if action.type == ACTION_TYPES.APPEAL %}
+    Lehota na odpoveď od inštitúcie ohľadom vášho odvolania pre
+    {{ branch.historicalobligee.name_accusative }}
+  {% else %}
+    Lehota na odpoveď od inštitúcie ohľadom vašej infožiadosti pre
+    {{ inforequest.main_branch.historicalobligee.name_accusative }}
+    {% if not branch.is_main %}postúpenej {{ branch.historicalobligee.name_dative }}{% endif %}
+  {% endif %}
+  bola
+  {% if action.deadline.is_in_calendar_days %}
+    {% plural action.deadline.value "1:{n} kalendárny deň" "2~4:{n} kalendárne dni" "{n} kalendárnych dní" %}
+  {% else %}
+    {% plural action.deadline.value "1:{n} pracovný deň" "2~4:{n} pracovné dni" "{n} pracovných dní" %}
+  {%endif%}
+  od {{ action.deadline.base_date|date:"j. E Y" }}.
+  Lehota uplynula {{ action.deadline.deadline_date|date:"j. E Y" }}.
+  Od vtedy
+  {% plural action.deadline.calendar_days_behind "1:prešiel {n} kalendárny deň" "2~4:prešli {n} kalendárne dni" "prešlo {n} pkalendárnych dni" %}.
+</p>
+<p>
+  Skôr než vykonáte ďalšiu akciu, môžete poskytnúť inštitúcii ešte pár dní na odpoveď. Niekedy to
+  je vhodné, ak viete, že inštitúcia je pomalá alebo dúfate, že ešte vám stále môže prísť
+  požadovaná informácia. Po uplynutí aj týchto dní vás chcemvediet.sk znova upozorní.
+</p>

@@ -1,0 +1,41 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load trans from i18n %}
+{% load url from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- action: chcemvediet.apps.inforequests.models.Action
+ %  -- form: chcemvediet.apps.inforequests.forms.SnoozeForm
+ %
+{% endcomment %}
+
+
+<form class="form-horizontal pln-ajax" method="post"
+      action="{% url 'inforequests:snooze' action=action %}">
+  {% csrf_token %}
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2>{% trans 'inforequests:modals:snooze:heading' %}</h2>
+      </div>
+      <div class="modal-body">
+        {% include "inforequests/modals/texts/snooze.html" %}
+        {% include "main/forms/form_horizontal.html" %}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" name="button" value="snooze">
+          {% trans 'inforequests:modals:snooze:snooze' %}
+        </button>
+        <button type="button" class="btn btn-link" data-dismiss="modal">
+          <i class="chv-icon icon-cancel"></i>
+          &nbsp;
+          {% trans 'inforequests:modals:close' %}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

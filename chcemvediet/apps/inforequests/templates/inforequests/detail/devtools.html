@@ -1,0 +1,78 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load url eq yes from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- inforequest: chcemvediet.apps.inforequests.models.Inforequest
+ %
+{% endcomment %}
+
+
+<h3>Mock Obligee Response</h3>
+<p>
+  Simulate a response from the obligee. It will be processed in a minute or two after sending it.
+</p>
+<form action="{% url 'inforequests:devtools_mock_response' inforequest=inforequest %}"
+      method="post">
+  {% csrf_token %}
+  <div>
+    <textarea name="content" class="form-control" placeholder="Response content"></textarea>
+  </div>
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary">Send</button>
+  </div>
+</form>
+
+{% if inforequest.main_branch.last_action.type != ACTION_TYPES.REQUEST %}
+  <h3>Undo the last action</h3>
+  <p>
+    Select a branch to delete its last action. Notice that if you delete an advancement, all it's
+    sub-branches will be deleted as well. All actions except requests and advanced requests may be
+    deleted.
+  </p>
+  <form action="{% url 'inforequests:devtools_undo_last_action' inforequest=inforequest %}"
+        method="post">
+    {% csrf_token %}
+    <div>
+      <select name="branch" class="form-control">
+        {% for branch in inforequest.branches %}
+          <option value="{{ branch.pk }}"
+                  {{ branch.last_action.type|eq:ACTION_TYPES.REQUEST|yes:"disabled='disabled'" }}
+                  {{ branch.last_action.type|eq:ACTION_TYPES.ADVANCED_REQUEST|yes:"disabled='disabled'" }}>
+            {{ branch.historicalobligee.name }} &mdash; {{ branch.last_action.get_extended_type_display }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">Undo</button>
+    </div>
+  </form>
+{% endif %}
+
+<h3>Push Inforequest in History</h3>
+<p>
+  Make the inforequest and all its related objects older by the given number of days. Use it to
+  test deadlines.
+</p>
+<form action="{% url 'inforequests:devtools_push_history' inforequest=inforequest %}" method="post">
+  {% csrf_token %}
+  <p>
+    <input type="number" name="days" class="form-control" placeholder="Days" min="-200" max="200">
+  </p>
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary">Push</button>
+  </div>
+</form>
+
+<h3>Delete Inforequest</h3>
+<p>
+  Delete the inforequest and all its related objects.
+</p>
+<form action="{% url 'inforequests:devtools_delete' inforequest=inforequest %}" method="post">
+  {% csrf_token %}
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </div>
+</form>

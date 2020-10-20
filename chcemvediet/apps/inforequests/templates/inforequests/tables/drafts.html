@@ -1,0 +1,58 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "inforequests/tables/base.html" %}
+{% load trans from i18n %}
+{% load url from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- class: string
+ %  -- objects: [chcemvediet.apps.inforequests.models.InforequestDraft]
+ %
+{% endcomment %}
+
+
+{% block collapse-actions %}
+  {% include "inforequests/tables/drafts_delete.html" with draft=object %}
+{% endblock %}
+
+{% block collapse %}
+  {% if object.subject.0 %}
+    <b>{{ object.subject.0 }}</b>
+  {% else %}
+    <span class="chv-color-gray-l">{% trans 'inforequests:mine:drafts:empty_subject' %}</span>
+  {% endif %}
+{% endblock %}
+
+{% block href %}{% url 'inforequests:create' draft=object %}{% endblock %}
+
+{% block subject %}
+  {% if object.subject.0 %}
+    <b>{{ object.subject.0 }}</b>
+  {% else %}
+    <span class="chv-color-gray-l">{% trans 'inforequests:mine:drafts:empty_subject' %}</span>
+  {% endif %}
+{% endblock %}
+
+{% block obligee %}
+  {% if object.obligee %}
+    {{ object.obligee.name }}
+  {% else %}
+    <span class="chv-color-gray-l">{% trans 'inforequests:mine:drafts:empty_obligee' %}</span>
+  {% endif %}
+{% endblock %}
+
+{% block date %}
+  {{ object.modified|date:"j. n. Y" }}
+{% endblock %}
+
+{% block status %}
+  <i class="chv-icon chv-icon-li icon-pencil"></i>
+  {% trans 'inforequests:mine:status:draft' %}
+{% endblock %}
+
+{% block actions %}
+  <div class="hidden-xs">
+    {% include "inforequests/tables/drafts_delete.html" with draft=object %}
+  </div>
+{% endblock %}

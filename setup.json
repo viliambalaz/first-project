@@ -1,0 +1,22 @@
+{
+  "admin_email": "admin@localhost", 
+  "admin_password": "pbkdf2_sha256$15000$Ld3QNwvufBxs$Ck+y/Z9m11yR0eSTX/bXung3a7y586Sg2BOLSS8Dp7A=", 
+  "cache_prefix": "www-chcemvediet-sk", 
+  "cache_version": 5, 
+  "default_from_email": "info@localhost", 
+  "enable_unittests": "N", 
+  "facebook_client_id": "", 
+  "facebook_secret": "", 
+  "google_client_id": "", 
+  "google_secret": "", 
+  "inforequest_unique_email": "{token}@mail.localhost", 
+  "mock_imagemagic": "Y", 
+  "mock_libreoffice": "Y", 
+  "mock_ocr": "Y", 
+  "obligee_dummy_mail": "obilgee@chcemvediet.sk", 
+  "search_api_key": "", 
+  "secret_key": "P=i(]5Cs/{&|%8;R[79h.p\"3d8TNh.S55iC7kG/9+NHe9o0yu,Op%&Xga0Md\"r>Nme#.iJ>}N(iZ=/H`i_6F5wD5x1y$!1k>MZqk", 
+  "server_domain": "localhost:8000", 
+  "server_mode": "local_with_local_mail", 
+  "support_email": "info@localhost"
+}

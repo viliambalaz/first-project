@@ -1,0 +1,49 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load plural from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- branch: chcemvediet.apps.inforequests.models.Branch
+ %  -- action: chcemvediet.apps.inforequests.models.Action
+ %
+{% endcomment %}
+
+
+{% if action.deadline.is_in_calendar_days %}
+  {% plural action.deadline.value "1:{n} kalendárny deň" "2~4:{n} kalendárne dni" "{n} kalendárnych dní" %}
+  od {{ action.deadline.base_date|date:"j. E Y" }}
+{% else %}
+  {% plural action.deadline.value "1:{n} pracovný deň" "2~4:{n} pracovné dni" "{n} pracovných dní" %}
+  od {{ action.deadline.base_date|date:"j. E Y" }}
+{% endif %}
+{% if action.deadline.is_obligee_deadline %}
+  na odpoveď od inštitúcie
+{% elif branch.can_add_clarification_response  %}
+  na doplnenie žiadosti
+{% elif branch.can_add_appeal %}
+  na podanie odvolania
+{% endif %}
+&mdash;
+{% if action.deadline.is_deadline_missed %}
+  <span class="chv-color-red">
+    Lehota uplynula {{ action.deadline.deadline_date|date:"j. E Y" }}.
+  </span>
+{% else %}
+  <span class="chv-color-green">
+    Lehota uplynie {{ action.deadline.deadline_date|date:"j. E Y" }}.
+  </span>
+{% endif %}
+{% if action.deadline.is_deadline_missed and action.deadline.is_snoozed %}
+  {% if action.deadline.is_snooze_missed %}
+    <br>
+    Uviedli ste, že ešte počkáte
+    {% plural action.deadline.snooze_in_calendar_days "1:{n} kalendárny deň" "2~4:{n} kalendárne dni" "{n} kalendárnych dní" %}
+    od uplynutia lehoty, ale aj tie už uplynuli.
+  {% else %}
+    <br>
+    Uviedli ste, že ešte počkáte
+    {% plural action.deadline.snooze_in_calendar_days "1:{n} kalendárny deň" "2~4:{n} kalendárne dni" "{n} kalendárnych dní" %}
+    od uplynutia lehoty.
+  {% endif %}
+{% endif %}

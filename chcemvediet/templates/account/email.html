@@ -1,0 +1,82 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "main/base/single_column.html" %}
+{% load trans from i18n %}
+{% load no from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- form: allauth.account.forms.AddEmailForm
+ %
+{% endcomment %}
+
+
+{% block title %}{% trans 'account:email:title' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'account:email:heading' %}</h1>
+  {% with user.emailaddress_set.all as emailaddresses %}
+    {% if emailaddresses %}
+      {% include "account/texts/email_list.html" %}
+      <form class="form-horizontal" method="post" action="{% url 'account_email' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            {% for emailaddress in emailaddresses %}
+              <div class="radio">
+                <label>
+                  <input type="radio" name="email" value="{{ emailaddress.email }}"
+                         {% if emailaddress.primary %}checked="checked"{% endif %}>
+                  <span class="{{ emailaddress.verified|no:"text-muted" }}">
+                    {{ emailaddress.email }}
+                  </span>
+                </label>
+                &nbsp;
+                {% if emailaddress.verified %}
+                  <span class="label label-success">{% trans 'account:email:verified' %}</span>
+                {% else %}
+                  <span class="label label-danger">{% trans 'account:email:unverified' %}</span>
+                {% endif %}
+                {% if emailaddress.primary %}
+                  <span class="label label-info">{% trans 'account:email:primary' %}</span>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-primary" name="action_primary">
+              {% trans 'account:email:action_primary' %}
+            </button>
+            <button type="submit" class="btn btn-default" name="action_send">
+              {% trans 'account:email:action_send' %}
+            </button>
+            <button type="submit" class="btn btn-default pln-confirm" name="action_remove"
+                    data-confirm="{% trans 'account:email:action_remove:confirm' %}">
+              {% trans 'account:email:action_remove' %}
+            </button>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      {% include "account/texts/email_empty.html" %}
+    {% endif %}
+  {% endwith %}
+
+  <h2 id="{% trans 'account:email:add:anchor' %}">
+    {% trans 'account:email:add:heading' %}
+  </h2>
+  {% include "account/texts/email_add.html" %}
+  <form class="form-horizontal" method="post" action="">
+    {% csrf_token %}
+    {% include "main/forms/form_horizontal.html" %}
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" name="action_add">
+          {% trans 'account:email:add:action_add' %}
+        </button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

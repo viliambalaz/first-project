@@ -1,0 +1,23 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% load url from poleno.utils %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- draft: chcemvediet.apps.inforequests.models.InforequestDraft
+ %
+{% endcomment %}
+
+
+<form method="post" action="{% url 'inforequests:delete_draft' draft=draft %}">
+  {% csrf_token %}
+  <button type="submit" class="chv-table-delete pln-with-tooltip pln-confirm"
+          title="{% spaceless %}
+              {% include "inforequests/mine/texts/drafts_delete_tooltip.txt" %}
+              {% endspaceless %}"
+          data-confirm="{% spaceless %}
+              {% include "inforequests/mine/texts/drafts_delete_confirm.txt" %}
+              {% endspaceless %}">
+    &times;
+  </button>
+</form>

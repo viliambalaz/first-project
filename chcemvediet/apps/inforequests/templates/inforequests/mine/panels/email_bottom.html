@@ -1,0 +1,15 @@
+{# vim: set filetype=htmldjango shiftwidth=2 :#}
+{% extends "inforequests/mine/panels/base_bottom.html" %}
+{% load trans from i18n %}
+
+{% comment %}
+ %
+ % Context:
+ %  -- undecided_emails_count: integer
+ %
+{% endcomment %}
+
+
+{% block button-href %}{% url 'inforequests:obligee_action_dispatcher' %}{% endblock %}
+{% block button-icon %}icon-forward{% endblock %}
+{% block botton-text %}{% trans 'inforequests:mine:email:button' %}{% endblock %}
